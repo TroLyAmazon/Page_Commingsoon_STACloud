@@ -23,7 +23,12 @@ export const metadata: Metadata = {
     description: 'Hệ thống hosting & panel đang hoàn thiện. Theo dõi Discord để cập nhật.',
   },
   robots: 'index, follow',
-  // Thêm public/favicon.ico nếu cần; trình duyệt tự tìm /favicon.ico
+  icons: {
+    icon: [
+      { url: '/picture/iconSTACloud.ico', type: 'image/x-icon', sizes: 'any' },
+      { url: '/picture/iconSTACloud.png', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -33,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
-      <body className="relative">
+      <body className="relative" suppressHydrationWarning>
         <div className="glow-blur" aria-hidden />
         <div className="relative z-10">{children}</div>
       </body>

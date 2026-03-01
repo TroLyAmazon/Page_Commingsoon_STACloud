@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "copy-assets": "node scripts/copy-assets.js",
+    "predev": "npm run copy-assets",
+    "prebuild": "npm run copy-assets",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

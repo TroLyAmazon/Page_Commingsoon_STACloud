@@ -6,12 +6,18 @@ const PANEL_URL = 'https://panel.stacloud.dev/';
 const DISCORD_URL = 'https://discord.gg/nq8B4JXmnm';
 const SITE_URL = 'https://stacloud.dev/';
 
-// Logo: ưu tiên /picture/logo.png; fallback /picture/logoSTACloud.png (workflow copy picture/ → public/picture/)
-const LOGO_SRC = '/picture/logo.png';
-const LOGO_FALLBACK_SRC = '/picture/logoSTACloud.png';
+// Logo: dùng logoSTACloud.png (script copy-assets copy picture/ → public/picture/)
+const LOGO_SRC = '/picture/logoSTACloud.png';
+const LOGO_FALLBACK = '/picture/logo.png';
 
 function Header() {
   const [logoSrc, setLogoSrc] = useState(LOGO_SRC);
+  const [failed, setFailed] = useState(false);
+
+  const handleError = () => {
+    if (logoSrc === LOGO_FALLBACK) setFailed(true);
+    else setLogoSrc(LOGO_FALLBACK);
+  };
 
   return (
     <header className="w-full px-4 py-5 sm:px-6 sm:py-6">
@@ -20,12 +26,19 @@ function Header() {
           href={SITE_URL}
           className="flex items-center gap-3 transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-[var(--bg-gradient-from)] rounded-lg"
         >
-          <img
-            src={logoSrc}
-            alt="STA Cloud"
-            className="h-9 w-auto sm:h-10"
-            onError={() => setLogoSrc(LOGO_FALLBACK_SRC)}
-          />
+          {!failed ? (
+            <img
+              src={logoSrc}
+              alt="STA Cloud"
+              className="h-9 w-auto sm:h-10 min-w-[2.25rem] min-h-[2.25rem]"
+              onError={handleError}
+            />
+          ) : null}
+          {failed ? (
+            <span className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-indigo-500/20 text-sm font-bold text-indigo-300 sm:text-base">
+              STA
+            </span>
+          ) : null}
           <span className="text-lg font-semibold text-white sm:text-xl">
             STA Cloud
           </span>
