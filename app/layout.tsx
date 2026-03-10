@@ -4,42 +4,54 @@ import './globals.css';
 const SITE_URL = 'https://stacloud.dev';
 
 export const metadata: Metadata = {
-  title: 'STA Cloud — Đang phát triển | Hosting & Panel',
+  metadataBase: new URL(SITE_URL),
+  title: 'STACloud | Free Server Hosting for Dev and Game Communities',
   description:
-    'STA Cloud đang phát triển. Hệ thống hosting & panel đang hoàn thiện. Game hosting, Web hosting. Theo dõi Discord để cập nhật.',
-  keywords: ['STA Cloud', 'hosting', 'game hosting', 'web hosting', 'panel', 'stacloud.dev'],
-  authors: [{ name: 'STA Cloud' }],
+    'STACloud cung cấp free server cho dev, Minecraft và cộng đồng cần khởi tạo nhanh qua Discord.',
+  keywords: [
+    'STACloud',
+    'free server hosting',
+    'minecraft hosting',
+    'python hosting',
+    'pterodactyl panel',
+    'jexactyl fork',
+  ],
   openGraph: {
-    title: 'STA Cloud — Đang phát triển',
+    title: 'STACloud | Official Landing Page',
     description:
-      'Hệ thống hosting & panel đang hoàn thiện. Theo dõi Discord để cập nhật.',
+      'Free server cho dev và game community, cấp nhanh qua Discord và quản lý bằng panel trên nền Jexactyl fork.',
     url: SITE_URL,
-    siteName: 'STA Cloud',
+    siteName: 'STACloud',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'STA Cloud — Đang phát triển',
-    description: 'Hệ thống hosting & panel đang hoàn thiện. Theo dõi Discord để cập nhật.',
+    title: 'STACloud | Official Landing Page',
+    description:
+      'Free server cho dev và game community, cấp nhanh qua Discord và theo dõi slot còn trống theo thời gian thực.',
   },
-  robots: 'index, follow',
   icons: {
     icon: [
       { url: '/picture/iconSTACloud.ico', type: 'image/x-icon', sizes: 'any' },
       { url: '/picture/iconSTACloud.png', type: 'image/png' },
     ],
   },
+  robots: 'index, follow',
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="vi">
-      <body className="relative" suppressHydrationWarning>
-        <div className="glow-blur" aria-hidden />
+      <body
+        className="relative overflow-x-hidden bg-[var(--surface-950)] text-slate-100 antialiased"
+        suppressHydrationWarning
+      >
+        <div className="background-mesh" aria-hidden />
+        <div className="background-grid" aria-hidden />
         <div className="relative z-10">{children}</div>
       </body>
     </html>
