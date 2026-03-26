@@ -6,9 +6,10 @@ export function LocationsSection() {
       <div className="mx-auto max-w-6xl rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur sm:p-8">
         <div className="max-w-2xl">
           <p className="section-eyebrow">Locations</p>
-          <h2 className="section-title">Các location hiện có cho free server và paid service</h2>
+          <h2 className="section-title">Các location hiện có cho gói cộng đồng và paid service</h2>
           <p className="section-copy">
-            Người dùng có thể nhìn nhanh khu vực đang mở cho free hoặc chỉ dành cho paid mà không cần hỏi lại trong ticket.
+            Người dùng có thể nhìn nhanh khu vực nào hỗ trợ free hoặc paid để chọn gói phù hợp mà
+            không cần hỏi lại trong ticket.
           </p>
         </div>
 

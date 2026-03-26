@@ -28,19 +28,19 @@ export function FreeServerPage() {
             <div className="min-w-0">
               <p className="text-xl font-semibold text-white sm:text-2xl">STACloud</p>
               <p className="max-w-[16rem] text-xs leading-5 text-slate-400 sm:max-w-none sm:text-sm">
-                Free server portal for community deployment
+                Service board cho portal và gói dịch vụ cộng đồng
               </p>
             </div>
           </Link>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
-              href="https://panel.stacloud.dev/"
+              href="https://portal.stacloud.dev/"
               target="_blank"
               rel="noreferrer"
               className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
             >
-              Mở Panel
+              Mở Portal
             </a>
             <a
               href="https://discord.gg/nq8B4JXmnm"
@@ -48,7 +48,7 @@ export function FreeServerPage() {
               rel="noreferrer"
               className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-white transition hover:border-white/25 hover:bg-white/10 sm:w-auto"
             >
-              Group Discord
+              Vào Discord
             </a>
           </div>
         </Reveal>

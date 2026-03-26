@@ -1,104 +1,115 @@
 export const homeConfig = {
   name: 'STACloud',
-  tagline: 'Low Latency • High Performance',
-  panelUrl: 'https://panel.stacloud.dev/',
+  tagline: 'Portal, VPS & Community Plans',
+  panelUrl: 'https://portal.stacloud.dev/',
   discordUrl: 'https://discord.gg/nq8B4JXmnm',
   freeServerUrl: '/free-server',
   logoAlt: 'STACloud',
   summary:
-    'STACloud xây dựng hạ tầng cho gaming panel, VPS và free server với trải nghiệm quản trị rõ ràng, tốc độ cao và phong cách vận hành nghiêm túc.',
+    'STACloud xây dựng portal, VPS và các gói dịch vụ cộng đồng với cách trình bày rõ ràng, tốc độ cao và ưu tiên khả năng quản trị.',
 };
 
 export const heroStats = [
-  { value: '24/7', label: 'Giám sát hạ tầng' },
-  { value: '99.99%', label: 'Uptime mục tiêu' },
-  { value: '10Gbps', label: 'Network uplink' },
-  { value: '3', label: 'Dòng sản phẩm chính' },
+  { value: '4', label: 'Gói đang công bố' },
+  { value: '24 + 10', label: 'Slots DEV / MC' },
+  { value: '0$', label: 'TESTER miễn phí' },
+  { value: '24/7', label: 'Hỗ trợ Discord' },
 ] as const;
 
 export const heroSignals = [
-  'Gaming panel trên nền Jexactyl fork',
-  'VPS routing tối ưu cho workload dev',
-  'Free server cho cộng đồng đang hoạt động',
+  'Portal và store đã chuyển sang portal.stacloud.dev',
+  'DEV và MC được công bố giá trực tiếp trên landing',
+  'TESTER miễn phí nhưng người dùng phải tự backup dữ liệu',
+] as const;
+
+export const heroStatusStrip = [
+  { label: 'DEV', detail: '24 slots', value: '0.1$ / 2.000 VNĐ', tone: 'emerald' },
+  { label: 'MC', detail: '10 slots', value: '0.2$ / 3.000 VNĐ', tone: 'cyan' },
+  { label: 'PROXY', detail: 'Tạm ngưng', value: 'Không mở mới', tone: 'amber' },
+  { label: 'TESTER', detail: 'Node tài trợ', value: '0$ / 0 VNĐ', tone: 'rose' },
+] as const;
+
+export const dashboardEntries = [
+  {
+    label: 'Portal',
+    value: 'portal.stacloud.dev',
+    meta: 'Quản trị và store',
+    tone: 'cyan',
+  },
+  {
+    label: 'Status',
+    value: '🗺️｜server-status-and-slot',
+    meta: 'Theo dõi tài nguyên',
+    tone: 'amber',
+  },
+  {
+    label: 'Support',
+    value: 'Discord ticket',
+    meta: 'Ưu tiên xử lý nhanh',
+    tone: 'emerald',
+  },
+  {
+    label: 'Routing',
+    value: 'VN + SG + HK',
+    meta: 'Tối ưu cộng đồng',
+    tone: 'blue',
+  },
 ] as const;
 
 export const products = [
   {
-    title: 'Gaming Panel',
-    eyebrow: 'Game Hosting',
+    title: 'Portal Gaming',
+    eyebrow: 'Điều Khiển',
     description:
-      'Quản lý server game trên panel rõ ràng, tối ưu cho Minecraft, bot game và cộng đồng nhỏ cần cấp phát nhanh.',
-    chips: ['Panel Control', 'Instant Deploy', 'DDoS Guard'],
+      'Quản lý game server, node và store trên portal đồng bộ hơn với flow vận hành hiện tại của STACloud.',
+    chips: ['Portal', 'Store', 'Fast Control'],
   },
   {
     title: 'VPS Compute',
-    eyebrow: 'Virtual Infrastructure',
+    eyebrow: 'Hạ Tầng',
     description:
-      'Phù hợp cho workload backend, automation, web app và dịch vụ cần môi trường linh hoạt hơn hosting chia sẵn.',
+      'Phù hợp cho backend, automation, bot và workload cần môi trường linh hoạt hơn shared hosting truyền thống.',
     chips: ['Compute Ready', 'Low Latency', 'Stable Routing'],
   },
   {
-    title: 'Free Server',
-    eyebrow: 'Community Tier',
+    title: 'Gói Cộng Đồng',
+    eyebrow: 'Service Plans',
     description:
-      'Tài nguyên miễn phí cho cộng đồng học tập, thử nghiệm và vận hành server nhỏ với quy trình đăng ký rõ ràng.',
-    chips: ['Discord Ticket', 'Fast Review', 'Policy Clear'],
+      'DEV, MC, PROXY FREE và TESTER được công bố cùng giá, slot và lưu ý sử dụng để người dùng quyết định nhanh.',
+    chips: ['DEV', 'MC', 'TESTER'],
   },
 ] as const;
 
 export const features = [
   {
-    title: 'Mạng dành cho hạ tầng thật',
+    title: 'Thông tin gói quét nhanh',
     description:
-      'Không chỉ là một landing đẹp. STACloud được định hình như một lớp hạ tầng có giám sát, tuyến tốt và định hướng scale rõ ràng.',
+      'Giá, slot, trạng thái và cảnh báo được gom thành các block dễ nhìn để người dùng không cần hỏi lại những thứ cơ bản.',
   },
   {
-    title: 'Panel điều khiển dễ nắm',
+    title: 'Portal rõ cho người mới',
     description:
-      'Người dùng mới vẫn có thể triển khai, theo dõi tài nguyên và vận hành server mà không bị ngợp bởi giao diện rối.',
+      'Người dùng mới vẫn có thể đăng nhập portal, mở store, theo dõi tài nguyên và hiểu luồng vận hành mà không bị rối.',
   },
   {
-    title: 'Thiết kế cho gaming và dev',
+    title: 'Thiết kế cho workload thật',
     description:
-      'Từ game panel đến bot, web app và workload backend nhẹ, hệ thống được sắp theo đúng nhu cầu cộng đồng thường dùng.',
+      'Từ game hosting, bot, web app đến workload backend nhẹ, bố cục hiện tại phản ánh đúng nhu cầu dùng thực tế.',
   },
   {
-    title: 'Bảo vệ và uptime',
+    title: 'Status board dễ theo dõi',
     description:
-      'DDoS protection, giám sát 24/7 và network uplink lớn giúp dịch vụ giữ phong cách của một nhà cung cấp hạ tầng thật sự.',
+      'Trang chủ và landing gói dịch vụ cùng hướng về cảm giác dashboard, giúp thông tin vận hành hiện lên rõ ràng hơn.',
   },
   {
-    title: 'Quy trình cấp phát nhanh',
+    title: 'Luồng Discord ngắn gọn',
     description:
-      'Free server và các gói vận hành được trình bày theo flow ngắn, giúp support xử lý nhanh và người dùng ít sai thông tin hơn.',
+      'Người dùng chỉ cần vào Discord, xem tình trạng tài nguyên, rồi mở ticket với nhu cầu cụ thể thay vì dò nhiều thông báo rời rạc.',
   },
   {
-    title: 'Thương hiệu công nghệ rõ nét',
+    title: 'Ngôn ngữ đồng nhất hơn',
     description:
-      'Phong cách giao diện hướng về control panel, network node và data infrastructure thay vì cảm giác của một landing chung chung.',
-  },
-] as const;
-
-export const infrastructureItems = [
-  {
-    label: 'Control Layer',
-    value: 'STA Cloud, Fork Jexactyl, built on Pterodactyl.',
-    accent: 'cyan',
-  },
-  {
-    label: 'Routing',
-    value: 'VN + SG + HK Optimized',
-    accent: 'amber',
-  },
-  {
-    label: 'Support',
-    value: '24/7 Discord',
-    accent: 'emerald',
-  },
-  {
-    label: 'Workloads',
-    value: 'Gaming / VPS / Bot',
-    accent: 'blue',
+      'CTA, tiêu đề và nhịp nội dung đang được kéo về cùng một giọng để thương hiệu trông liền mạch hơn giữa các trang.',
   },
 ] as const;
 
@@ -106,15 +117,15 @@ export const locations = [
   {
     name: 'Singapore',
     flagSrc: '/flags/singapore.svg',
-    badge: 'Enterprise-grade facility',
+    badge: 'Community + Paid',
     speed: '10 Gbps',
     uptime: '99.99% Uptime',
     availability: 'Free / Paid',
   },
   {
-    name: 'Hongkong',
+    name: 'Hong Kong',
     flagSrc: '/flags/hong-kong.svg',
-    badge: 'Enterprise-grade facility',
+    badge: 'Community + Paid',
     speed: '5 Gbps',
     uptime: '99.99% Uptime',
     availability: 'Free / Paid',
@@ -122,7 +133,7 @@ export const locations = [
   {
     name: 'Việt Nam',
     flagSrc: '/flags/vietnam.svg',
-    badge: 'Enterprise-grade facility',
+    badge: 'Paid Focus',
     speed: '10 Gbps',
     uptime: '99.99% Uptime',
     availability: 'Only Paid',
@@ -132,31 +143,31 @@ export const locations = [
 export const testimonials = [
   {
     quote:
-      'Ấn tượng nhất là giao diện panel và tốc độ phản hồi support. Nhìn và dùng đều có cảm giác của một dịch vụ hạ tầng chỉnh chu hơn hẳn.',
+      'Phần mình thích nhất là nhìn vào đã biết portal ở đâu, gói nào đang mở và gói nào cần chú ý dữ liệu. Quyết định nhanh hơn hẳn.',
     author: 'Minh Trí',
     role: 'Người dùng cộng đồng',
   },
   {
     quote:
-      'Điểm mạnh của STACloud là không cố làm mọi thứ mơ hồ. Rule rõ, location rõ và free server được vận hành như một phần thật của hệ thống.',
+      'Khi giá và policy được đưa thẳng lên landing, support đỡ phải trả lời lại những câu hỏi cơ bản và flow vận hành gọn hơn nhiều.',
     author: 'Lê Nam',
     role: 'Developer',
   },
   {
     quote:
-      'Mình dùng cho bot và test app nhỏ khá ổn. Nếu họ đẩy tiếp mảng VPS và gaming panel thì bộ nhận diện hiện tại rất hợp hướng công nghệ.',
+      'STACloud đang có cảm giác của một dịch vụ hạ tầng thật hơn vì portal, status và dịch vụ cộng đồng đều được trình bày như một hệ thống thống nhất.',
     author: 'Quốc Bảo',
     role: 'Customer',
   },
 ] as const;
 
 export const faqs = [
-  'Tôi có thể bắt đầu với free server rồi nâng cấp sau không?',
-  'STACloud hiện hỗ trợ những workload nào tốt nhất?',
-  'VPS và gaming panel có cùng hệ thống quản trị không?',
-  'Server của STACloud đang đặt ở đâu?',
-  'Làm sao để xin thêm slot ở free panel?',
-  'Vì sao server có thể bị suspended ở free tier?',
-  'STACloud có hỗ trợ Minecraft server không?',
-  'Kênh hỗ trợ nhanh nhất hiện tại là gì?',
+  'Tôi nên chọn DEV, MC hay TESTER?',
+  'Gói TESTER có những rủi ro gì cần lưu ý?',
+  'PROXY FREE hiện còn mở hay đã tạm ngưng?',
+  'Tôi kiểm tra tài nguyên còn lại ở đâu?',
+  'Portal hiện dùng domain nào để đăng nhập?',
+  'STACloud hỗ trợ workload nào tốt nhất ở thời điểm này?',
+  'VPS và portal có đi chung một hệ vận hành không?',
+  'Kênh Discord nào là nơi hỗ trợ nhanh nhất hiện tại?',
 ] as const;

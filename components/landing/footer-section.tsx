@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { siteConfig } from './content';
 
 export function FooterSection() {
@@ -6,12 +7,16 @@ export function FooterSection() {
       <div className="mx-auto flex max-w-6xl flex-col gap-4 rounded-[2rem] border border-white/10 bg-slate-950/70 px-6 py-6 text-sm text-slate-400 backdrop-blur md:flex-row md:items-center md:justify-between">
         <div>
           <p className="font-semibold text-white">{siteConfig.name}</p>
-          <p className="mt-1">
-            © {siteConfig.copyrightYear} {siteConfig.name}, {siteConfig.signature}
-          </p>
+          <p className="mt-1">{siteConfig.copyrightText}</p>
         </div>
 
         <div className="flex flex-wrap gap-4">
+          <Link href="/terms" className="transition hover:text-white">
+            Điều khoản
+          </Link>
+          <Link href="/privacy" className="transition hover:text-white">
+            Quyền riêng tư
+          </Link>
           <a
             href={siteConfig.siteUrl}
             className="transition hover:text-white"
@@ -26,7 +31,7 @@ export function FooterSection() {
             target="_blank"
             rel="noreferrer"
           >
-            Panel
+            Portal
           </a>
           <a
             href={siteConfig.discordUrl}

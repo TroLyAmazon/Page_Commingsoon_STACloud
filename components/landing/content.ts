@@ -1,42 +1,69 @@
 export const siteConfig = {
   name: 'STACloud',
   siteUrl: 'https://stacloud.dev/',
-  panelUrl: 'https://panel.stacloud.dev/',
+  panelUrl: 'https://portal.stacloud.dev/',
   discordUrl: 'https://discord.gg/nq8B4JXmnm',
   discordGroupUrl: 'https://discord.gg/nq8B4JXmnm',
-  statusChannel: 'server-status-and-slot',
+  statusChannel: '🗺️｜server-status-and-slot',
   supportChannel: 'support',
-  signature: 'Fork Jexactyl, built on Pterodactyl',
-  copyrightYear: '2026',
+  copyrightText: '© 2025-2026 STACloud',
 };
 
 export const heroStats = [
-  { value: '3', label: 'Gói free đang mở' },
-  { value: '10Gbps', label: 'Băng thông uplink' },
-  { value: '24h', label: 'Khung giờ hỗ trợ khôi phục' },
+  { value: '4', label: 'Gói đang công bố' },
+  { value: '24 + 10', label: 'Slots DEV / MC' },
+  { value: '0$', label: 'TESTER miễn phí' },
+  { value: '1', label: 'Gói tạm ngưng' },
 ] as const;
 
-export const freePlans = [
+export const servicePlans = [
   {
-    name: 'DEV FREE',
-    description: 'Dành cho app nhỏ, bot, web dev và môi trường test nhanh.',
+    name: 'DEV',
+    description: 'Dành cho app nhỏ, bot, web dev và môi trường test cần chi phí thấp theo chu kỳ.',
+    price: '0.1$ hoặc 2.000 VNĐ / chu kỳ',
+    highlight: '24 Slots',
     specs: ['0.75 vCore', '1 GB RAM', '2 GB SSD'],
-    status: 'Open',
+    status: 'active',
+    statusLabel: 'Đang mở',
     accent: 'from-sky-400/30 to-cyan-300/10',
+    warnings: [],
   },
   {
-    name: 'MC FREE',
-    description: 'Gói cho Minecraft cộng đồng quy mô nhỏ và test plugin.',
+    name: 'MC',
+    description: 'Dành cho Minecraft community nhỏ và nhu cầu test plugin với tài nguyên cao hơn DEV.',
+    price: '0.2$ hoặc 3.000 VNĐ / chu kỳ',
+    highlight: '10 Slots',
     specs: ['1 vCore', '2 GB RAM', '3 GB SSD'],
-    status: 'Open',
+    status: 'active',
+    statusLabel: 'Đang mở',
     accent: 'from-emerald-400/30 to-lime-300/10',
+    warnings: [],
   },
   {
     name: 'PROXY FREE',
-    description: 'Proxy và middle layer. Tạm thời ngừng cấp mới.',
+    description: 'Gói middle layer và proxy hiện đã tạm ngưng mở mới theo thông báo mới nhất.',
+    price: 'Tạm ngưng',
+    highlight: 'Không mở mới',
     specs: ['0.5 vCore', '512 MB RAM', '1 GB SSD'],
-    status: 'Paused',
+    status: 'paused',
+    statusLabel: 'Tạm ngưng',
     accent: 'from-amber-300/25 to-orange-300/10',
+    warnings: [],
+  },
+  {
+    name: 'TESTER',
+    description: 'Node mới hoàn toàn miễn phí cho nhu cầu test nhanh, nhưng đi kèm cảnh báo dữ liệu rõ ràng.',
+    price: '0$ / 0 VNĐ',
+    highlight: 'Node tài trợ',
+    specs: ['1 vCore', '1 GB RAM', '5 GB Disk'],
+    status: 'warning',
+    statusLabel: 'Miễn phí',
+    accent: 'from-rose-400/25 to-orange-300/10',
+    warnings: [
+      'Node này được tài trợ nên có thể bị can thiệp hoặc sập bất ngờ bất cứ lúc nào.',
+      'Vui lòng tự chủ động backup dữ liệu.',
+      'STACloud không chịu trách nhiệm về mất mát dữ liệu trên node này.',
+    ],
   },
 ] as const;
 
@@ -73,12 +100,12 @@ export const benefits = [
   {
     title: 'Nhanh, rõ, gọn',
     description:
-      'Mở ticket trên Discord, gửi đúng format, admin xử lý và cấp server ngay khi có slot.',
+      'Mở ticket trên Discord, gửi đủ thông tin cần thiết, admin xử lý nhanh và cấp server theo đúng gói còn slot.',
   },
   {
-    title: 'Tập trung cộng đồng',
+    title: 'Thông tin gói minh bạch',
     description:
-      'Free server ưu tiên cho học tập, test dự án, Minecraft nhỏ và nhu cầu thực sự đang chạy.',
+      'DEV, MC, PROXY FREE và TESTER đều được công bố kèm giá, trạng thái, cấu hình và cảnh báo ngay trên landing.',
   },
 ] as const;
 
@@ -90,39 +117,54 @@ export const quickSteps = [
   },
   {
     step: '02',
-    title: 'Gửi đúng định dạng',
-    description: 'Email + Loại Server (Python/Bedrock) + Port trong khoảng 30000-50000.',
+    title: 'Gửi thông tin cần thiết',
+    description: 'Cho admin biết gói bạn muốn đăng ký và nhu cầu sử dụng để được kiểm tra slot nhanh hơn.',
   },
   {
     step: '03',
-    title: 'Nhận server',
-    description: 'Admin tạo server nhanh khi ticket hợp lệ và hệ thống còn slot.',
+    title: 'Chờ duyệt và cấp',
+    description: 'Admin kiểm tra slot còn lại, xác nhận đúng gói rồi cấp server khi ticket hợp lệ.',
   },
 ] as const;
 
-export const requestFormat = 'tla@gmail.com + Python + 30005';
-
 export const notes = [
-  'Kiểm tra các loại Egg có sẵn tại Panel -> Store trước khi gửi yêu cầu.',
-  'Cung cấp email chính xác để nhận thông tin đăng nhập.',
-  'Theo dõi tài nguyên còn trống tại kênh server-status-and-slot trên Discord.',
+  'Chọn đúng gói DEV, MC hoặc TESTER trước khi mở ticket; PROXY FREE hiện đang tạm ngưng.',
+  'DEV có giá 0.1$ hoặc 2.000 VNĐ mỗi chu kỳ, MC có giá 0.2$ hoặc 3.000 VNĐ mỗi chu kỳ.',
+  'TESTER miễn phí nhưng bắt buộc tự backup vì node tài trợ có thể gián đoạn bất ngờ.',
+  'Theo dõi tài nguyên còn lại tại kênh 🗺️｜server-status-and-slot trên Discord.',
 ] as const;
 
 export const policyGroups = [
   {
-    title: 'Suspended',
+    title: 'DEV & MC',
     points: [
-      'Server mới nhưng không chạy ngay có thể bị suspended.',
-      'Không hoạt động liên tiếp 3 ngày sẽ bị tạm khóa tự động.',
-      'Tạo ticket trong 24h để được hỗ trợ active lại.',
+      'DEV có chi phí 0.1$ hoặc 2.000 VNĐ / chu kỳ với cấu hình 0.75 vCore, 1 GB RAM, 2 GB SSD.',
+      'MC có chi phí 0.2$ hoặc 3.000 VNĐ / chu kỳ với cấu hình 1 vCore, 2 GB RAM, 3 GB SSD.',
+      'Hai gói này hiện được công bố với 24 slots DEV và 10 slots MC.',
     ],
   },
   {
-    title: 'Chính sách xóa dữ liệu',
+    title: 'PROXY FREE',
     points: [
-      'Sau ngày thứ 4 không hoạt động, dữ liệu có thể bị xóa vĩnh viễn.',
-      'Qua mốc 24h hỗ trợ, STACloud không đảm bảo giữ lại dữ liệu.',
-      'Tài nguyên free ưu tiên cho người dùng đang sử dụng thật.',
+      'PROXY FREE hiện ở trạng thái tạm ngưng và chưa mở slot mới.',
+      'Cấu hình hiện công bố là 0.5 vCore, 512 MB RAM và 1 GB SSD.',
+      'Nếu cần workload proxy, hãy theo dõi Discord để chờ thông báo kế tiếp.',
+    ],
+  },
+  {
+    title: 'TESTER Miễn Phí',
+    points: [
+      'TESTER có chi phí 0$ / 0 VNĐ với cấu hình 1 vCore, 1 GB RAM và 5 GB Disk.',
+      'Node này được tài trợ nên có thể bị can thiệp hoặc sập bất ngờ bất cứ lúc nào.',
+      'Người dùng phải tự backup dữ liệu và chấp nhận rủi ro mất mát dữ liệu trên node này.',
+    ],
+  },
+  {
+    title: 'Tài Nguyên Còn Lại',
+    points: [
+      'Kiểm tra tài nguyên còn lại tại kênh 🗺️｜server-status-and-slot trước khi mở ticket.',
+      'Việc theo dõi slot trước giúp admin xử lý nhanh hơn và tránh gửi sai kỳ vọng.',
+      'Landing hiện đã được đồng bộ theo đúng thông báo cập nhật gói dịch vụ mới nhất.',
     ],
   },
 ] as const;

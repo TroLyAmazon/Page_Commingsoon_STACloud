@@ -5,21 +5,22 @@ const SITE_URL = 'https://stacloud.dev';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'STACloud | Free Server Hosting for Dev and Game Communities',
+  title: 'STACloud | Community Hosting, VPS and Service Plans',
   description:
-    'STACloud cung cấp free server cho dev, Minecraft và cộng đồng cần khởi tạo nhanh qua Discord.',
+    'STACloud cung cấp portal, VPS và các gói DEV, MC, TESTER cho cộng đồng với thông tin giá, slot và policy rõ ràng.',
   keywords: [
     'STACloud',
-    'free server hosting',
+    'community hosting',
+    'vps plans',
     'minecraft hosting',
-    'python hosting',
+    'free server hosting',
     'pterodactyl panel',
     'jexactyl fork',
   ],
   openGraph: {
     title: 'STACloud | Official Landing Page',
     description:
-      'Free server cho dev và game community, cấp nhanh qua Discord và quản lý bằng panel trên nền Jexactyl fork.',
+      'Cập nhật gói DEV, MC, PROXY FREE và TESTER với giá, slot và lưu ý sử dụng rõ ràng ngay trên landing.',
     url: SITE_URL,
     siteName: 'STACloud',
     type: 'website',
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'STACloud | Official Landing Page',
     description:
-      'Free server cho dev và game community, cấp nhanh qua Discord và theo dõi slot còn trống theo thời gian thực.',
+      'Theo dõi gói dịch vụ, slot còn lại và policy mới nhất của STACloud cho dev, Minecraft và node test.',
   },
   icons: {
     icon: [
@@ -45,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi">
+    <html lang="vi" data-scroll-behavior="smooth">
       <body
         className="relative overflow-x-hidden bg-[var(--surface-950)] text-slate-100 antialiased"
         suppressHydrationWarning

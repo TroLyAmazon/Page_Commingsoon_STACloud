@@ -7,11 +7,11 @@ export function BenefitsSection() {
         <div className="max-w-2xl">
           <p className="section-eyebrow">Why STACloud</p>
           <h2 className="section-title">
-            Không chỉ có slot free, mà còn có luồng sử dụng rõ ràng
+            Không chỉ có slot, mà còn có giá và policy rõ ràng
           </h2>
           <p className="section-copy">
-            Mình chuyển bố cục sang kiểu hosting site để thương hiệu trông sáng hơn: có lý do
-            chọn, có hạ tầng, có plan, có process, không còn giống trang waiting page nữa.
+            Landing giờ thể hiện rõ chi phí, trạng thái mở gói và cảnh báo dữ liệu để người dùng
+            không phải dò lại announcement trong Discord mới hiểu mình nên chọn gì.
           </p>
         </div>
 

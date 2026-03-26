@@ -6,10 +6,10 @@ export function PolicySection() {
       <div className="mx-auto max-w-6xl rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur sm:p-8">
         <div className="max-w-3xl">
           <p className="section-eyebrow">Important Rules</p>
-          <h2 className="section-title">Những điều bạn cần biết trước khi dùng free server</h2>
+          <h2 className="section-title">Chính sách mới bạn cần biết trước khi đăng ký</h2>
           <p className="section-copy">
-            Để tránh bị suspended hoặc mất dữ liệu ngoài ý muốn, hãy đọc kỹ các quy định dưới
-            đây trước khi tạo server.
+            Nội dung dưới đây được cập nhật trực tiếp theo thông báo mới nhất, tập trung vào giá,
+            slot, trạng thái gói và lưu ý riêng cho node TESTER miễn phí.
           </p>
         </div>
 
