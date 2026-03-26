@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Reveal } from '@/components/ui/reveal';
+import { SiteFooter } from '@/components/shared/site-footer';
 import type { LegalSection } from './legal-content';
 
 type LegalPageProps = {
@@ -129,6 +130,8 @@ export function LegalPage({
           ))}
         </section>
       </div>
+
+      <SiteFooter />
     </main>
   );
 }
