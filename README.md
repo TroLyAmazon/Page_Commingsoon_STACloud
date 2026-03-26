@@ -1,6 +1,6 @@
-# STACloud Landing
+# STACloud Service Board
 
-Landing page chinh thuc cho STACloud, gioi thieu cac goi free server, huong dan mo ticket va chinh sach hoat dong.
+Landing page chính thức của STACloud, giới thiệu portal, VPS, các gói dịch vụ cộng đồng, hướng dẫn đăng ký và chính sách sử dụng.
 
 ## Run local
 
@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-## Build static
+## Build
 
 ```bash
 npm run build
