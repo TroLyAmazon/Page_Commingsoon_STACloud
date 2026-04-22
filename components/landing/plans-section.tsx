@@ -9,6 +9,10 @@ function getPlanBadgeClasses(status: string) {
     return 'border border-rose-300/20 bg-rose-300/10 text-rose-100';
   }
 
+  if (status === 'beta') {
+    return 'border border-blue-300/20 bg-blue-300/10 text-blue-100';
+  }
+
   return 'border border-emerald-400/20 bg-emerald-400/10 text-emerald-300';
 }
 
@@ -16,6 +20,8 @@ function getPlanCardClasses(name: string, status: string) {
   const surface =
     status === 'warning'
       ? 'border-rose-300/20 bg-rose-300/[0.05]'
+      : status === 'beta'
+        ? 'border-blue-300/20 bg-blue-300/[0.05]'
       : status === 'paused'
         ? 'border-amber-300/20 bg-amber-300/[0.05]'
         : 'border-white/10 bg-slate-950/70';
@@ -26,21 +32,23 @@ function getPlanCardClasses(name: string, status: string) {
 }
 
 export function PlansSection() {
+  const testerPlan = servicePlans.find((plan) => plan.name === 'TESTER');
+
   return (
-    <section className="px-4 py-16 sm:px-6 sm:py-24">
+    <section id="plans" className="px-4 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-3xl">
           <p className="section-eyebrow">Plans</p>
           <h2 className="section-title">
-            Gói dịch vụ được trình bày theo kiểu scan nhanh và quyết định nhanh
+            Gói dịch vụ được trình bày rõ ràng để bạn dễ so sánh và lựa chọn
           </h2>
           <p className="section-copy">
-            Đầu tiên là bảng tóm tắt để nhìn tổng quan. Bên dưới là các card chi tiết với giá,
-            slot, tài nguyên và cảnh báo được tách rõ từng mục.
+            Bảng tóm tắt giúp bạn xem nhanh toàn bộ dịch vụ. Các card bên dưới hiển thị chi tiết
+            giá, slot, cấu hình, tùy chọn nâng cấp và cảnh báo của từng gói.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
           {servicePlans.map((plan) => (
             <div
               key={`scan-${plan.name}`}
@@ -64,11 +72,32 @@ export function PlansSection() {
           ))}
         </div>
 
+        {testerPlan ? (
+          <div className="mt-8 rounded-[1.6rem] border border-rose-300/20 bg-gradient-to-r from-rose-300/[0.10] via-amber-300/[0.06] to-transparent p-5 sm:p-6">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-rose-100/80">
+                  Cảnh báo TESTER
+                </p>
+                <h3 className="mt-2 text-2xl font-semibold text-white">Node miễn phí có rủi ro dữ liệu</h3>
+                <p className="mt-3 max-w-3xl text-sm leading-7 text-rose-50">
+                  TESTER là node tài trợ nên có thể bị can thiệp hoặc gián đoạn bất ngờ. Bạn phải
+                  tự backup dữ liệu; STACloud không chịu trách nhiệm về mất mát dữ liệu trên node
+                  này.
+                </p>
+              </div>
+              <span className="w-fit rounded-full border border-rose-200/30 bg-rose-200/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-rose-100">
+                {testerPlan.price}
+              </span>
+            </div>
+          </div>
+        ) : null}
+
         <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-12">
           {servicePlans.map((plan) => (
             <article
               key={plan.name}
-              className={`status-panel group relative overflow-hidden rounded-[2rem] border p-6 transition hover:-translate-y-1 hover:border-white/20 ${getPlanCardClasses(plan.name, plan.status)}`}
+              className={`status-panel group relative overflow-hidden rounded-[2rem] border p-6 shadow-[0_24px_80px_rgba(2,6,23,0.28)] transition hover:-translate-y-1 hover:border-white/20 ${getPlanCardClasses(plan.name, plan.status)}`}
             >
               <div
                 className={`absolute inset-x-0 top-0 h-36 bg-gradient-to-br ${plan.accent} opacity-80 blur-3xl transition group-hover:opacity-100`}
@@ -91,14 +120,12 @@ export function PlansSection() {
 
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div className="status-tile rounded-[1.35rem] border border-white/10 bg-white/[0.04] p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                      Giá
-                    </p>
-                    <p className="mt-2 text-lg font-semibold text-cyan-100">{plan.price}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Giá</p>
+                    <p className="mt-2 text-2xl font-semibold text-cyan-100">{plan.price}</p>
                   </div>
                   <div className="status-tile rounded-[1.35rem] border border-white/10 bg-white/[0.04] p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                      Tình trạng
+                      Slot / ghi chú
                     </p>
                     <p className="mt-2 text-lg font-semibold text-white">{plan.highlight}</p>
                   </div>
@@ -114,6 +141,22 @@ export function PlansSection() {
                     </div>
                   ))}
                 </div>
+
+                {plan.addOns.length > 0 ? (
+                  <div className="rounded-[1.35rem] border border-cyan-300/15 bg-cyan-300/[0.05] p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100/80">
+                      Tùy chọn nâng cấp
+                    </p>
+                    <ul className="mt-3 space-y-3">
+                      {plan.addOns.map((item) => (
+                        <li key={item} className="flex gap-3 text-sm leading-6 text-slate-200">
+                          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-cyan-200" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
 
                 {plan.warnings.length > 0 ? (
                   <div className="rounded-[1.35rem] border border-rose-300/15 bg-rose-300/5 p-4">

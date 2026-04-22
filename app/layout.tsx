@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'STACloud | Community Hosting, VPS and Service Plans',
   description:
-    'STACloud cung cấp portal, VPS và các gói DEV, MC, TESTER cho cộng đồng với thông tin giá, slot và policy rõ ràng.',
+    'STACloud cung cấp portal, VPS, OpenClaw Beta và các gói DEV, MC, PROXY FREE, TESTER với giá, slot, cấu hình và tùy chọn upsize rõ ràng.',
   keywords: [
     'STACloud',
     'community hosting',
@@ -18,18 +18,18 @@ export const metadata: Metadata = {
     'jexactyl fork',
   ],
   openGraph: {
-    title: 'STACloud | Official Landing Page',
+    title: 'STACloud | Bảng Giá Và Dịch Vụ',
     description:
-      'Cập nhật gói DEV, MC, PROXY FREE và TESTER với giá, slot và lưu ý sử dụng rõ ràng ngay trên landing.',
+      'Xem giá, cấu hình, slot, OpenClaw Beta, upsize và lưu ý sử dụng của các gói DEV, MC, PROXY FREE và TESTER tại STACloud.',
     url: SITE_URL,
     siteName: 'STACloud',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'STACloud | Official Landing Page',
+    title: 'STACloud | Bảng Giá Và Dịch Vụ',
     description:
-      'Theo dõi gói dịch vụ, slot còn lại và policy mới nhất của STACloud cho dev, Minecraft và node test.',
+      'Xem nhanh OpenClaw Beta, gói dịch vụ, slot còn lại, giá hiện tại và chính sách mới nhất của STACloud cho dev, Minecraft và node test.',
   },
   icons: {
     icon: [

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { OpenClawSpotlight } from '@/components/shared/openclaw-spotlight';
 import { Reveal } from '@/components/ui/reveal';
 
 import { BenefitsSection } from '@/components/landing/benefits-section';
@@ -8,6 +9,7 @@ import { HeroSection } from '@/components/landing/hero-section';
 import { LocationsSection } from '@/components/landing/locations-section';
 import { PlansSection } from '@/components/landing/plans-section';
 import { PolicySection } from '@/components/landing/policy-section';
+import { siteConfig } from '@/components/landing/content';
 
 export function FreeServerPage() {
   return (
@@ -28,7 +30,7 @@ export function FreeServerPage() {
             <div className="min-w-0">
               <p className="text-xl font-semibold text-white sm:text-2xl">STACloud</p>
               <p className="max-w-[16rem] text-xs leading-5 text-slate-400 sm:max-w-none sm:text-sm">
-                Service board cho portal và gói dịch vụ cộng đồng
+                Bảng giá và thông tin dịch vụ cộng đồng
               </p>
             </div>
           </Link>
@@ -42,19 +44,12 @@ export function FreeServerPage() {
             >
               Mở Portal
             </a>
-            <a
-              href="https://discord.gg/nq8B4JXmnm"
-              target="_blank"
-              rel="noreferrer"
-              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-white transition hover:border-white/25 hover:bg-white/10 sm:w-auto"
-            >
-              Vào Discord
-            </a>
           </div>
         </Reveal>
       </section>
 
       <HeroSection />
+      <OpenClawSpotlight discordUrl={siteConfig.discordUrl} zaloUrl={siteConfig.zaloUrl} />
       <PlansSection />
       <LocationsSection />
       <BenefitsSection />

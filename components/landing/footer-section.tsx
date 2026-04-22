@@ -17,6 +17,9 @@ export function FooterSection() {
           <Link href="/privacy" className="transition hover:text-white">
             Quyền riêng tư
           </Link>
+          <Link href="/sla" className="transition hover:text-white">
+            SLA
+          </Link>
           <a
             href={siteConfig.siteUrl}
             className="transition hover:text-white"
@@ -40,6 +43,14 @@ export function FooterSection() {
             rel="noreferrer"
           >
             Discord
+          </a>
+          <a
+            href={siteConfig.zaloUrl}
+            className="transition hover:text-white"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Zalo
           </a>
         </div>
       </div>

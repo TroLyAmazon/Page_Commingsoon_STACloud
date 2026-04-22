@@ -7,11 +7,11 @@ export function BenefitsSection() {
         <div className="max-w-2xl">
           <p className="section-eyebrow">Why STACloud</p>
           <h2 className="section-title">
-            Không chỉ có slot, mà còn có giá và policy rõ ràng
+            Không chỉ có slot, mà còn có giá, cấu hình và chính sách rõ ràng
           </h2>
           <p className="section-copy">
-            Landing giờ thể hiện rõ chi phí, trạng thái mở gói và cảnh báo dữ liệu để người dùng
-            không phải dò lại announcement trong Discord mới hiểu mình nên chọn gì.
+            Mọi thông tin quan trọng đều được hiển thị ngay trên trang để bạn biết mình nên chọn gói
+            nào và cần lưu ý điều gì trước khi đăng ký.
           </p>
         </div>
 

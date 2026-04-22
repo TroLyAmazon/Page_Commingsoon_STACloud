@@ -3,28 +3,32 @@ export const homeConfig = {
   tagline: 'Portal, VPS & Community Plans',
   panelUrl: 'https://portal.stacloud.dev/',
   discordUrl: 'https://discord.gg/nq8B4JXmnm',
+  zaloUrl: 'https://zalo.me/g/ekaldlnq5sqdn37lvikk',
   freeServerUrl: '/free-server',
   logoAlt: 'STACloud',
   summary:
-    'STACloud xây dựng portal, VPS và các gói dịch vụ cộng đồng với cách trình bày rõ ràng, tốc độ cao và ưu tiên khả năng quản trị.',
+    'STACloud giúp bạn xem giá, cấu hình, trạng thái gói, OpenClaw Beta và kênh hỗ trợ ở cùng một nơi để chọn dịch vụ phù hợp nhanh hơn.',
+  testerAlertMessage:
+    'Cảnh báo: TESTER là node tài trợ, có thể bị can thiệp hoặc gián đoạn bất ngờ. Bạn phải tự backup dữ liệu; STACloud không chịu trách nhiệm về mất mát dữ liệu trên node này.',
 };
 
 export const heroStats = [
-  { value: '4', label: 'Gói đang công bố' },
+  { value: '5', label: 'Dịch vụ đang công bố' },
   { value: '24 + 10', label: 'Slots DEV / MC' },
-  { value: '0$', label: 'TESTER miễn phí' },
-  { value: '24/7', label: 'Hỗ trợ Discord' },
+  { value: '2', label: 'Gói có upsize' },
+  { value: '0$', label: 'OpenClaw / TESTER' },
 ] as const;
 
 export const heroSignals = [
-  'Portal và store đã chuyển sang portal.stacloud.dev',
-  'DEV và MC được công bố giá trực tiếp trên landing',
-  'TESTER miễn phí nhưng người dùng phải tự backup dữ liệu',
+  'Portal và store chính thức tại portal.stacloud.dev',
+  'OpenClaw Beta đã mở miễn phí cho cộng đồng',
+  'Giá và cấu hình DEV / MC đã được cập nhật mới nhất',
 ] as const;
 
 export const heroStatusStrip = [
-  { label: 'DEV', detail: '24 slots', value: '0.1$ / 2.000 VNĐ', tone: 'emerald' },
-  { label: 'MC', detail: '10 slots', value: '0.2$ / 3.000 VNĐ', tone: 'cyan' },
+  { label: 'DEV', detail: '24 slots', value: '5.000 VNĐ (0.3$)', tone: 'emerald' },
+  { label: 'MC', detail: '10 slots', value: '8.000 VNĐ (0.5$)', tone: 'cyan' },
+  { label: 'OPENCLAW', detail: 'Beta miễn phí', value: 'Cần domain riêng', tone: 'blue' },
   { label: 'PROXY', detail: 'Tạm ngưng', value: 'Không mở mới', tone: 'amber' },
   { label: 'TESTER', detail: 'Node tài trợ', value: '0$ / 0 VNĐ', tone: 'rose' },
 ] as const;
@@ -33,7 +37,7 @@ export const dashboardEntries = [
   {
     label: 'Portal',
     value: 'portal.stacloud.dev',
-    meta: 'Quản trị và store',
+    meta: 'Đăng nhập và quản lý',
     tone: 'cyan',
   },
   {
@@ -44,14 +48,14 @@ export const dashboardEntries = [
   },
   {
     label: 'Support',
-    value: 'Discord ticket',
-    meta: 'Ưu tiên xử lý nhanh',
+    value: 'Discord / Zalo',
+    meta: 'Kênh hỗ trợ cộng đồng',
     tone: 'emerald',
   },
   {
     label: 'Routing',
     value: 'VN + SG + HK',
-    meta: 'Tối ưu cộng đồng',
+    meta: 'Khu vực triển khai',
     tone: 'blue',
   },
 ] as const;
@@ -61,55 +65,62 @@ export const products = [
     title: 'Portal Gaming',
     eyebrow: 'Điều Khiển',
     description:
-      'Quản lý game server, node và store trên portal đồng bộ hơn với flow vận hành hiện tại của STACloud.',
+      'Quản lý game server, node và store trên cùng một portal thuận tiện, rõ ràng và dễ sử dụng.',
     chips: ['Portal', 'Store', 'Fast Control'],
   },
   {
     title: 'VPS Compute',
     eyebrow: 'Hạ Tầng',
     description:
-      'Phù hợp cho backend, automation, bot và workload cần môi trường linh hoạt hơn shared hosting truyền thống.',
+      'Phù hợp cho backend, automation, bot và các workload cần môi trường linh hoạt, ổn định.',
     chips: ['Compute Ready', 'Low Latency', 'Stable Routing'],
   },
   {
     title: 'Gói Cộng Đồng',
     eyebrow: 'Service Plans',
     description:
-      'DEV, MC, PROXY FREE và TESTER được công bố cùng giá, slot và lưu ý sử dụng để người dùng quyết định nhanh.',
+      'So sánh nhanh DEV, MC, PROXY FREE và TESTER với giá, cấu hình, trạng thái và cảnh báo quan trọng.',
     chips: ['DEV', 'MC', 'TESTER'],
+  },
+  {
+    title: 'OpenClaw Beta',
+    eyebrow: 'Free Beta',
+    description:
+      'OpenClaw đã mở miễn phí cho cộng đồng. Bạn cần có domain riêng để xác minh và gán vào hệ thống qua ticket.',
+    chips: ['OpenClaw', 'Free Beta', 'Domain Required'],
   },
 ] as const;
 
 export const features = [
   {
-    title: 'Thông tin gói quét nhanh',
+    title: 'Giá và cấu hình rõ ràng',
     description:
-      'Giá, slot, trạng thái và cảnh báo được gom thành các block dễ nhìn để người dùng không cần hỏi lại những thứ cơ bản.',
+      'Mỗi gói đều hiển thị đầy đủ giá, cấu hình, trạng thái và tùy chọn nâng cấp để bạn dễ so sánh.',
   },
   {
-    title: 'Portal rõ cho người mới',
+    title: 'Đăng ký nhanh',
     description:
-      'Người dùng mới vẫn có thể đăng nhập portal, mở store, theo dõi tài nguyên và hiểu luồng vận hành mà không bị rối.',
+      'Bạn có thể xem gói phù hợp trước, rồi vào Discord hoặc Zalo để liên hệ hỗ trợ mà không mất thời gian hỏi lại thông tin cơ bản.',
   },
   {
-    title: 'Thiết kế cho workload thật',
+    title: 'Theo dõi trạng thái dễ dàng',
     description:
-      'Từ game hosting, bot, web app đến workload backend nhẹ, bố cục hiện tại phản ánh đúng nhu cầu dùng thực tế.',
+      'Portal, kênh trạng thái và thông tin gói được đặt cùng một luồng để bạn theo dõi nhanh hơn.',
   },
   {
-    title: 'Status board dễ theo dõi',
+    title: 'Phù hợp nhiều nhu cầu',
     description:
-      'Trang chủ và landing gói dịch vụ cùng hướng về cảm giác dashboard, giúp thông tin vận hành hiện lên rõ ràng hơn.',
+      'Từ bot, app nhỏ, máy chủ Minecraft đến môi trường test nhanh, mỗi gói đều có mục đích sử dụng rõ ràng.',
   },
   {
-    title: 'Luồng Discord ngắn gọn',
+    title: 'Kênh hỗ trợ rõ ràng',
     description:
-      'Người dùng chỉ cần vào Discord, xem tình trạng tài nguyên, rồi mở ticket với nhu cầu cụ thể thay vì dò nhiều thông báo rời rạc.',
+      'Discord và Zalo cộng đồng được đặt ngay trên trang để bạn biết liên hệ ở đâu khi cần hỗ trợ.',
   },
   {
-    title: 'Ngôn ngữ đồng nhất hơn',
+    title: 'Chính sách minh bạch',
     description:
-      'CTA, tiêu đề và nhịp nội dung đang được kéo về cùng một giọng để thương hiệu trông liền mạch hơn giữa các trang.',
+      'Điều khoản, quyền riêng tư, SLA và cảnh báo dữ liệu đều được công bố công khai để bạn yên tâm sử dụng.',
   },
 ] as const;
 
@@ -143,19 +154,19 @@ export const locations = [
 export const testimonials = [
   {
     quote:
-      'Phần mình thích nhất là nhìn vào đã biết portal ở đâu, gói nào đang mở và gói nào cần chú ý dữ liệu. Quyết định nhanh hơn hẳn.',
+      'Mình vào trang là biết ngay gói nào phù hợp, giá bao nhiêu và gói nào cần tự backup dữ liệu.',
     author: 'Minh Trí',
     role: 'Người dùng cộng đồng',
   },
   {
     quote:
-      'Khi giá và policy được đưa thẳng lên landing, support đỡ phải trả lời lại những câu hỏi cơ bản và flow vận hành gọn hơn nhiều.',
+      'Thông tin giá, upsize và cảnh báo được ghi rõ nên mình không phải hỏi đi hỏi lại trước khi đăng ký.',
     author: 'Lê Nam',
     role: 'Developer',
   },
   {
     quote:
-      'STACloud đang có cảm giác của một dịch vụ hạ tầng thật hơn vì portal, status và dịch vụ cộng đồng đều được trình bày như một hệ thống thống nhất.',
+      'Portal, trạng thái dịch vụ và chính sách được đặt cùng một nơi nên dễ theo dõi hơn nhiều.',
     author: 'Quốc Bảo',
     role: 'Customer',
   },
@@ -163,11 +174,12 @@ export const testimonials = [
 
 export const faqs = [
   'Tôi nên chọn DEV, MC hay TESTER?',
+  'OpenClaw Beta cần chuẩn bị domain như thế nào?',
+  'Phụ phí upsize của DEV và MC hiện là bao nhiêu?',
   'Gói TESTER có những rủi ro gì cần lưu ý?',
   'PROXY FREE hiện còn mở hay đã tạm ngưng?',
   'Tôi kiểm tra tài nguyên còn lại ở đâu?',
   'Portal hiện dùng domain nào để đăng nhập?',
   'STACloud hỗ trợ workload nào tốt nhất ở thời điểm này?',
-  'VPS và portal có đi chung một hệ vận hành không?',
   'Kênh Discord nào là nơi hỗ trợ nhanh nhất hiện tại?',
 ] as const;

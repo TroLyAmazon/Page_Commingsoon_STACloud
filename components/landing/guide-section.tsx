@@ -6,10 +6,9 @@ export function GuideSection() {
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur sm:p-8">
           <p className="section-eyebrow">Quick Start</p>
-          <h2 className="section-title">Hướng dẫn chọn gói và mở ticket nhanh</h2>
+          <h2 className="section-title">3 bước để chọn gói và đăng ký nhanh</h2>
           <p className="section-copy">
-            Luồng đăng ký được cập nhật để người dùng chọn đúng gói ngay từ đầu, còn admin thì dễ
-            kiểm tra slot và xử lý ticket nhanh hơn.
+            Chỉ cần chọn đúng gói, gửi nhu cầu sử dụng và chờ xác nhận cấp phát từ STACloud.
           </p>
 
           <div className="mt-8 space-y-4">

@@ -23,8 +23,8 @@ export function SiteFooter() {
             </div>
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-7 text-slate-400 sm:mt-5">
-            Hosting được trình bày như một hệ thống vận hành rõ ràng hơn, từ portal đến gói cộng
-            đồng và các tín hiệu trạng thái cần thiết.
+            Theo dõi nhanh portal, gói dịch vụ, chính sách và kênh hỗ trợ chính thức của STACloud
+            trong một nơi.
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export function SiteFooter() {
           </p>
           <div className="mt-4 space-y-3 text-sm text-slate-300">
             <Link href="/#infrastructure" className="block transition hover:text-white">
-              Service Board
+              Tổng quan dịch vụ
             </Link>
             <Link href="/#locations" className="block transition hover:text-white">
               Locations
@@ -72,6 +72,9 @@ export function SiteFooter() {
             </Link>
             <Link href="/privacy" className="block transition hover:text-white">
               Chính sách quyền riêng tư
+            </Link>
+            <Link href="/sla" className="block transition hover:text-white">
+              SLA
             </Link>
             <span className="block">© 2025-2026 STACloud</span>
           </div>

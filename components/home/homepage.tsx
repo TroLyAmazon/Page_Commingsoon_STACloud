@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { OpenClawSpotlight } from '@/components/shared/openclaw-spotlight';
 import { Reveal } from '@/components/ui/reveal';
 
 import {
@@ -49,7 +50,7 @@ function getToneClasses(tone: Tone) {
 function Header() {
   return (
     <header className="px-4 pt-6 sm:px-6 sm:pt-8">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 rounded-[1.75rem] border border-white/10 bg-slate-950/70 px-4 py-4 backdrop-blur sm:px-5 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-4 rounded-[1.75rem] border border-white/10 bg-slate-950/70 px-4 py-4 backdrop-blur sm:px-5 xl:grid xl:grid-cols-[auto_1fr_auto] xl:items-center">
         <Link
           href="/"
           className="group flex items-center gap-3 rounded-[1.3rem] border border-white/10 bg-white/[0.04] px-3 py-3 transition hover:border-cyan-300/20 hover:bg-white/[0.07] sm:gap-4 sm:px-4"
@@ -69,7 +70,7 @@ function Header() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm text-slate-300 md:flex">
+        <nav className="hidden items-center justify-center gap-6 text-sm text-slate-300 lg:flex xl:justify-self-center">
           <a href="#products" className="transition hover:text-white">
             Dịch vụ
           </a>
@@ -84,20 +85,14 @@ function Header() {
           </a>
         </nav>
 
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:justify-center xl:justify-self-end">
           <a
             href={homeConfig.panelUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-white transition hover:border-white/25 hover:bg-white/10 sm:w-auto"
-          >
-            Mở Portal
-          </a>
-          <a
-            href={homeConfig.freeServerUrl}
             className="inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
           >
-            Xem Gói Dịch Vụ
+            Mở Portal
           </a>
         </div>
       </div>
@@ -113,36 +108,48 @@ function Hero() {
           <div className="inline-flex items-center gap-3 rounded-full border border-cyan-300/15 bg-cyan-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100">
             {homeConfig.tagline}
           </div>
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-blue-300/25 bg-blue-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-100">
+            <span className="h-2 w-2 rounded-full bg-blue-300 shadow-[0_0_16px_rgba(147,197,253,0.9)]" />
+            OpenClaw Beta miễn phí
+          </div>
 
           <div className="space-y-5">
             <h1 className="max-w-3xl text-3xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Portal, VPS và gói cộng đồng được gom vào một dashboard dễ quét, dễ hiểu.
+              Xem nhanh portal, giá dịch vụ và các gói cộng đồng của STACloud trong một nơi.
             </h1>
             <p className="max-w-2xl text-sm leading-7 text-slate-300 sm:text-lg sm:leading-8">
-              {homeConfig.summary} Từ portal, service board đến cảnh báo dữ liệu của TESTER, mọi
-              thứ giờ nên nhìn vào là hiểu và dễ ra quyết định hơn.
+              {homeConfig.summary} Từ đăng nhập portal đến chọn gói phù hợp, mọi thông tin quan
+              trọng đều được đặt sẵn để bạn theo dõi thuận tiện hơn.
             </p>
           </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <a
-              href={homeConfig.panelUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-cyan-400 px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
-            >
-              Mở Portal
-            </a>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={homeConfig.freeServerUrl}
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10 sm:w-auto"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-cyan-400 px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
             >
               Xem Gói Dịch Vụ
+            </a>
+            <a
+              href={homeConfig.discordUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-indigo-300/20 bg-indigo-300/10 px-6 py-3.5 text-sm font-semibold text-indigo-100 transition hover:border-indigo-300/35 hover:bg-indigo-300/15 sm:w-auto"
+            >
+              Tham gia Discord
+            </a>
+            <a
+              href={homeConfig.zaloUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-6 py-3.5 text-sm font-semibold text-emerald-100 transition hover:border-emerald-300/35 hover:bg-emerald-300/15 sm:w-auto"
+            >
+              Cộng đồng Zalo
             </a>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
-            {heroSignals.map((item, index) => (
+        {heroSignals.map((item, index) => (
               <Reveal key={item} delayMs={120 + index * 80}>
                 <div className="status-tile interactive-card rounded-[1.25rem] border border-white/10 bg-white/[0.03] px-4 py-4 text-sm leading-7 text-slate-300 backdrop-blur">
                   {item}
@@ -158,10 +165,10 @@ function Hero() {
             <div className="flex flex-col gap-3 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100/80">
-                  Service Board
+                  Tổng Quan Dịch Vụ
                 </p>
                 <p className="mt-2 text-sm text-slate-400">
-                  Dashboard nhìn nhanh tình trạng portal, slot và các gói đang mở.
+                  Theo dõi nhanh portal, tài nguyên còn lại và các gói hiện đang mở.
                 </p>
               </div>
               <span className="w-fit rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100">
@@ -229,12 +236,18 @@ function Hero() {
               })}
             </div>
 
-            <div className="mt-5 rounded-[1.35rem] border border-rose-300/15 bg-rose-300/5 p-4 text-sm leading-7 text-rose-50">
-              TESTER là node tài trợ, nên phần cảnh báo backup dữ liệu sẽ luôn được đặt ở vị trí dễ
-              nhìn nhất trên landing.
-            </div>
           </div>
         </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function TesterAlert() {
+  return (
+    <section className="px-4 py-6 sm:px-6">
+      <div className="mx-auto max-w-6xl rounded-[1.5rem] border border-rose-300/20 bg-rose-300/[0.07] px-5 py-4 text-sm leading-7 text-rose-50 sm:px-6">
+        {homeConfig.testerAlertMessage}
       </div>
     </section>
   );
@@ -247,15 +260,15 @@ function Products() {
         <Reveal className="max-w-3xl">
           <p className="section-eyebrow">Dịch Vụ</p>
           <h2 className="section-title">
-            Ba lớp sản phẩm được đóng gói theo những nhu cầu dùng thật
+            Các dịch vụ chính của STACloud cho game server, app và môi trường thử nghiệm
           </h2>
           <p className="section-copy">
-            Trang chủ không còn chỉ kể chung chung về hosting. Portal, VPS và gói cộng đồng giờ
-            được trình bày như các lớp dịch vụ có vai trò rõ ràng.
+            Từ portal quản lý đến hạ tầng compute và các gói cộng đồng, bạn có thể xem nhanh từng
+            nhóm dịch vụ để chọn đúng nhu cầu sử dụng.
           </p>
         </Reveal>
 
-        <div className="mt-8 grid gap-4 lg:mt-10 lg:grid-cols-3 lg:gap-6">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:mt-10 xl:grid-cols-4 xl:gap-6">
           {products.map((product, index) => (
             <Reveal key={product.title} delayMs={index * 90}>
               <article
@@ -264,7 +277,9 @@ function Products() {
                     ? 'border-cyan-300/20 bg-cyan-300/[0.06]'
                     : index === 1
                       ? 'border-amber-300/20 bg-amber-300/[0.06]'
-                      : 'border-emerald-300/20 bg-emerald-300/[0.06]'
+                      : index === 2
+                        ? 'border-emerald-300/20 bg-emerald-300/[0.06]'
+                        : 'border-blue-300/20 bg-blue-300/[0.06]'
                 }`}
               >
                 <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/10 to-transparent opacity-60" />
@@ -301,11 +316,11 @@ function Infrastructure() {
         <Reveal className="max-w-3xl">
           <p className="section-eyebrow">Hạ Tầng</p>
           <h2 className="section-title">
-            Giao diện được kéo về đúng cảm giác control panel và service operations
+            Thông tin hạ tầng được trình bày rõ ràng để bạn chọn đúng dịch vụ
           </h2>
           <p className="section-copy">
-            Mục tiêu là để người dùng nhìn vào thấy rõ trạng thái, hướng vận hành và các quyết định
-            quan trọng, thay vì một landing đẹp nhưng thiếu thông tin.
+            Bạn có thể xem nhanh trạng thái gói, khu vực triển khai và mức tài nguyên trước khi đăng
+            ký hoặc liên hệ hỗ trợ.
           </p>
         </Reveal>
 
@@ -331,10 +346,10 @@ function Locations() {
       <div className="mx-auto max-w-6xl">
         <Reveal className="max-w-3xl">
           <p className="section-eyebrow">Vị Trí</p>
-          <h2 className="section-title">Các node hạ tầng được mở theo hướng cộng đồng và paid</h2>
+          <h2 className="section-title">Các khu vực triển khai hiện có cho gói cộng đồng và dịch vụ trả phí</h2>
           <p className="section-copy">
-            Khu vực, băng thông và mức hỗ trợ free hay paid được trình bày ngay trên card để người
-            dùng nhìn nhanh trước khi vào Discord.
+            Xem nhanh từng location, băng thông và phạm vi hỗ trợ để chọn khu vực phù hợp với nhu cầu
+            sử dụng của bạn.
           </p>
         </Reveal>
 
@@ -387,11 +402,11 @@ function Testimonials() {
         <Reveal className="max-w-3xl">
           <p className="section-eyebrow">Phản Hồi</p>
           <h2 className="section-title">
-            Người dùng cảm nhận gì khi thông tin vận hành được trình bày rõ hơn
+            Khách hàng nói gì về trải nghiệm sử dụng STACloud
           </h2>
           <p className="section-copy">
-            Giữ lại testimonial là hợp lý, nhưng cách trình bày được đưa về gần hơn với service
-            board thay vì landing hosting thông thường.
+            Một vài phản hồi từ người dùng sau khi trải nghiệm portal, theo dõi trạng thái dịch vụ
+            và đăng ký các gói cộng đồng của STACloud.
           </p>
         </Reveal>
 
@@ -447,14 +462,14 @@ function Faq() {
 
 function Footer() {
   return (
-    <footer className="px-4 pb-10 pt-6 sm:px-6">
-      <div className="mx-auto grid max-w-6xl gap-6 rounded-[1.75rem] border border-white/10 bg-slate-950/70 px-5 py-6 backdrop-blur sm:rounded-[2rem] sm:px-6 sm:py-8 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] lg:gap-8">
-        <div>
+    <footer className="px-4 pb-10 pt-10 sm:px-6">
+      <div className="mx-auto max-w-6xl border-t border-white/10 pt-8">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <Link
             href="/"
-            className="group inline-flex items-center gap-3 rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-3 py-3 transition hover:border-cyan-300/20 hover:bg-white/[0.07] sm:gap-4 sm:px-4"
+            className="group inline-flex items-center gap-3 rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-3 py-3 transition hover:border-cyan-300/20 hover:bg-white/[0.07]"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/15 bg-white/5 p-2 sm:h-14 sm:w-14">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/15 bg-white/5 p-2">
               <img
                 src="/picture/logoSTACloud.png"
                 alt={homeConfig.logoAlt}
@@ -466,60 +481,31 @@ function Footer() {
               <p className="text-sm text-slate-400">stacloud.dev</p>
             </div>
           </Link>
-          <p className="mt-4 max-w-sm text-sm leading-7 text-slate-400 sm:mt-5">
-            Hosting được trình bày như một hệ thống vận hành rõ ràng hơn, từ portal đến gói cộng
-            đồng và các tín hiệu trạng thái cần thiết.
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200/70">
-            Dịch Vụ
-          </p>
-          <div className="mt-4 space-y-3 text-sm text-slate-300">
-            <a href={homeConfig.freeServerUrl} className="block transition hover:text-white">
+          <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-slate-300">
+            <a href={homeConfig.freeServerUrl} className="transition hover:text-white">
               Gói dịch vụ
             </a>
-            <a href={homeConfig.panelUrl} className="block transition hover:text-white">
+            <a href={homeConfig.panelUrl} className="transition hover:text-white">
               Portal
             </a>
-            <a href={homeConfig.panelUrl} className="block transition hover:text-white">
-              VPS Compute
+            <a href={homeConfig.discordUrl} className="transition hover:text-white">
+              Discord
             </a>
-          </div>
-        </div>
-
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200/70">
-            Vận Hành
-          </p>
-          <div className="mt-4 space-y-3 text-sm text-slate-300">
-            <a href="#infrastructure" className="block transition hover:text-white">
-              Service Board
+            <a href={homeConfig.zaloUrl} className="transition hover:text-white">
+              Zalo
             </a>
-            <a href="#locations" className="block transition hover:text-white">
-              Locations
-            </a>
-            <a href={homeConfig.discordUrl} className="block transition hover:text-white">
-              Discord Support
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200/70">
-            Legal
-          </p>
-          <div className="mt-4 space-y-3 text-sm text-slate-300">
             <Link href="/terms" className="block transition hover:text-white">
               Điều khoản dịch vụ
             </Link>
             <Link href="/privacy" className="block transition hover:text-white">
               Chính sách quyền riêng tư
             </Link>
-            <span className="block">© 2025-2026 STACloud</span>
+            <Link href="/sla" className="block transition hover:text-white">
+              SLA
+            </Link>
           </div>
         </div>
+        <p className="mt-6 text-sm text-slate-500">© 2025-2026 STACloud</p>
       </div>
     </footer>
   );
@@ -530,6 +516,8 @@ export function HomePage() {
     <main className="min-h-screen pb-10">
       <Header />
       <Hero />
+      <OpenClawSpotlight discordUrl={homeConfig.discordUrl} zaloUrl={homeConfig.zaloUrl} />
+      <TesterAlert />
       <Products />
       <Infrastructure />
       <Locations />

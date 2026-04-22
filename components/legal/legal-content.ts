@@ -12,6 +12,7 @@ export type LegalSection = {
 };
 
 export const legalLastUpdated = '26/03/2026';
+export const slaLastUpdated = '22/04/2026';
 
 export const termsSections: LegalSection[] = [
   {
@@ -195,5 +196,78 @@ export const privacySections: LegalSection[] = [
   {
     title: '11. Liên hệ',
     paragraphs: ['Nếu bạn có câu hỏi về Chính sách quyền riêng tư này, vui lòng liên hệ: stacloud.dev@gmail.com.'],
+  },
+];
+
+export const slaSections: LegalSection[] = [
+  {
+    title: '1. Phạm vi áp dụng',
+    paragraphs: [
+      'SLA này áp dụng cho các dịch vụ trả phí do STACloud trực tiếp vận hành và cấp phát cho khách hàng, bao gồm các gói compute trả phí và quyền truy cập panel đi kèm dịch vụ đó.',
+    ],
+    bullets: [
+      'Không áp dụng cho các gói miễn phí hoặc tài trợ như PROXY FREE, TESTER, node dùng thử, hay bất kỳ dịch vụ community nào được ghi chú là free/sponsored.',
+      'Không áp dụng cho Discord, Zalo, email support hoặc các nền tảng cộng đồng của bên thứ ba.',
+      'SLA chỉ áp dụng cho thời gian sau khi dịch vụ đã được kích hoạt hợp lệ và thanh toán đầy đủ.',
+    ],
+  },
+  {
+    title: '2. Cam kết uptime',
+    bullets: [
+      'STACloud đặt mục tiêu uptime hàng tháng ở mức 99.9% cho các dịch vụ thuộc phạm vi SLA.',
+      'Uptime hàng tháng được tính theo công thức: (tổng thời gian trong tháng - downtime hợp lệ) / tổng thời gian trong tháng.',
+      'Downtime hợp lệ là khoảng thời gian dịch vụ không thể truy cập do lỗi phía STACloud kéo dài liên tục từ 5 phút trở lên.',
+    ],
+  },
+  {
+    title: '3. Bảo trì và gián đoạn có kế hoạch',
+    bullets: [
+      'Các đợt bảo trì có kế hoạch sẽ được thông báo trước khi có thể, thông qua portal, ticket hoặc kênh cộng đồng phù hợp.',
+      'Bảo trì khẩn cấp có thể được thực hiện mà không cần báo trước nếu việc trì hoãn gây rủi ro cho hệ thống hoặc dữ liệu.',
+      'Thời gian bảo trì có kế hoạch hoặc bảo trì khẩn cấp hợp lý sẽ không được tính vào downtime hợp lệ của SLA.',
+    ],
+  },
+  {
+    title: '4. Trường hợp loại trừ',
+    bullets: [
+      'Lỗi do cấu hình, mã nguồn, container, game server, bot hoặc ứng dụng của chính người dùng.',
+      'Sự cố do hành vi lạm dụng, vượt fair use, vi phạm Terms of Service hoặc bị tạm ngưng vì lý do bảo mật/vận hành.',
+      'Sự cố từ nhà cung cấp upstream, mạng Internet công cộng, DNS bên thứ ba, tấn công DDoS quy mô lớn, hoặc sự kiện bất khả kháng.',
+      'Mất dữ liệu, lỗi backup hoặc gián đoạn phát sinh trên các gói miễn phí, sponsored hoặc tester.',
+    ],
+  },
+  {
+    title: '5. Yêu cầu kiểm tra SLA',
+    bullets: [
+      'Nếu cho rằng dịch vụ đã vi phạm SLA, bạn cần mở ticket hoặc gửi email trong vòng 7 ngày kể từ thời điểm sự cố kết thúc.',
+      'Yêu cầu cần nêu rõ dịch vụ bị ảnh hưởng, khung thời gian xảy ra sự cố, mức độ tác động và thông tin để STACloud đối chiếu log.',
+      'STACloud có quyền xác minh lại log hệ thống trước khi xác nhận một yêu cầu SLA.',
+    ],
+  },
+  {
+    title: '6. Service credit',
+    paragraphs: [
+      'Nếu vi phạm SLA được xác nhận, STACloud có thể cấp service credit dưới dạng gia hạn chu kỳ hoặc cộng credit nội bộ, không quy đổi thành tiền mặt.',
+    ],
+    bullets: [
+      'Uptime từ 99.0% đến dưới 99.9%: service credit 10% giá trị chu kỳ hiện tại.',
+      'Uptime từ 95.0% đến dưới 99.0%: service credit 25% giá trị chu kỳ hiện tại.',
+      'Uptime dưới 95.0%: service credit 50% giá trị chu kỳ hiện tại.',
+      'Tổng service credit tối đa cho một chu kỳ không vượt quá phí của chính chu kỳ đó.',
+    ],
+  },
+  {
+    title: '7. Giới hạn trách nhiệm',
+    bullets: [
+      'Service credit theo SLA là biện pháp khắc phục duy nhất cho downtime thuộc phạm vi SLA.',
+      'SLA này không tạo ra nghĩa vụ hoàn tiền mặt và không thay thế các giới hạn trách nhiệm đã nêu trong Terms of Service.',
+      'STACloud có thể cập nhật SLA này khi cần thiết để phù hợp với thay đổi hạ tầng hoặc chính sách vận hành.',
+    ],
+  },
+  {
+    title: '8. Liên hệ',
+    paragraphs: [
+      'Mọi yêu cầu liên quan đến SLA vui lòng liên hệ qua email stacloud.dev@gmail.com hoặc ticket support chính thức trên Discord của STACloud.',
+    ],
   },
 ];

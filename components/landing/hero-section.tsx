@@ -10,6 +10,10 @@ function getPlanBadgeClasses(status: string) {
     return 'border border-rose-300/20 bg-rose-300/10 text-rose-100';
   }
 
+  if (status === 'beta') {
+    return 'border border-blue-300/20 bg-blue-300/10 text-blue-100';
+  }
+
   return 'border border-emerald-400/20 bg-emerald-400/10 text-emerald-300';
 }
 
@@ -22,6 +26,10 @@ function getPlanDotClasses(status: string) {
     return 'bg-rose-300 shadow-[0_0_14px_rgba(253,164,175,0.9)]';
   }
 
+  if (status === 'beta') {
+    return 'bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.9)]';
+  }
+
   return 'bg-emerald-400 shadow-[0_0_14px_rgba(74,222,128,0.9)]';
 }
 
@@ -32,35 +40,42 @@ export function HeroSection() {
         <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
           <Reveal className="space-y-8" delayMs={40}>
             <div className="inline-flex items-center gap-3 rounded-full border border-cyan-300/15 bg-cyan-300/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-100 sm:text-xs sm:tracking-[0.28em]">
-              Service Board
+              Bảng Giá Dịch Vụ
             </div>
 
             <div className="space-y-5">
               <h1 className="max-w-3xl text-3xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-                Giá, slot và cảnh báo được ghim thành một dashboard để nhìn là hiểu.
+                Xem giá, slot, upsize và cảnh báo của từng gói trong một màn hình.
               </h1>
               <p className="max-w-2xl text-sm leading-7 text-slate-300 sm:text-lg sm:leading-8">
-                Landing này được đẩy về đúng vai trò service board: để thấy ngay gói nào đang mở,
-                gói nào tạm ngưng, giá bao nhiêu và TESTER cần chủ động backup dữ liệu như thế nào.
+                Trang này tổng hợp đầy đủ thông tin bạn cần trước khi đăng ký: gói nào đang mở,
+                gói nào tạm ngưng, mức giá hiện tại, tùy chọn nâng cấp và lưu ý quan trọng về dữ
+                liệu.
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a
+                href="#plans"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-cyan-400 px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
+              >
+                Xem bảng giá
+              </a>
               <a
                 href={siteConfig.discordUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-cyan-400 px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
-              >
-                Mở Discord để tạo ticket
-              </a>
-              <a
-                href={siteConfig.panelUrl}
-                target="_blank"
-                rel="noreferrer"
                 className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10 sm:w-auto"
               >
-                Mở Portal
+                Discord
+              </a>
+              <a
+                href={siteConfig.zaloUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-6 py-3.5 text-sm font-semibold text-emerald-100 transition hover:border-emerald-300/35 hover:bg-emerald-300/15 sm:w-auto"
+              >
+                Zalo
               </a>
             </div>
 
@@ -94,10 +109,10 @@ export function HeroSection() {
               <div className="flex flex-col gap-3 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-100/80">
-                    Bảng trạng thái dịch vụ
+                    Tổng quan gói dịch vụ
                   </p>
                   <p className="mt-1 text-sm text-slate-400">
-                    Một màn hình để quét nhanh portal, slot, giá và cảnh báo vận hành.
+                    Theo dõi nhanh portal, slot còn lại, giá hiện tại và các cảnh báo quan trọng.
                   </p>
                 </div>
                 <span className="w-fit rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100">
@@ -149,8 +164,7 @@ export function HeroSection() {
               </div>
 
               <div className="mt-5 rounded-[1.35rem] border border-rose-300/15 bg-rose-300/5 p-4 text-sm leading-7 text-rose-50">
-                Theo dõi tài nguyên còn lại tại kênh {siteConfig.statusChannel}. Gói TESTER là node
-                tài trợ, nên cảnh báo backup dữ liệu sẽ luôn được đặt ở vị trí nổi bật nhất.
+                Theo dõi tài nguyên còn lại tại kênh {siteConfig.statusChannel}. {siteConfig.testerAlertMessage}
               </div>
             </div>
           </Reveal>
