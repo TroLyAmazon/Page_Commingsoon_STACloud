@@ -20,6 +20,9 @@ export function FooterSection() {
           <Link href="/sla" className="transition hover:text-white">
             SLA
           </Link>
+          <Link href="/partner" className="transition hover:text-white">
+            Partner
+          </Link>
           <a
             href={siteConfig.siteUrl}
             className="transition hover:text-white"

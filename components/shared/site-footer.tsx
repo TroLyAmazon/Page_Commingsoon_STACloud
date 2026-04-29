@@ -76,6 +76,9 @@ export function SiteFooter() {
             <Link href="/sla" className="block transition hover:text-white">
               SLA
             </Link>
+            <Link href="/partner" className="block transition hover:text-white">
+              Partner
+            </Link>
             <span className="block">© 2025-2026 STACloud</span>
           </div>
         </div>

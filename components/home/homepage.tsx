@@ -503,6 +503,9 @@ function Footer() {
             <Link href="/sla" className="block transition hover:text-white">
               SLA
             </Link>
+            <Link href="/partner" className="block transition hover:text-white">
+              Partner
+            </Link>
           </div>
         </div>
         <p className="mt-6 text-sm text-slate-500">© 2025-2026 STACloud</p>
