@@ -1,0 +1,6 @@
+:HL["/_next/static/chunks/0mwl83b3cdzkg.css","style"]
+:HL["/picture/logoSTACloud.png","image"]
+:HL["/flags/singapore.svg","image"]
+:HL["/flags/hong-kong.svg","image"]
+:HL["/flags/vietnam.svg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"E6x6PRuNhKr8_m7W8Bpjw"}
