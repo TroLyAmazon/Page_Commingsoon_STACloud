@@ -7,30 +7,31 @@ export const homeConfig = {
   freeServerUrl: '/free-server',
   logoAlt: 'STACloud',
   summary:
-    'STACloud giúp bạn xem giá, cấu hình, trạng thái gói, OpenClaw Beta và kênh hỗ trợ ở cùng một nơi để chọn dịch vụ phù hợp nhanh hơn.',
+    'STACloud giúp bạn xem giá, cấu hình, trạng thái slot, OpenClaw Beta và các gói VPS mới ở cùng một nơi để chọn dịch vụ phù hợp nhanh hơn.',
   testerAlertMessage:
-    'Cảnh báo: TESTER là node tài trợ, có thể bị can thiệp hoặc gián đoạn bất ngờ. Bạn phải tự backup dữ liệu; STACloud không chịu trách nhiệm về mất mát dữ liệu trên node này.',
+    'Cảnh báo: TESTER là node tài trợ, có thể bị can thiệp hoặc sập bất ngờ bất cứ lúc nào. Bạn phải tự backup dữ liệu; STACloud không chịu trách nhiệm về mất mát dữ liệu trên node này.',
 };
 
 export const heroStats = [
-  { value: '5', label: 'Dịch vụ đang công bố' },
-  { value: '24 + 10', label: 'Slots DEV / MC' },
-  { value: '2', label: 'Gói có upsize' },
+  { value: '8', label: 'Gói / dịch vụ đang công bố' },
+  { value: '24 + 10', label: 'Slots DEV / MC SG' },
+  { value: '88k+', label: 'VPS OVH SG / tháng' },
   { value: '0$', label: 'OpenClaw / TESTER' },
 ] as const;
 
 export const heroSignals = [
   'Portal và store chính thức tại portal.stacloud.dev',
-  'OpenClaw Beta đã mở miễn phí cho cộng đồng',
-  'Giá và cấu hình DEV / MC đã được cập nhật mới nhất',
+  'OpenClaw Beta miễn phí, cần domain riêng và xác minh qua ticket',
+  'Đã bổ sung PROXY HK, Intel Xeon và AMD EPYC Singapore',
 ] as const;
 
 export const heroStatusStrip = [
-  { label: 'DEV', detail: '24 slots', value: '5.000 VNĐ (0.3$)', tone: 'emerald' },
-  { label: 'MC', detail: '10 slots', value: '8.000 VNĐ (0.5$)', tone: 'cyan' },
-  { label: 'OPENCLAW', detail: 'Beta miễn phí', value: 'Cần domain riêng', tone: 'blue' },
-  { label: 'PROXY', detail: 'Tạm ngưng', value: 'Không mở mới', tone: 'amber' },
   { label: 'TESTER', detail: 'Node tài trợ', value: '0$ / 0 VNĐ', tone: 'rose' },
+  { label: 'DEV / MC SG', detail: 'AMD Milan', value: '5.000đ / 8.000đ', tone: 'emerald' },
+  { label: 'OPENCLAW', detail: 'Beta miễn phí', value: 'Cần domain riêng', tone: 'blue' },
+  { label: 'PROXY HK', detail: 'Hết slot', value: 'Shield 20k / 1GB', tone: 'amber' },
+  { label: 'STA-XEON-01', detail: 'OVH Singapore', value: '88.000đ / tháng', tone: 'cyan' },
+  { label: 'STA-AMD-EPYC-01 / STA-AMD-EPYC-02', detail: 'AMD EPYC', value: '169k / 299k', tone: 'blue' },
 ] as const;
 
 export const dashboardEntries = [
@@ -69,18 +70,18 @@ export const products = [
     chips: ['Portal', 'Store', 'Fast Control'],
   },
   {
-    title: 'VPS Compute',
+    title: 'VPS OVH Singapore',
     eyebrow: 'Hạ Tầng',
     description:
-      'Phù hợp cho backend, automation, bot và các workload cần môi trường linh hoạt, ổn định.',
-    chips: ['Compute Ready', 'Low Latency', 'Stable Routing'],
+      'Có thêm Intel Xeon tiết kiệm chi phí và AMD EPYC hiệu năng cao cho bot, web app, game server, test lab hoặc workload cần nhiều RAM.',
+    chips: ['STA-XEON-01', 'STA-AMD-EPYC-01', 'STA-AMD-EPYC-02'],
   },
   {
     title: 'Gói Cộng Đồng',
     eyebrow: 'Service Plans',
     description:
-      'So sánh nhanh DEV, MC, PROXY FREE và TESTER với giá, cấu hình, trạng thái và cảnh báo quan trọng.',
-    chips: ['DEV', 'MC', 'TESTER'],
+      'So sánh nhanh TESTER, DEV SG, MC SG và PROXY HK với giá, cấu hình, trạng thái slot và cảnh báo quan trọng.',
+    chips: ['TESTER', 'DEV SG', 'MC SG'],
   },
   {
     title: 'OpenClaw Beta',
@@ -95,32 +96,32 @@ export const features = [
   {
     title: 'Giá và cấu hình rõ ràng',
     description:
-      'Mỗi gói đều hiển thị đầy đủ giá, cấu hình, trạng thái và tùy chọn nâng cấp để bạn dễ so sánh.',
+      'Mỗi gói đều hiển thị đầy đủ giá, CPU, RAM, disk, location, trạng thái và tùy chọn nâng cấp để bạn dễ so sánh.',
   },
   {
-    title: 'Đăng ký nhanh',
+    title: 'Đăng ký nhanh qua ticket',
     description:
       'Bạn có thể xem gói phù hợp trước, rồi vào Discord hoặc Zalo để liên hệ hỗ trợ mà không mất thời gian hỏi lại thông tin cơ bản.',
   },
   {
     title: 'Theo dõi trạng thái dễ dàng',
     description:
-      'Portal, kênh trạng thái và thông tin gói được đặt cùng một luồng để bạn theo dõi nhanh hơn.',
+      'Portal, kênh trạng thái và thông tin gói được đặt cùng một luồng để bạn theo dõi slot, tài nguyên còn lại và thông báo mới.',
   },
   {
     title: 'Phù hợp nhiều nhu cầu',
     description:
-      'Từ bot, app nhỏ, máy chủ Minecraft đến môi trường test nhanh, mỗi gói đều có mục đích sử dụng rõ ràng.',
+      'Từ bot, app nhỏ, máy chủ Minecraft, OpenClaw Beta đến VPS Xeon/EPYC cho workload cần RAM và CPU tốt hơn.',
   },
   {
-    title: 'Kênh hỗ trợ rõ ràng',
+    title: 'Hạ tầng OVH Singapore',
     description:
-      'Discord và Zalo cộng đồng được đặt ngay trên trang để bạn biết liên hệ ở đâu khi cần hỗ trợ.',
+      'Các gói trả phí chính dùng OVH Singapore, có AntiDDoS và độ trễ phù hợp cho người dùng tại Việt Nam.',
   },
   {
     title: 'Chính sách minh bạch',
     description:
-      'Điều khoản, quyền riêng tư, SLA và cảnh báo dữ liệu đều được công bố công khai để bạn yên tâm sử dụng.',
+      'Điều khoản, quyền riêng tư, SLA, cảnh báo dữ liệu TESTER và lưu ý OpenClaw đều được công bố rõ ràng trước khi đăng ký.',
   },
 ] as const;
 
@@ -128,7 +129,7 @@ export const locations = [
   {
     name: 'Singapore',
     flagSrc: '/flags/singapore.svg',
-    badge: 'Community + Paid',
+    badge: 'OVH SG Focus',
     speed: '10 Gbps',
     uptime: '99.99% Uptime',
     availability: 'Free / Paid',
@@ -136,18 +137,18 @@ export const locations = [
   {
     name: 'Hong Kong',
     flagSrc: '/flags/hong-kong.svg',
-    badge: 'Community + Paid',
+    badge: 'Proxy HK',
     speed: '5 Gbps',
-    uptime: '99.99% Uptime',
-    availability: 'Free / Paid',
+    uptime: 'Paused Slot',
+    availability: 'Proxy Paused',
   },
   {
     name: 'Việt Nam',
     flagSrc: '/flags/vietnam.svg',
-    badge: 'Paid Focus',
+    badge: 'OpenClaw Recommended',
     speed: '10 Gbps',
     uptime: '99.99% Uptime',
-    availability: 'Only Paid',
+    availability: 'OpenClaw / Paid',
   },
 ] as const;
 
@@ -173,13 +174,13 @@ export const testimonials = [
 ] as const;
 
 export const faqs = [
-  'Tôi nên chọn DEV, MC hay TESTER?',
+  'Tôi nên chọn TESTER, DEV SG, MC SG hay VPS trả phí?',
   'OpenClaw Beta cần chuẩn bị domain như thế nào?',
-  'Phụ phí upsize của DEV và MC hiện là bao nhiêu?',
+  'Phụ phí upsize của DEV SG và MC SG hiện là bao nhiêu?',
   'Gói TESTER có những rủi ro gì cần lưu ý?',
-  'PROXY FREE hiện còn mở hay đã tạm ngưng?',
+  'PROXY HK hiện còn mở hay đã tạm ngưng?',
+  'STA-XEON-01, STA-AMD-EPYC-01 và STA-AMD-EPYC-02 cần đặt trước bao lâu?',
   'Tôi kiểm tra tài nguyên còn lại ở đâu?',
-  'Portal hiện dùng domain nào để đăng nhập?',
-  'STACloud hỗ trợ workload nào tốt nhất ở thời điểm này?',
+  'Với OpenClaw nên chọn Singapore, Việt Nam hay Hong Kong?',
   'Kênh Discord nào là nơi hỗ trợ nhanh nhất hiện tại?',
 ] as const;

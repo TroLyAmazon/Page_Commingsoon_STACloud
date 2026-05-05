@@ -13,10 +13,14 @@ function getPlanBadgeClasses(status: string) {
     return 'border border-blue-300/20 bg-blue-300/10 text-blue-100';
   }
 
+  if (status === 'preorder') {
+    return 'border border-violet-300/20 bg-violet-300/10 text-violet-100';
+  }
+
   return 'border border-emerald-400/20 bg-emerald-400/10 text-emerald-300';
 }
 
-function getPlanCardClasses(name: string, status: string) {
+function getPlanCardClasses(status: string) {
   const surface =
     status === 'warning'
       ? 'border-rose-300/20 bg-rose-300/[0.05]'
@@ -24,9 +28,11 @@ function getPlanCardClasses(name: string, status: string) {
         ? 'border-blue-300/20 bg-blue-300/[0.05]'
       : status === 'paused'
         ? 'border-amber-300/20 bg-amber-300/[0.05]'
+      : status === 'preorder'
+        ? 'border-violet-300/20 bg-violet-300/[0.05]'
         : 'border-white/10 bg-slate-950/70';
 
-  const span = name === 'TESTER' ? 'md:col-span-2 xl:col-span-6' : 'xl:col-span-3';
+  const span = 'xl:col-span-3';
 
   return `${surface} ${span}`;
 }
@@ -48,7 +54,7 @@ export function PlansSection() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           {servicePlans.map((plan) => (
             <div
               key={`scan-${plan.name}`}
@@ -81,7 +87,7 @@ export function PlansSection() {
                 </p>
                 <h3 className="mt-2 text-2xl font-semibold text-white">Node miễn phí có rủi ro dữ liệu</h3>
                 <p className="mt-3 max-w-3xl text-sm leading-7 text-rose-50">
-                  TESTER là node tài trợ nên có thể bị can thiệp hoặc gián đoạn bất ngờ. Bạn phải
+                  TESTER là node tài trợ nên có thể bị can thiệp hoặc sập bất ngờ. Bạn phải
                   tự backup dữ liệu; STACloud không chịu trách nhiệm về mất mát dữ liệu trên node
                   này.
                 </p>
@@ -97,7 +103,7 @@ export function PlansSection() {
           {servicePlans.map((plan) => (
             <article
               key={plan.name}
-              className={`status-panel group relative overflow-hidden rounded-[2rem] border p-6 shadow-[0_24px_80px_rgba(2,6,23,0.28)] transition hover:-translate-y-1 hover:border-white/20 ${getPlanCardClasses(plan.name, plan.status)}`}
+              className={`status-panel group relative overflow-hidden rounded-[2rem] border p-6 shadow-[0_24px_80px_rgba(2,6,23,0.28)] transition hover:-translate-y-1 hover:border-white/20 ${getPlanCardClasses(plan.status)}`}
             >
               <div
                 className={`absolute inset-x-0 top-0 h-36 bg-gradient-to-br ${plan.accent} opacity-80 blur-3xl transition group-hover:opacity-100`}
@@ -180,7 +186,11 @@ export function PlansSection() {
                   rel="noreferrer"
                   className="inline-flex w-full items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/10"
                 >
-                  {plan.status === 'paused' ? 'Theo dõi Discord' : 'Đăng ký qua Discord'}
+                  {plan.status === 'paused'
+                    ? 'Theo dõi Discord'
+                    : plan.status === 'preorder'
+                      ? 'Đặt trước qua Discord'
+                      : 'Đăng ký qua Discord'}
                 </a>
               </div>
             </article>

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'STACloud | Community Hosting, VPS and Service Plans',
   description:
-    'STACloud cung cấp portal, VPS, OpenClaw Beta và các gói DEV, MC, PROXY FREE, TESTER với giá, slot, cấu hình và tùy chọn upsize rõ ràng.',
+    'STACloud cung cấp portal, OpenClaw Beta, TESTER, DEV SG, MC SG, PROXY HK và VPS OVH Singapore với giá, slot, cấu hình và tùy chọn upsize rõ ràng.',
   keywords: [
     'STACloud',
     'community hosting',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'STACloud | Bảng Giá Và Dịch Vụ',
     description:
-      'Xem giá, cấu hình, slot, OpenClaw Beta, upsize và lưu ý sử dụng của các gói DEV, MC, PROXY FREE và TESTER tại STACloud.',
+      'Xem giá, cấu hình, slot, OpenClaw Beta, upsize và lưu ý sử dụng của các gói TESTER, DEV SG, MC SG, PROXY HK, STA-XEON-01, STA-AMD-EPYC-01 và STA-AMD-EPYC-02 tại STACloud.',
     url: SITE_URL,
     siteName: 'STACloud',
     type: 'website',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'STACloud | Bảng Giá Và Dịch Vụ',
     description:
-      'Xem nhanh OpenClaw Beta, gói dịch vụ, slot còn lại, giá hiện tại và chính sách mới nhất của STACloud cho dev, Minecraft và node test.',
+      'Xem nhanh OpenClaw Beta, gói dịch vụ, slot còn lại, giá hiện tại và chính sách mới nhất của STACloud cho dev, Minecraft, proxy và VPS OVH Singapore.',
   },
   icons: {
     icon: [

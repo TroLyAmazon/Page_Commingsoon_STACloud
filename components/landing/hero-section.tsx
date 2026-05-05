@@ -14,6 +14,10 @@ function getPlanBadgeClasses(status: string) {
     return 'border border-blue-300/20 bg-blue-300/10 text-blue-100';
   }
 
+  if (status === 'preorder') {
+    return 'border border-violet-300/20 bg-violet-300/10 text-violet-100';
+  }
+
   return 'border border-emerald-400/20 bg-emerald-400/10 text-emerald-300';
 }
 
@@ -28,6 +32,10 @@ function getPlanDotClasses(status: string) {
 
   if (status === 'beta') {
     return 'bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.9)]';
+  }
+
+  if (status === 'preorder') {
+    return 'bg-violet-300 shadow-[0_0_14px_rgba(196,181,253,0.9)]';
   }
 
   return 'bg-emerald-400 shadow-[0_0_14px_rgba(74,222,128,0.9)]';

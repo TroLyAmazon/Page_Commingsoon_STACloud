@@ -207,7 +207,7 @@ export const slaSections: LegalSection[] = [
       'SLA này áp dụng cho các dịch vụ trả phí do STACloud trực tiếp vận hành và cấp phát cho khách hàng, bao gồm các gói compute trả phí và quyền truy cập panel đi kèm dịch vụ đó.',
     ],
     bullets: [
-      'Không áp dụng cho các gói miễn phí hoặc tài trợ như PROXY FREE, TESTER, node dùng thử, hay bất kỳ dịch vụ community nào được ghi chú là free/sponsored.',
+      'Không áp dụng cho các gói miễn phí hoặc tài trợ như TESTER, node dùng thử, OpenClaw Beta miễn phí, hay bất kỳ dịch vụ community nào được ghi chú là free/sponsored.',
       'Không áp dụng cho Discord, Zalo, email support hoặc các nền tảng cộng đồng của bên thứ ba.',
       'SLA chỉ áp dụng cho thời gian sau khi dịch vụ đã được kích hoạt hợp lệ và thanh toán đầy đủ.',
     ],
