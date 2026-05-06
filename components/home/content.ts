@@ -15,7 +15,7 @@ export const homeConfig = {
 export const heroStats = [
   { value: '8', label: 'Gói / dịch vụ đang công bố' },
   { value: '24 + 10', label: 'Slots DEV / MC SG' },
-  { value: '88k+', label: 'VPS OVH SG / tháng' },
+  { value: '66k+', label: 'VPS OVH SG / tháng' },
   { value: '0$', label: 'OpenClaw / TESTER' },
 ] as const;
 
@@ -30,8 +30,8 @@ export const heroStatusStrip = [
   { label: 'DEV / MC SG', detail: 'AMD Milan', value: '5.000đ / 8.000đ', tone: 'emerald' },
   { label: 'OPENCLAW', detail: 'Beta miễn phí', value: 'Cần domain riêng', tone: 'blue' },
   { label: 'PROXY HK', detail: 'Hết slot', value: 'Shield 20k / 1GB', tone: 'amber' },
-  { label: 'STA-XEON-01', detail: 'OVH Singapore', value: '88.000đ / tháng', tone: 'cyan' },
-  { label: 'STA-AMD-EPYC-01 / STA-AMD-EPYC-02', detail: 'AMD EPYC', value: '169k / 299k', tone: 'blue' },
+  { label: 'STA-XEON-01', detail: 'OVH Singapore', value: '66.000đ / tháng', tone: 'cyan' },
+  { label: 'STA-AMD-EPYC-01 / STA-AMD-EPYC-02', detail: 'AMD EPYC', value: '129k / 249k', tone: 'blue' },
 ] as const;
 
 export const dashboardEntries = [
