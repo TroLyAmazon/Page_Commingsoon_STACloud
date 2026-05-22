@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { OpenClawSpotlight } from '@/components/shared/openclaw-spotlight';
 import { Reveal } from '@/components/ui/reveal';
 
@@ -92,10 +92,34 @@ function Header() {
           <a
             href={homeConfig.panelUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
           >
             Mở Portal
+          </a>
+          <a
+            href={homeConfig.discordUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-cyan-300/30 hover:bg-cyan-300/10 sm:w-auto"
+          >
+            Discord
+          </a>
+          <a
+            href={homeConfig.zaloUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-cyan-300/15 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15 sm:w-auto"
+          >
+            Zalo
+          </a>
+          <a
+            href={homeConfig.messengerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-cyan-300/15 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15 sm:w-auto"
+          >
+            Messenger
           </a>
         </div>
       </div>
@@ -128,35 +152,48 @@ function Hero() {
 
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
-              href={homeConfig.freeServerUrl}
+              href={homeConfig.panelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-cyan-400 px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
             >
-              Xem Gói Dịch Vụ
+              Mở Portal
             </a>
             <a
               href={homeConfig.discordUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-indigo-300/20 bg-indigo-300/10 px-6 py-3.5 text-sm font-semibold text-indigo-100 transition hover:border-indigo-300/35 hover:bg-indigo-300/15 sm:w-auto"
             >
-              Tham gia Discord
+              Tạo ticket Discord
             </a>
-            <a
-              href={homeConfig.zaloUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-6 py-3.5 text-sm font-semibold text-emerald-100 transition hover:border-emerald-300/35 hover:bg-emerald-300/15 sm:w-auto"
-            >
-              Cộng đồng Zalo
-            </a>
-            <a
-              href={homeConfig.messengerUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-blue-300/20 bg-blue-300/10 px-6 py-3.5 text-sm font-semibold text-blue-100 transition hover:border-blue-300/35 hover:bg-blue-300/15 sm:w-auto"
-            >
-              Messenger Group
-            </a>
+          </div>
+
+          <div className="flex flex-col gap-3 rounded-lg border border-cyan-300/15 bg-slate-950/60 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100/80">
+                Group Chat
+              </p>
+              <p className="mt-1 text-sm text-slate-400">Trao đổi nhanh qua Messenger hoặc Zalo.</p>
+            </div>
+            <div className="flex flex-wrap gap-3 text-sm font-semibold">
+              <a
+                href={homeConfig.messengerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cyan-100 transition hover:text-white"
+              >
+                Messenger
+              </a>
+              <a
+                href={homeConfig.zaloUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cyan-100 transition hover:text-white"
+              >
+                Zalo
+              </a>
+            </div>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
@@ -503,8 +540,9 @@ function Footer() {
               Portal
             </a>
             <a href={homeConfig.discordUrl} className="transition hover:text-white">
-              Discord
+              Discord Ticket
             </a>
+            <span className="text-cyan-100/70">Group Chat:</span>
             <a href={homeConfig.zaloUrl} className="transition hover:text-white">
               Zalo
             </a>

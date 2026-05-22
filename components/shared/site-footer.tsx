@@ -50,20 +50,20 @@ export function SiteFooter() {
 
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200/70">
-            Vận Hành
+            Group Chat
           </p>
           <div className="mt-4 space-y-3 text-sm text-slate-300">
             <Link href="/#infrastructure" className="block transition hover:text-white">
               Tổng quan dịch vụ
             </Link>
-            <Link href="/#locations" className="block transition hover:text-white">
-              Locations
-            </Link>
             <a href={homeConfig.discordUrl} className="block transition hover:text-white">
-              Discord Support
+              Tạo ticket Discord
             </a>
             <a href={homeConfig.messengerUrl} className="block transition hover:text-white">
-              Messenger Group
+              Messenger
+            </a>
+            <a href={homeConfig.zaloUrl} className="block transition hover:text-white">
+              Zalo
             </a>
           </div>
         </div>

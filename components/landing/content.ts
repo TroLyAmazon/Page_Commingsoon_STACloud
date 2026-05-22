@@ -7,7 +7,7 @@ export const siteConfig = {
   messengerUrl: 'https://m.me/j/AbaXFRAcUrDjgFCN/?send_source=gc%3Acopy_invite_link_c',
   discordGroupUrl: 'https://discord.gg/nq8B4JXmnm',
   statusChannel: '🗺️｜server-status-and-slot',
-  supportChannel: 'ticket support / Messenger Group',
+  supportChannel: 'Discord ticket / Group Chat Messenger-Zalo',
   copyrightText: '© 2025-2026 STACloud',
   testerAlertMessage:
     'Cảnh báo: TESTER là node tài trợ, có thể bị can thiệp hoặc sập bất ngờ bất cứ lúc nào. Bạn phải tự backup dữ liệu; STACloud không chịu trách nhiệm về mất mát dữ liệu trên node này.',

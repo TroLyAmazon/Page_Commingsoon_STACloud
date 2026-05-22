@@ -1,7 +1,18 @@
+﻿'use client';
+
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { SiteFooter } from '@/components/shared/site-footer';
 import { Reveal } from '@/components/ui/reveal';
+import { homeConfig } from '@/components/home/content';
 import { eggGroups, eggTotals, type EggGroup, type EggItem } from './content';
+
+type EggFilter = 'all' | EggGroup['title'];
+
+const filterOptions: Array<{ id: EggFilter; label: string }> = [
+  { id: 'all', label: 'Tất cả' },
+  ...eggGroups.map((group) => ({ id: group.title, label: group.title })),
+];
 
 const accentClasses: Record<
   EggGroup['accent'],
@@ -42,6 +53,29 @@ function countItem(item: EggItem) {
   return item.variants?.length ?? 1;
 }
 
+function normalizeSearch(value: string) {
+  return value.trim().toLowerCase();
+}
+
+function filterItem(item: EggItem, query: string): EggItem | null {
+  if (!query) {
+    return item;
+  }
+
+  const nameMatches = item.name.toLowerCase().includes(query);
+
+  if (!item.variants?.length) {
+    return nameMatches ? item : null;
+  }
+
+  if (nameMatches) {
+    return item;
+  }
+
+  const variants = item.variants.filter((variant) => variant.toLowerCase().includes(query));
+  return variants.length ? { ...item, variants } : null;
+}
+
 function Header() {
   return (
     <header className="px-4 pt-6 sm:px-6 sm:pt-8">
@@ -75,12 +109,36 @@ function Header() {
             Gói dịch vụ
           </Link>
           <a
-            href="https://portal.stacloud.dev/"
+            href={homeConfig.panelUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="inline-flex min-h-10 items-center rounded-lg bg-cyan-300 px-4 font-semibold text-slate-950 transition hover:bg-cyan-200"
           >
             Portal
+          </a>
+          <a
+            href={homeConfig.discordUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-10 items-center rounded-lg border border-white/10 bg-white/[0.04] px-4 font-semibold text-white transition hover:border-cyan-300/30 hover:bg-cyan-300/10"
+          >
+            Discord
+          </a>
+          <a
+            href={homeConfig.zaloUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-10 items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 px-4 font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15"
+          >
+            Zalo
+          </a>
+          <a
+            href={homeConfig.messengerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-10 items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 px-4 font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15"
+          >
+            Messenger
           </a>
         </nav>
       </div>
@@ -88,9 +146,21 @@ function Header() {
   );
 }
 
-function Summary() {
+function Summary({
+  activeFilter,
+  query,
+  visibleCount,
+  onFilterChange,
+  onQueryChange,
+}: {
+  activeFilter: EggFilter;
+  query: string;
+  visibleCount: number;
+  onFilterChange: (filter: EggFilter) => void;
+  onQueryChange: (query: string) => void;
+}) {
   const stats = [
-    { value: `${eggTotals.items}`, label: 'Mục đang hiển thị' },
+    { value: `${visibleCount}`, label: 'Mục đang hiển thị' },
     { value: `${eggTotals.groups}`, label: 'Nhóm cấp cao' },
   ];
 
@@ -121,6 +191,41 @@ function Summary() {
               </div>
             </Reveal>
           ))}
+        </div>
+      </div>
+
+      <div className="mx-auto mt-6 grid max-w-6xl gap-4 rounded-lg border border-cyan-300/15 bg-slate-950/70 p-4 backdrop-blur lg:grid-cols-[0.9fr_1.1fr]">
+        <label className="block">
+          <span className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100/80">
+            Tìm egg / OS
+          </span>
+          <input
+            value={query}
+            onChange={(event) => onQueryChange(event.target.value)}
+            placeholder="Nhập OpenClaw, Ubuntu, Paper..."
+            className="mt-2 min-h-11 w-full rounded-lg border border-cyan-300/15 bg-slate-950/80 px-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/45"
+          />
+        </label>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100/80">
+            Lọc nhóm
+          </p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {filterOptions.map((option) => (
+              <button
+                key={option.id}
+                type="button"
+                onClick={() => onFilterChange(option.id)}
+                className={`min-h-10 rounded-lg border px-3 text-sm font-semibold transition ${
+                  activeFilter === option.id
+                    ? 'border-cyan-300/35 bg-cyan-300/15 text-cyan-50'
+                    : 'border-white/10 bg-white/[0.035] text-slate-300 hover:border-cyan-300/25 hover:text-white'
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -199,7 +304,7 @@ function EggCard({ group, index }: { group: EggGroup; index: number }) {
   );
 }
 
-function Catalog() {
+function Catalog({ groups }: { groups: EggGroup[] }) {
   return (
     <section className="px-4 pb-14 sm:px-6 sm:pb-24">
       <div className="mx-auto max-w-6xl">
@@ -211,22 +316,56 @@ function Catalog() {
           </p>
         </Reveal>
 
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 xl:gap-6">
-          {eggGroups.map((group, index) => (
-            <EggCard key={group.title} group={group} index={index} />
-          ))}
-        </div>
+        {groups.length ? (
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 xl:gap-6">
+            {groups.map((group, index) => (
+              <EggCard key={group.title} group={group} index={index} />
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-lg border border-cyan-300/15 bg-slate-950/70 p-6 text-sm text-slate-300">
+            Không có egg hoặc OS nào khớp bộ lọc hiện tại.
+          </div>
+        )}
       </div>
     </section>
   );
 }
 
 export function EggPage() {
+  const [activeFilter, setActiveFilter] = useState<EggFilter>('all');
+  const [query, setQuery] = useState('');
+
+  const visibleGroups = useMemo(() => {
+    const normalizedQuery = normalizeSearch(query);
+
+    return eggGroups
+      .filter((group) => activeFilter === 'all' || group.title === activeFilter)
+      .map((group) => ({
+        ...group,
+        items: group.items
+          .map((item) => filterItem(item, normalizedQuery))
+          .filter((item): item is EggItem => Boolean(item)),
+      }))
+      .filter((group) => group.items.length > 0);
+  }, [activeFilter, query]);
+
+  const visibleCount = visibleGroups.reduce(
+    (total, group) => total + group.items.reduce((sum, item) => sum + countItem(item), 0),
+    0
+  );
+
   return (
     <main className="min-h-screen pb-10">
       <Header />
-      <Summary />
-      <Catalog />
+      <Summary
+        activeFilter={activeFilter}
+        query={query}
+        visibleCount={visibleCount}
+        onFilterChange={setActiveFilter}
+        onQueryChange={setQuery}
+      />
+      <Catalog groups={visibleGroups} />
       <SiteFooter />
     </main>
   );

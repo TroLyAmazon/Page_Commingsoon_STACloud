@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { OpenClawSpotlight } from '@/components/shared/openclaw-spotlight';
 import { Reveal } from '@/components/ui/reveal';
 
@@ -45,10 +45,34 @@ export function FreeServerPage() {
             <a
               href="https://portal.stacloud.dev/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
             >
               Mở Portal
+            </a>
+            <a
+              href={siteConfig.discordUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-cyan-300/30 hover:bg-cyan-300/10 sm:w-auto"
+            >
+              Discord
+            </a>
+            <a
+              href={siteConfig.zaloUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15 sm:w-auto"
+            >
+              Zalo
+            </a>
+            <a
+              href={siteConfig.messengerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15 sm:w-auto"
+            >
+              Messenger
             </a>
           </div>
         </Reveal>

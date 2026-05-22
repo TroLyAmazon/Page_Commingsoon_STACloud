@@ -1,4 +1,4 @@
-type OpenClawSpotlightProps = {
+﻿type OpenClawSpotlightProps = {
   discordUrl: string;
   zaloUrl: string;
   messengerUrl: string;
@@ -58,31 +58,28 @@ export function OpenClawSpotlight({ discordUrl, zaloUrl, messengerUrl }: OpenCla
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row">
+              <div className="flex flex-col gap-3">
                 <a
                   href={discordUrl}
                   target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-h-12 flex-1 items-center justify-center rounded-2xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-12 items-center justify-center rounded-2xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
                 >
                   Mở ticket Discord
                 </a>
-                <a
-                  href={messengerUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-h-12 flex-1 items-center justify-center rounded-2xl border border-blue-300/20 bg-blue-300/10 px-5 py-3 text-sm font-semibold text-blue-100 transition hover:border-blue-300/35 hover:bg-blue-300/15"
-                >
-                  Messenger Group
-                </a>
-                <a
-                  href={zaloUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-h-12 flex-1 items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
-                >
-                  Hỏi qua Zalo
-                </a>
+                <div className="rounded-lg border border-cyan-300/15 bg-slate-950/55 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100/80">
+                    Group Chat
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-3 text-sm font-semibold">
+                    <a href={messengerUrl} target="_blank" rel="noopener noreferrer" className="text-cyan-100 transition hover:text-white">
+                      Messenger
+                    </a>
+                    <a href={zaloUrl} target="_blank" rel="noopener noreferrer" className="text-cyan-100 transition hover:text-white">
+                      Zalo
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

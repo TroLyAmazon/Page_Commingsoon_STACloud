@@ -1,4 +1,4 @@
-import { heroStats, servicePlans, siteConfig } from './content';
+﻿import { heroStats, servicePlans, siteConfig } from './content';
 import { Reveal } from '@/components/ui/reveal';
 
 function getPlanBadgeClasses(status: string) {
@@ -64,35 +64,41 @@ export function HeroSection() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a
-                href="#plans"
+                href={siteConfig.panelUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-cyan-400 px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
               >
-                Xem bảng giá
+                Mở Portal
               </a>
               <a
                 href={siteConfig.discordUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10 sm:w-auto"
               >
-                Discord
+                Tạo ticket Discord
               </a>
-              <a
-                href={siteConfig.zaloUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-6 py-3.5 text-sm font-semibold text-emerald-100 transition hover:border-emerald-300/35 hover:bg-emerald-300/15 sm:w-auto"
-              >
-                Zalo
-              </a>
-              <a
-                href={siteConfig.messengerUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-blue-300/20 bg-blue-300/10 px-6 py-3.5 text-sm font-semibold text-blue-100 transition hover:border-blue-300/35 hover:bg-blue-300/15 sm:w-auto"
-              >
-                Messenger
-              </a>
+            </div>
+
+            <div className="flex flex-col gap-3 rounded-lg border border-cyan-300/15 bg-slate-950/60 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100/80">
+                  Group Chat
+                </p>
+                <p className="mt-1 text-sm text-slate-400">Messenger/Zalo cho trao đổi cộng đồng.</p>
+              </div>
+              <div className="flex flex-wrap gap-3 text-sm font-semibold">
+                <a href={siteConfig.messengerUrl} target="_blank" rel="noopener noreferrer" className="text-cyan-100 transition hover:text-white">
+                  Messenger
+                </a>
+                <a href={siteConfig.zaloUrl} target="_blank" rel="noopener noreferrer" className="text-cyan-100 transition hover:text-white">
+                  Zalo
+                </a>
+                <a href="#plans" className="text-slate-300 transition hover:text-white">
+                  Xem bảng giá
+                </a>
+              </div>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">

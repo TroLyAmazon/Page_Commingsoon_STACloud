@@ -1,4 +1,4 @@
-import { notes, quickSteps, siteConfig } from './content';
+﻿import { notes, quickSteps, siteConfig } from './content';
 
 export function GuideSection() {
   return (
@@ -44,7 +44,7 @@ export function GuideSection() {
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
             <p className="text-sm text-slate-400">
               Kênh hỗ trợ chính:
-              <span className="ml-2 font-semibold text-white">{siteConfig.supportChannel}</span>
+              <span className="ml-2 font-semibold text-white">Discord ticket</span>
             </p>
             <p className="mt-2 text-sm text-slate-400">
               Kênh theo dõi tài nguyên:
@@ -52,29 +52,44 @@ export function GuideSection() {
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <a
-                href={siteConfig.discordUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
-              >
-                Vào Discord ngay
-              </a>
-              <a
-                href={siteConfig.messengerUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl border border-blue-300/20 bg-blue-300/10 px-5 py-3 text-sm font-semibold text-blue-100 transition hover:border-blue-300/35 hover:bg-blue-300/15"
-              >
-                Messenger Group
-              </a>
-              <a
                 href={siteConfig.panelUrl}
                 target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-2xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
               >
                 Mở Portal
               </a>
+              <a
+                href={siteConfig.discordUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+              >
+                Tạo ticket Discord
+              </a>
+            </div>
+            <div className="mt-4 rounded-lg border border-cyan-300/15 bg-slate-950/55 p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100/80">
+                Group Chat
+              </p>
+              <div className="mt-3 flex flex-wrap gap-3 text-sm font-semibold">
+                <a
+                  href={siteConfig.messengerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyan-100 transition hover:text-white"
+                >
+                  Messenger
+                </a>
+                <a
+                  href={siteConfig.zaloUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyan-100 transition hover:text-white"
+                >
+                  Zalo
+                </a>
+              </div>
             </div>
           </div>
         </div>

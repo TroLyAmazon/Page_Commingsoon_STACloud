@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { siteConfig } from './content';
 
 export function FooterSection() {
@@ -30,7 +30,7 @@ export function FooterSection() {
             href={siteConfig.siteUrl}
             className="transition hover:text-white"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             Website
           </a>
@@ -38,7 +38,7 @@ export function FooterSection() {
             href={siteConfig.panelUrl}
             className="transition hover:text-white"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             Portal
           </a>
@@ -46,15 +46,16 @@ export function FooterSection() {
             href={siteConfig.discordUrl}
             className="transition hover:text-white"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
-            Discord
+            Discord Ticket
           </a>
+          <span className="text-cyan-100/70">Group Chat:</span>
           <a
             href={siteConfig.zaloUrl}
             className="transition hover:text-white"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             Zalo
           </a>
@@ -62,7 +63,7 @@ export function FooterSection() {
             href={siteConfig.messengerUrl}
             className="transition hover:text-white"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             Messenger
           </a>

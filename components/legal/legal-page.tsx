@@ -1,6 +1,7 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { Reveal } from '@/components/ui/reveal';
 import { SiteFooter } from '@/components/shared/site-footer';
+import { homeConfig } from '@/components/home/content';
 import type { LegalSection } from './legal-content';
 
 type LegalPageProps = {
@@ -42,20 +43,36 @@ export function LegalPage({
 
             <div className="flex flex-col gap-3 sm:flex-row">
               <a
-                href="https://portal.stacloud.dev/"
+                href={homeConfig.panelUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-flex min-h-11 items-center justify-center rounded-xl bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
               >
                 Mở Portal
               </a>
               <a
-                href="https://discord.gg/nq8B4JXmnm"
+                href={homeConfig.discordUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-white transition hover:border-white/25 hover:bg-white/10"
               >
-                Vào Discord
+                Discord
+              </a>
+              <a
+                href={homeConfig.zaloUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15"
+              >
+                Zalo
+              </a>
+              <a
+                href={homeConfig.messengerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15"
+              >
+                Messenger
               </a>
             </div>
           </div>

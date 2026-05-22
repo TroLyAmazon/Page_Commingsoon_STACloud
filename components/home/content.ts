@@ -50,8 +50,8 @@ export const dashboardEntries = [
   },
   {
     label: 'Support',
-    value: 'Discord / Zalo',
-    meta: 'Kênh hỗ trợ cộng đồng',
+    value: 'Discord / Group Chat',
+    meta: 'Ticket và cộng đồng Messenger/Zalo',
     tone: 'emerald',
   },
   {
