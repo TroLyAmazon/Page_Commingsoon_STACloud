@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --surface-950: #050816;
-  --surface-900: #091121;
-  --surface-800: #0f1a2f;
+  --surface-950: #02060d;
+  --surface-900: #06111f;
+  --surface-800: #0a1b2f;
+  --ocean-border: rgba(56, 189, 248, 0.16);
+  --ocean-border-strong: rgba(103, 232, 249, 0.28);
+  --ocean-panel: rgba(3, 12, 24, 0.86);
+  --ocean-panel-soft: rgba(6, 22, 39, 0.72);
 }
 
 html {
@@ -15,38 +19,38 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba(34, 211, 238, 0.2), transparent 28%),
-    radial-gradient(circle at 82% 18%, rgba(56, 189, 248, 0.12), transparent 24%),
-    linear-gradient(180deg, #081120 0%, var(--surface-950) 38%, #030712 100%);
+    linear-gradient(180deg, #02060d 0%, #061426 42%, #020711 100%),
+    linear-gradient(120deg, rgba(14, 165, 233, 0.16) 0%, transparent 34%),
+    linear-gradient(260deg, rgba(8, 47, 73, 0.36) 0%, transparent 44%);
+  background-blend-mode: normal, screen, normal;
 }
 
 .background-mesh {
   position: fixed;
-  inset: -20% -10% auto;
-  height: 36rem;
+  inset: 0;
   background:
-    radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.22), transparent 24%),
-    radial-gradient(circle at 80% 10%, rgba(45, 212, 191, 0.16), transparent 20%),
-    radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.12), transparent 28%);
+    linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.08) 48%, transparent 100%),
+    repeating-linear-gradient(90deg, transparent 0 9rem, rgba(14, 165, 233, 0.05) 9.05rem 9.1rem),
+    repeating-linear-gradient(180deg, transparent 0 5.5rem, rgba(103, 232, 249, 0.035) 5.55rem 5.6rem);
   pointer-events: none;
   z-index: 0;
-  filter: blur(24px);
+  opacity: 0.78;
 }
 
 .background-grid {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 90%);
+    linear-gradient(rgba(56, 189, 248, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.055) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.58), transparent 88%);
   pointer-events: none;
   z-index: 0;
 }
 
 .section-eyebrow {
-  @apply text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200/70 sm:text-sm sm:tracking-[0.28em];
+  @apply text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100/80 sm:text-sm sm:tracking-[0.28em];
 }
 
 .section-title {
@@ -54,7 +58,7 @@ body {
 }
 
 .section-copy {
-  @apply mt-4 text-sm leading-7 text-slate-400 sm:text-base sm:leading-8;
+  @apply mt-4 text-sm leading-7 text-slate-300/80 sm:text-base sm:leading-8;
 }
 
 .tech-card {
@@ -73,8 +77,8 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, rgba(34, 211, 238, 0.08), transparent 35%),
-    linear-gradient(315deg, rgba(251, 191, 36, 0.06), transparent 28%);
+    linear-gradient(135deg, rgba(56, 189, 248, 0.12), transparent 36%),
+    linear-gradient(315deg, rgba(14, 116, 144, 0.08), transparent 30%);
   pointer-events: none;
 }
 
@@ -84,8 +88,8 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(140deg, rgba(255, 255, 255, 0.08), transparent 38%),
-    radial-gradient(circle at top right, rgba(34, 211, 238, 0.08), transparent 30%);
+    linear-gradient(145deg, rgba(103, 232, 249, 0.08), transparent 34%),
+    linear-gradient(315deg, rgba(8, 47, 73, 0.16), transparent 46%);
   pointer-events: none;
 }
 
@@ -107,10 +111,27 @@ body {
   will-change: transform;
 }
 
+.status-panel,
+.status-tile,
+.tech-card {
+  border-color: var(--ocean-border) !important;
+  background: linear-gradient(180deg, var(--ocean-panel), rgba(2, 8, 18, 0.92)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 20px 70px rgba(0, 0, 0, 0.28);
+}
+
+.status-panel,
+.status-tile,
+.tech-card,
+.interactive-card {
+  border-radius: 8px !important;
+}
+
 .interactive-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(148, 163, 184, 0.26);
-  box-shadow: 0 18px 50px rgba(2, 6, 23, 0.34);
+  border-color: var(--ocean-border-strong);
+  box-shadow: 0 18px 50px rgba(2, 132, 199, 0.14);
 }
 
 .interactive-card:active {

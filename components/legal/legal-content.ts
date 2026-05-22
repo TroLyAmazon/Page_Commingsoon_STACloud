@@ -305,7 +305,7 @@ export const partnerSections: LegalSection[] = [
     title: '4. Phạm vi giảm giá 20%',
     bullets: [
       'Ưu đãi 20% chỉ áp dụng cho phí dịch vụ trả phí chính được STACloud xác nhận là đủ điều kiện.',
-      'Ưu đãi không áp dụng cho gói miễn phí, gói TESTER, node tài trợ, OpenClaw Beta miễn phí, phí domain, phí setup riêng, phí khôi phục dữ liệu, phí xử lý khẩn cấp, phụ phí tài nguyên, dịch vụ tùy chỉnh hoặc các khoản phí phát sinh khác nếu không có thỏa thuận trước.',
+      'Ưu đãi không áp dụng cho gói miễn phí, gói TESTER, node tài trợ, OpenClaw Beta miễn phí, phí setup riêng, phí khôi phục dữ liệu, phí xử lý khẩn cấp, phụ phí tài nguyên, dịch vụ tùy chỉnh hoặc các khoản phí phát sinh khác nếu không có thỏa thuận trước.',
       'Ưu đãi không được cộng dồn với mã giảm giá, chương trình khuyến mãi hoặc thỏa thuận riêng khác, trừ khi STACloud xác nhận bằng văn bản.',
       'STACloud có quyền điều chỉnh danh sách dịch vụ được áp dụng ưu đãi nếu chi phí hạ tầng, chính sách nhà cung cấp hoặc tình trạng vận hành thay đổi.',
       'Ưu đãi Partner không có giá trị quy đổi thành tiền mặt, không hoàn lại và không chuyển nhượng cho bên thứ ba nếu chưa được STACloud đồng ý.',
@@ -429,8 +429,8 @@ export const partnerSections: LegalSection[] = [
     title: '14. OpenClaw Beta',
     bullets: [
       'OpenClaw hiện là dịch vụ Beta miễn phí cho cộng đồng, vì vậy có thể thay đổi, giới hạn, tạm dừng hoặc gián đoạn trong quá trình thử nghiệm.',
-      'Partner hoặc người dùng cần có domain riêng để sử dụng OpenClaw. Việc xác minh và gán domain cần được thực hiện qua ticket.',
-      'Nếu sử dụng domain do STACloud cung cấp, phí domain hoặc phụ phí liên quan sẽ được tính riêng và không mặc nhiên nằm trong ưu đãi Partner.',
+      'OpenClaw hiện không cần domain riêng để sử dụng trong giai đoạn Beta miễn phí.',
+      'Nếu cần hỗ trợ cấu hình hoặc xử lý sự cố OpenClaw, Partner hoặc người dùng có thể liên hệ qua Discord, Zalo hoặc Messenger Group.',
       'STACloud khuyến nghị chọn vị trí Singapore hoặc Việt Nam cho OpenClaw, đặc biệt với workload liên quan đến AI. Một số vị trí như Hong Kong có thể bị hạn chế bởi chính sách mạng hoặc dịch vụ bên thứ ba.',
       'OpenClaw Beta không nằm trong phạm vi uptime, bồi hoàn hoặc khôi phục dữ liệu của SLA Partner, trừ khi có thỏa thuận riêng.',
     ],

@@ -85,6 +85,14 @@ export function HeroSection() {
               >
                 Zalo
               </a>
+              <a
+                href={siteConfig.messengerUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-blue-300/20 bg-blue-300/10 px-6 py-3.5 text-sm font-semibold text-blue-100 transition hover:border-blue-300/35 hover:bg-blue-300/15 sm:w-auto"
+              >
+                Messenger
+              </a>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
@@ -112,7 +120,7 @@ export function HeroSection() {
           </Reveal>
 
           <Reveal className="relative hero-orbit" delayMs={120}>
-            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-cyan-400/20 via-sky-400/10 to-transparent blur-3xl" />
+            <div className="absolute inset-0 rounded-lg border border-cyan-300/10 bg-gradient-to-br from-cyan-300/10 via-sky-950/20 to-transparent" />
             <div className="status-panel panel-float relative rounded-[1.75rem] border border-white/10 bg-slate-950/75 p-4 shadow-2xl shadow-slate-950/40 backdrop-blur sm:rounded-[2rem] sm:p-6">
               <div className="flex flex-col gap-3 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>

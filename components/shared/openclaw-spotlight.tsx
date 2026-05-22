@@ -1,17 +1,17 @@
 type OpenClawSpotlightProps = {
   discordUrl: string;
   zaloUrl: string;
+  messengerUrl: string;
 };
 
-const openClawHighlights = ['Free Beta', 'Cần domain riêng', 'Khuyến nghị Singapore / Việt Nam'] as const;
+const openClawHighlights = ['Free Beta', 'Không cần domain riêng', 'Khuyến nghị Singapore / Việt Nam'] as const;
 
-export function OpenClawSpotlight({ discordUrl, zaloUrl }: OpenClawSpotlightProps) {
+export function OpenClawSpotlight({ discordUrl, zaloUrl, messengerUrl }: OpenClawSpotlightProps) {
   return (
     <section className="px-4 py-14 sm:px-6 sm:py-20">
-      <div className="mx-auto max-w-6xl overflow-hidden rounded-[2.25rem] border border-cyan-300/20 bg-cyan-300/[0.06] p-5 shadow-[0_30px_100px_rgba(8,145,178,0.16)] backdrop-blur sm:p-8">
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-lg border border-cyan-300/20 bg-slate-950/80 p-5 shadow-[0_30px_100px_rgba(8,145,178,0.12)] backdrop-blur sm:p-8">
         <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-          <div className="relative">
-            <div className="absolute -left-16 -top-16 h-48 w-48 rounded-full bg-cyan-300/20 blur-3xl" />
+          <div className="relative border-l border-cyan-300/20 pl-5">
             <div className="relative">
               <span className="inline-flex rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100">
                 Dịch vụ mới
@@ -20,8 +20,8 @@ export function OpenClawSpotlight({ discordUrl, zaloUrl }: OpenClawSpotlightProp
                 OpenClaw Beta đã mở miễn phí
               </h2>
               <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-lg sm:leading-8">
-                OpenClaw hiện được mở miễn phí cho cộng đồng sử dụng thử. Bạn cần có domain riêng và
-                mở ticket để STACloud xác minh, sau đó gán domain vào hệ thống OpenClaw.
+                OpenClaw hiện được mở miễn phí cho cộng đồng sử dụng thử và không cần domain riêng.
+                Nếu cần hỗ trợ, bạn có thể liên hệ STACloud qua Discord, Zalo hoặc Messenger Group.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {openClawHighlights.map((item) => (
@@ -41,11 +41,10 @@ export function OpenClawSpotlight({ discordUrl, zaloUrl }: OpenClawSpotlightProp
             <div className="space-y-4">
               <div className="rounded-2xl border border-cyan-300/15 bg-cyan-300/[0.06] p-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100/80">
-                  Domain
+                  Truy cập
                 </p>
                 <p className="mt-2 text-sm leading-6 text-slate-200">
-                  Dùng domain riêng miễn phí sau khi xác minh. Nếu muốn dùng domain của STACloud,
-                  phụ phí là <span className="font-semibold text-white">10.000 VNĐ</span>.
+                  OpenClaw hiện không cần domain riêng. Anh em có thể trải nghiệm miễn phí và nhắn hỗ trợ nếu cần cấu hình thêm.
                 </p>
               </div>
 
@@ -67,6 +66,14 @@ export function OpenClawSpotlight({ discordUrl, zaloUrl }: OpenClawSpotlightProp
                   className="inline-flex min-h-12 flex-1 items-center justify-center rounded-2xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
                 >
                   Mở ticket Discord
+                </a>
+                <a
+                  href={messengerUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-12 flex-1 items-center justify-center rounded-2xl border border-blue-300/20 bg-blue-300/10 px-5 py-3 text-sm font-semibold text-blue-100 transition hover:border-blue-300/35 hover:bg-blue-300/15"
+                >
+                  Messenger Group
                 </a>
                 <a
                   href={zaloUrl}

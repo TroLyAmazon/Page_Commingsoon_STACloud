@@ -74,6 +74,9 @@ function Header() {
           <a href="#products" className="transition hover:text-white">
             Dịch vụ
           </a>
+          <Link href="/egg" className="transition hover:text-white">
+            Eggs
+          </Link>
           <a href="#infrastructure" className="transition hover:text-white">
             Hạ tầng
           </a>
@@ -146,6 +149,14 @@ function Hero() {
             >
               Cộng đồng Zalo
             </a>
+            <a
+              href={homeConfig.messengerUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-blue-300/20 bg-blue-300/10 px-6 py-3.5 text-sm font-semibold text-blue-100 transition hover:border-blue-300/35 hover:bg-blue-300/15 sm:w-auto"
+            >
+              Messenger Group
+            </a>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
@@ -160,7 +171,7 @@ function Hero() {
         </Reveal>
 
         <Reveal className="relative hero-orbit" delayMs={120}>
-          <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.24),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(249,115,22,0.18),transparent_24%)] blur-2xl" />
+          <div className="absolute inset-0 rounded-lg border border-cyan-300/10 bg-gradient-to-br from-cyan-300/10 via-sky-950/20 to-transparent" />
           <div className="status-panel panel-float relative rounded-[1.75rem] border border-white/10 bg-slate-950/80 p-4 shadow-2xl shadow-slate-950/50 backdrop-blur sm:rounded-[2rem] sm:p-6">
             <div className="flex flex-col gap-3 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -485,6 +496,9 @@ function Footer() {
             <a href={homeConfig.freeServerUrl} className="transition hover:text-white">
               Gói dịch vụ
             </a>
+            <Link href="/egg" className="transition hover:text-white">
+              Eggs
+            </Link>
             <a href={homeConfig.panelUrl} className="transition hover:text-white">
               Portal
             </a>
@@ -493,6 +507,9 @@ function Footer() {
             </a>
             <a href={homeConfig.zaloUrl} className="transition hover:text-white">
               Zalo
+            </a>
+            <a href={homeConfig.messengerUrl} className="transition hover:text-white">
+              Messenger
             </a>
             <Link href="/terms" className="block transition hover:text-white">
               Điều khoản dịch vụ
@@ -519,7 +536,11 @@ export function HomePage() {
     <main className="min-h-screen pb-10">
       <Header />
       <Hero />
-      <OpenClawSpotlight discordUrl={homeConfig.discordUrl} zaloUrl={homeConfig.zaloUrl} />
+      <OpenClawSpotlight
+        discordUrl={homeConfig.discordUrl}
+        zaloUrl={homeConfig.zaloUrl}
+        messengerUrl={homeConfig.messengerUrl}
+      />
       <TesterAlert />
       <Products />
       <Infrastructure />

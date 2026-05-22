@@ -36,6 +36,12 @@ export function FreeServerPage() {
           </Link>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link
+              href="/egg"
+              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15 sm:w-auto"
+            >
+              Eggs
+            </Link>
             <a
               href="https://portal.stacloud.dev/"
               target="_blank"
@@ -49,7 +55,11 @@ export function FreeServerPage() {
       </section>
 
       <HeroSection />
-      <OpenClawSpotlight discordUrl={siteConfig.discordUrl} zaloUrl={siteConfig.zaloUrl} />
+      <OpenClawSpotlight
+        discordUrl={siteConfig.discordUrl}
+        zaloUrl={siteConfig.zaloUrl}
+        messengerUrl={siteConfig.messengerUrl}
+      />
       <PlansSection />
       <LocationsSection />
       <BenefitsSection />

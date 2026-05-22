@@ -60,6 +60,14 @@ export function GuideSection() {
                 Vào Discord ngay
               </a>
               <a
+                href={siteConfig.messengerUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-2xl border border-blue-300/20 bg-blue-300/10 px-5 py-3 text-sm font-semibold text-blue-100 transition hover:border-blue-300/35 hover:bg-blue-300/15"
+              >
+                Messenger Group
+              </a>
+              <a
                 href={siteConfig.panelUrl}
                 target="_blank"
                 rel="noreferrer"

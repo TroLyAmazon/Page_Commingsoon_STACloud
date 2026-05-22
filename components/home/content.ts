@@ -4,6 +4,7 @@ export const homeConfig = {
   panelUrl: 'https://portal.stacloud.dev/',
   discordUrl: 'https://discord.gg/nq8B4JXmnm',
   zaloUrl: 'https://zalo.me/g/ekaldlnq5sqdn37lvikk',
+  messengerUrl: 'https://m.me/j/AbaXFRAcUrDjgFCN/?send_source=gc%3Acopy_invite_link_c',
   freeServerUrl: '/free-server',
   logoAlt: 'STACloud',
   summary:
@@ -21,14 +22,14 @@ export const heroStats = [
 
 export const heroSignals = [
   'Portal và store chính thức tại portal.stacloud.dev',
-  'OpenClaw Beta miễn phí, cần domain riêng và xác minh qua ticket',
+  'OpenClaw Beta miễn phí, hiện không cần domain riêng',
   'Đã bổ sung PROXY HK, Intel Xeon và AMD EPYC Singapore',
 ] as const;
 
 export const heroStatusStrip = [
   { label: 'TESTER', detail: 'Node tài trợ', value: '0$ / 0 VNĐ', tone: 'rose' },
   { label: 'DEV / MC SG', detail: 'AMD Milan', value: '5.000đ / 8.000đ', tone: 'emerald' },
-  { label: 'OPENCLAW', detail: 'Beta miễn phí', value: 'Cần domain riêng', tone: 'blue' },
+  { label: 'OPENCLAW', detail: 'Beta miễn phí', value: 'Không cần domain riêng', tone: 'blue' },
   { label: 'PROXY HK', detail: 'Hết slot', value: 'Shield 20k / 1GB', tone: 'amber' },
   { label: 'STA-XEON-01', detail: 'OVH Singapore', value: '66.000đ / tháng', tone: 'cyan' },
   { label: 'STA-AMD-EPYC-01 / STA-AMD-EPYC-02', detail: 'AMD EPYC', value: '129k / 249k', tone: 'blue' },
@@ -87,8 +88,8 @@ export const products = [
     title: 'OpenClaw Beta',
     eyebrow: 'Free Beta',
     description:
-      'OpenClaw đã mở miễn phí cho cộng đồng. Bạn cần có domain riêng để xác minh và gán vào hệ thống qua ticket.',
-    chips: ['OpenClaw', 'Free Beta', 'Domain Required'],
+      'OpenClaw đã mở miễn phí cho cộng đồng. Hiện không cần domain riêng; nếu cần hỗ trợ, bạn có thể liên hệ qua Discord, Zalo hoặc Messenger Group.',
+    chips: ['OpenClaw', 'Free Beta', 'Không cần domain'],
   },
 ] as const;
 
@@ -175,7 +176,7 @@ export const testimonials = [
 
 export const faqs = [
   'Tôi nên chọn TESTER, DEV SG, MC SG hay VPS trả phí?',
-  'OpenClaw Beta cần chuẩn bị domain như thế nào?',
+  'OpenClaw Beta hiện dùng như thế nào?',
   'Phụ phí upsize của DEV SG và MC SG hiện là bao nhiêu?',
   'Gói TESTER có những rủi ro gì cần lưu ý?',
   'PROXY HK hiện còn mở hay đã tạm ngưng?',

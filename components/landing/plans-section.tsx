@@ -106,7 +106,7 @@ export function PlansSection() {
               className={`status-panel group relative overflow-hidden rounded-[2rem] border p-6 shadow-[0_24px_80px_rgba(2,6,23,0.28)] transition hover:-translate-y-1 hover:border-white/20 ${getPlanCardClasses(plan.status)}`}
             >
               <div
-                className={`absolute inset-x-0 top-0 h-36 bg-gradient-to-br ${plan.accent} opacity-80 blur-3xl transition group-hover:opacity-100`}
+                className={`absolute inset-x-0 top-0 h-24 bg-gradient-to-br ${plan.accent} opacity-45 transition group-hover:opacity-70`}
               />
               <div className="relative space-y-6">
                 <div className="flex items-start justify-between gap-4">

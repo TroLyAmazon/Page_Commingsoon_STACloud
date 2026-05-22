@@ -4,9 +4,10 @@ export const siteConfig = {
   panelUrl: 'https://portal.stacloud.dev/',
   discordUrl: 'https://discord.gg/nq8B4JXmnm',
   zaloUrl: 'https://zalo.me/g/ekaldlnq5sqdn37lvikk',
+  messengerUrl: 'https://m.me/j/AbaXFRAcUrDjgFCN/?send_source=gc%3Acopy_invite_link_c',
   discordGroupUrl: 'https://discord.gg/nq8B4JXmnm',
   statusChannel: '🗺️｜server-status-and-slot',
-  supportChannel: 'ticket support',
+  supportChannel: 'ticket support / Messenger Group',
   copyrightText: '© 2025-2026 STACloud',
   testerAlertMessage:
     'Cảnh báo: TESTER là node tài trợ, có thể bị can thiệp hoặc sập bất ngờ bất cứ lúc nào. Bạn phải tự backup dữ liệu; STACloud không chịu trách nhiệm về mất mát dữ liệu trên node này.',
@@ -30,7 +31,7 @@ export const servicePlans = [
     addOns: ['Kiểm tra tài nguyên còn lại tại kênh 🗺️｜server-status-and-slot trước khi đăng ký.'],
     status: 'warning',
     statusLabel: 'Miễn phí',
-    accent: 'from-rose-400/25 to-orange-300/10',
+    accent: 'from-sky-500/18 to-cyan-300/8',
     warnings: [
       'Node này được tài trợ nên có thể bị can thiệp hoặc sập bất ngờ bất cứ lúc nào.',
       'Vui lòng tự chủ động backup dữ liệu.',
@@ -43,11 +44,11 @@ export const servicePlans = [
       'OpenClaw Beta đã mở miễn phí cho cộng đồng. Phù hợp để trải nghiệm nhanh, đặc biệt với nhu cầu app web và các workload liên quan đến AI.',
     price: 'FREE / 0 VNĐ',
     highlight: 'Beta miễn phí',
-    specs: ['Cần domain riêng', 'Xác minh qua ticket', 'Khuyến nghị Singapore / Việt Nam'],
+    specs: ['Không cần domain riêng', 'Free Beta', 'Khuyến nghị Singapore / Việt Nam'],
     addOns: [
-      'Dùng domain riêng: miễn phí sau khi xác minh.',
-      'Dùng domain STACloud: phụ phí 10.000 VNĐ.',
-      'Cần inbox ticket để xác minh và gán domain vào hệ thống OpenClaw.',
+      'Hiện không cần domain riêng để trải nghiệm OpenClaw.',
+      'Nếu cần hỗ trợ, có thể liên hệ Discord, Zalo hoặc Messenger Group.',
+      'Nên nêu rõ location và nhu cầu app khi tạo yêu cầu hỗ trợ.',
     ],
     status: 'beta',
     statusLabel: 'Beta miễn phí',
@@ -89,7 +90,7 @@ export const servicePlans = [
     ],
     status: 'active',
     statusLabel: 'Đang mở',
-    accent: 'from-emerald-400/30 to-lime-300/10',
+    accent: 'from-cyan-400/18 to-sky-300/8',
     warnings: [],
   },
   {
@@ -102,7 +103,7 @@ export const servicePlans = [
     addOns: ['Theo dõi Discord để biết thời điểm mở slot mới.'],
     status: 'paused',
     statusLabel: 'Hết slot',
-    accent: 'from-amber-300/25 to-orange-300/10',
+    accent: 'from-blue-400/18 to-cyan-300/8',
     warnings: [],
   },
   {
@@ -119,7 +120,7 @@ export const servicePlans = [
     ],
     status: 'preorder',
     statusLabel: 'Đặt trước',
-    accent: 'from-violet-400/20 to-cyan-300/10',
+    accent: 'from-sky-400/18 to-cyan-300/8',
     warnings: [],
   },
   {
@@ -136,7 +137,7 @@ export const servicePlans = [
     ],
     status: 'preorder',
     statusLabel: 'Đặt trước',
-    accent: 'from-cyan-400/25 to-emerald-300/10',
+    accent: 'from-cyan-400/18 to-sky-300/8',
     warnings: [],
   },
   {
@@ -153,7 +154,7 @@ export const servicePlans = [
     ],
     status: 'preorder',
     statusLabel: 'Đặt trước',
-    accent: 'from-indigo-400/25 to-cyan-300/10',
+    accent: 'from-blue-400/18 to-cyan-300/8',
     warnings: [],
   },
 ] as const;
@@ -219,7 +220,7 @@ export const quickSteps = [
     step: '02',
     title: 'Gửi nhu cầu qua ticket',
     description:
-      'Cho STACloud biết gói muốn đăng ký, location, nhu cầu full port, domain OpenClaw hoặc yêu cầu chia nhỏ server nếu có.',
+      'Cho STACloud biết gói muốn đăng ký, location, nhu cầu full port, yêu cầu OpenClaw hoặc yêu cầu chia nhỏ server nếu có.',
   },
   {
     step: '03',
@@ -231,7 +232,7 @@ export const quickSteps = [
 
 export const notes = [
   'TESTER miễn phí nhưng là node tài trợ, có thể bị can thiệp hoặc sập bất ngờ; người dùng phải tự backup dữ liệu.',
-  'OpenClaw Beta miễn phí nhưng cần domain riêng; nếu dùng domain STACloud sẽ có phụ phí 10.000 VNĐ.',
+  'OpenClaw Beta miễn phí và hiện không cần domain riêng; nếu cần hỗ trợ có thể liên hệ Discord, Zalo hoặc Messenger Group.',
   'DEV SG có giá 5.000 VNĐ (0.3$) / chu kỳ với 24 slots; MC SG có giá 8.000 VNĐ (0.5$) / chu kỳ với 10 slots.',
   'PROXY HK hiện tạm ngưng do hết slot; Shield AntiDDoS tính 20.000 VNĐ / 1 GB.',
   'STA-XEON-01 giá 66.000 VNĐ / tháng; STA-AMD-EPYC-01 giá 129.000 VNĐ / tháng; STA-AMD-EPYC-02 giá 249.000 VNĐ / tháng và đều cần đặt trước 3 ngày.',
@@ -244,8 +245,8 @@ export const policyGroups = [
     points: [
       'TESTER có chi phí 0$ / 0 VNĐ với cấu hình 1 vCore, 1 GB RAM và 5 GB Disk.',
       'TESTER là node tài trợ nên có thể bị can thiệp hoặc sập bất ngờ; người dùng phải tự backup dữ liệu.',
-      'OpenClaw Beta miễn phí, yêu cầu domain riêng và cần mở ticket để xác minh, gán domain vào hệ thống.',
-      'Nếu dùng domain STACloud cho OpenClaw, phụ phí domain là 10.000 VNĐ.',
+      'OpenClaw Beta miễn phí và hiện không cần domain riêng.',
+      'Nếu cần hỗ trợ OpenClaw, người dùng có thể liên hệ Discord, Zalo hoặc Messenger Group.',
     ],
   },
   {

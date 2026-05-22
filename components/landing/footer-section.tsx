@@ -23,6 +23,9 @@ export function FooterSection() {
           <Link href="/partner" className="transition hover:text-white">
             Partner
           </Link>
+          <Link href="/egg" className="transition hover:text-white">
+            Eggs
+          </Link>
           <a
             href={siteConfig.siteUrl}
             className="transition hover:text-white"
@@ -54,6 +57,14 @@ export function FooterSection() {
             rel="noreferrer"
           >
             Zalo
+          </a>
+          <a
+            href={siteConfig.messengerUrl}
+            className="transition hover:text-white"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Messenger
           </a>
         </div>
       </div>

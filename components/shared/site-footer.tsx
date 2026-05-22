@@ -36,6 +36,9 @@ export function SiteFooter() {
             <Link href="/free-server" className="block transition hover:text-white">
               Gói dịch vụ
             </Link>
+            <Link href="/egg" className="block transition hover:text-white">
+              Eggs
+            </Link>
             <a href={homeConfig.panelUrl} className="block transition hover:text-white">
               Portal
             </a>
@@ -58,6 +61,9 @@ export function SiteFooter() {
             </Link>
             <a href={homeConfig.discordUrl} className="block transition hover:text-white">
               Discord Support
+            </a>
+            <a href={homeConfig.messengerUrl} className="block transition hover:text-white">
+              Messenger Group
             </a>
           </div>
         </div>
