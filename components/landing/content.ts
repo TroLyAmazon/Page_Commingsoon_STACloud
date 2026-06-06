@@ -7,14 +7,14 @@ export const siteConfig = {
   messengerUrl: 'https://m.me/j/AbaXFRAcUrDjgFCN/?send_source=gc%3Acopy_invite_link_c',
   discordGroupUrl: 'https://discord.gg/nq8B4JXmnm',
   statusChannel: '🗺️｜server-status-and-slot',
-  supportChannel: 'Discord ticket / Group Chat Messenger-Zalo',
-  copyrightText: '© 2025-2026 STACloud',
+  supportChannel: '📥｜support-ticket / Group Chat Messenger-Zalo',
+  copyrightText: '© 2018 - 2026 STACloud. All rights reserved.',
   testerAlertMessage:
     'Cảnh báo: TESTER là node tài trợ, có thể bị can thiệp hoặc sập bất ngờ bất cứ lúc nào. Bạn phải tự backup dữ liệu; STACloud không chịu trách nhiệm về mất mát dữ liệu trên node này.',
 };
 
 export const heroStats = [
-  { value: '8', label: 'Gói / dịch vụ đang công bố' },
+  { value: '9', label: 'Gói / dịch vụ đang công bố' },
   { value: '24 + 10', label: 'Slots DEV / MC Singapore' },
   { value: '3 ngày', label: 'Thời gian đặt trước VPS lớn' },
   { value: '0$', label: 'OpenClaw / TESTER' },
@@ -31,7 +31,7 @@ export const servicePlans = [
     addOns: ['Kiểm tra tài nguyên còn lại tại kênh 🗺️｜server-status-and-slot trước khi đăng ký.'],
     status: 'warning',
     statusLabel: 'Miễn phí',
-    accent: 'from-sky-500/18 to-cyan-300/8',
+    accent: 'from-sky-500/20 to-cyan-300/10',
     warnings: [
       'Node này được tài trợ nên có thể bị can thiệp hoặc sập bất ngờ bất cứ lúc nào.',
       'Vui lòng tự chủ động backup dữ liệu.',
@@ -90,7 +90,7 @@ export const servicePlans = [
     ],
     status: 'active',
     statusLabel: 'Đang mở',
-    accent: 'from-cyan-400/18 to-sky-300/8',
+    accent: 'from-cyan-400/20 to-sky-300/10',
     warnings: [],
   },
   {
@@ -103,50 +103,72 @@ export const servicePlans = [
     addOns: ['Theo dõi Discord để biết thời điểm mở slot mới.'],
     status: 'paused',
     statusLabel: 'Hết slot',
-    accent: 'from-blue-400/18 to-cyan-300/8',
+    accent: 'from-blue-400/20 to-cyan-300/10',
     warnings: [],
   },
   {
     name: 'STA-XEON-01',
     description:
-      'Economy Edition dùng Intel Xeon E5-26xx v3 tại OVH Singapore. Tối ưu chi phí cho sinh viên, treo tool, bot Discord, web nhỏ hoặc test lab.',
-    price: '66.000 VNĐ / tháng',
+      'Economy Edition dùng Intel Xeon E5-26xx v3 Haswell-EP tại OVH Singapore. Tối ưu chi phí cho sinh viên, treo tool, bot Discord, web nhỏ hoặc test lab.',
+    price: '146.000 VNĐ / tháng',
     highlight: 'Economy OVH SG',
-    specs: ['2 vCore Intel Xeon E5-26xx v3', '~3.1 GHz', '7 GB RAM', 'Full port theo yêu cầu'],
+    specs: ['2 vCore Intel Xeon E5-26xx v3', '~3.1 GHz', '6 GB RAM', '40 GB Disk', 'Full port theo yêu cầu'],
     addOns: [
       'Hạ tầng OVH Singapore với AntiDDoS layer 3 & 4.',
-      'Phù hợp workload tiết kiệm chi phí nhưng cần RAM tốt.',
+      'Phù hợp treo tool, bot Discord, web nhỏ hoặc test lab.',
+      'Uptime 24/7 với độ trễ thấp từ Singapore về Việt Nam.',
       'Yêu cầu đặt trước 3 ngày để khởi tạo và tối ưu tài nguyên.',
+      'Tạo ticket tại kênh 📥｜support-ticket để giữ slot.',
     ],
     status: 'preorder',
     statusLabel: 'Đặt trước',
-    accent: 'from-sky-400/18 to-cyan-300/8',
+    accent: 'from-sky-400/20 to-cyan-300/10',
+    warnings: [],
+  },
+  {
+    name: 'STA-XEON-02',
+    description:
+      'Economy Edition nâng cao dùng Intel Xeon E5-26xx v3 Haswell-EP tại OVH Singapore. Phù hợp workload cần nhiều CPU, RAM và dung lượng lưu trữ hơn.',
+    price: '209.000 VNĐ / tháng',
+    highlight: 'Economy Plus OVH SG',
+    specs: ['4 vCore Intel Xeon E5-26xx v3', '~3.1 GHz', '14 GB RAM', '90 GB Disk', 'Full port theo yêu cầu'],
+    addOns: [
+      'Hạ tầng OVH Singapore với AntiDDoS layer 3 & 4.',
+      'Phù hợp bot, web app, tool, test lab hoặc workload cần nhiều RAM.',
+      'Uptime 24/7 với độ trễ thấp từ Singapore về Việt Nam.',
+      'Yêu cầu đặt trước 3 ngày để khởi tạo và tối ưu tài nguyên.',
+      'Tạo ticket tại kênh 📥｜support-ticket để giữ slot.',
+    ],
+    status: 'preorder',
+    statusLabel: 'Đặt trước',
+    accent: 'from-blue-400/20 to-cyan-300/10',
     warnings: [],
   },
   {
     name: 'STA-AMD-EPYC-01',
     description:
       'Standard Edition hiệu năng cao dùng AMD EPYC Milan Gen 3 tại OVH Singapore. Phù hợp Minecraft, game server, web app và workload cần CPU mạnh.',
-    price: '129.000 VNĐ / tháng',
+    price: '249.000 VNĐ / tháng',
     highlight: 'Standard EPYC',
-    specs: ['2 vCore AMD Milan', '8 GB RAM', 'Full port theo yêu cầu', 'OVH Singapore'],
+    specs: ['2 vCore AMD Milan', '7 GB RAM', '40 GB Disk', 'Full port theo yêu cầu', 'OVH Singapore'],
     addOns: [
+      'Có thể đổi sang AMD Gen 4 hoặc Gen 5 theo khả năng hạ tầng.',
       'Hỗ trợ chia nhỏ thành nhiều server hoặc port khác nhau.',
       'Bảo vệ AntiDDoS mạnh từ hạ tầng OVH.',
       'Yêu cầu đặt trước 3 ngày để phân bổ máy chủ.',
     ],
     status: 'preorder',
     statusLabel: 'Đặt trước',
-    accent: 'from-cyan-400/18 to-sky-300/8',
+    accent: 'from-cyan-400/20 to-sky-300/10',
     warnings: [],
   },
   {
     name: 'STA-AMD-EPYC-02',
     description:
       'Premium Edition hiệu năng cao dùng AMD EPYC Milan Gen 3 tại OVH Singapore. Dành cho workload cần nhiều vCore, nhiều RAM hoặc chia nhiều server.',
-    price: '249.000 VNĐ / tháng',
+    price: '333.000 VNĐ / tháng',
     highlight: 'Premium EPYC',
-    specs: ['4 vCore AMD Milan', '16 GB RAM', 'Full port theo yêu cầu', 'OVH Singapore'],
+    specs: ['4 vCore AMD Milan', '15 GB RAM', '90 GB Disk', 'Full port theo yêu cầu', 'OVH Singapore'],
     addOns: [
       'Có thể đổi sang AMD Gen 4 hoặc Gen 5 theo khả năng hạ tầng.',
       'Hỗ trợ chia nhỏ thành nhiều server hoặc port khác nhau.',
@@ -154,7 +176,7 @@ export const servicePlans = [
     ],
     status: 'preorder',
     statusLabel: 'Đặt trước',
-    accent: 'from-blue-400/18 to-cyan-300/8',
+    accent: 'from-blue-400/20 to-cyan-300/10',
     warnings: [],
   },
 ] as const;
@@ -163,26 +185,34 @@ export const locations = [
   {
     name: 'Singapore',
     flagSrc: '/flags/singapore.svg',
-    speed: 'OVH 10Gbps',
+    speed: '10 Gbps',
     description:
-      'Location chính cho DEV, MC, Intel Xeon, AMD EPYC và OpenClaw. Độ trễ tốt về Việt Nam, phù hợp game server, web app, bot và workload AI.',
+      'OVH Singapore dành cho gói miễn phí và trả phí, phù hợp game server, web app, bot và VPS Xeon/EPYC.',
     availability: 'Free / Paid',
   },
   {
     name: 'Hong Kong',
     flagSrc: '/flags/hong-kong.svg',
-    speed: 'Proxy Locate',
+    speed: '30 Gbps',
     description:
-      'Có gói PROXY HK nhưng hiện hết slot. Không khuyến nghị chọn Hong Kong cho OpenClaw hoặc workload AI vì có thể bị hạn chế một số dịch vụ.',
-    availability: 'Paused',
+      'Proxy Hong Kong chỉ dành cho gói trả phí và hiện tạm ngưng do hết slot. Theo dõi Discord để nhận thông báo khi có slot mới.',
+    availability: 'Proxy Paused',
+  },
+  {
+    name: 'Thailand',
+    flagSrc: '/flags/thailand.svg',
+    speed: '30 Gbps',
+    description:
+      'Proxy Thailand hỗ trợ gói miễn phí và trả phí, phù hợp nhu cầu proxy hoặc kết nối trong khu vực Đông Nam Á.',
+    availability: 'Free / Paid',
   },
   {
     name: 'Việt Nam',
     flagSrc: '/flags/vietnam.svg',
-    speed: 'Low Latency',
+    speed: '1 Gbps',
     description:
-      'Phù hợp người dùng nội địa và là location được khuyến nghị cho OpenClaw khi cần độ trễ thấp trong nước.',
-    availability: 'OpenClaw / Paid',
+      'Location Việt Nam dành cho dịch vụ trả phí, có độ trễ thấp cho người dùng trong nước.',
+    availability: 'Only Paid',
   },
 ] as const;
 
@@ -226,7 +256,7 @@ export const quickSteps = [
     step: '03',
     title: 'Chờ xác minh và cấp phát',
     description:
-      'Các gói lớn như STA-XEON-01, STA-AMD-EPYC-01 và STA-AMD-EPYC-02 cần đặt trước 3 ngày để khởi tạo và tối ưu tài nguyên.',
+      'Các gói lớn như STA-XEON-01, STA-XEON-02, STA-AMD-EPYC-01 và STA-AMD-EPYC-02 cần đặt trước 3 ngày để khởi tạo và tối ưu tài nguyên.',
   },
 ] as const;
 
@@ -235,7 +265,7 @@ export const notes = [
   'OpenClaw Beta miễn phí và hiện không cần domain riêng; nếu cần hỗ trợ có thể liên hệ Discord, Zalo hoặc Messenger Group.',
   'DEV SG có giá 5.000 VNĐ (0.3$) / chu kỳ với 24 slots; MC SG có giá 8.000 VNĐ (0.5$) / chu kỳ với 10 slots.',
   'PROXY HK hiện tạm ngưng do hết slot; Shield AntiDDoS tính 20.000 VNĐ / 1 GB.',
-  'STA-XEON-01 giá 66.000 VNĐ / tháng; STA-AMD-EPYC-01 giá 129.000 VNĐ / tháng; STA-AMD-EPYC-02 giá 249.000 VNĐ / tháng và đều cần đặt trước 3 ngày.',
+  'STA-XEON-01 giá 146.000 VNĐ / tháng; STA-XEON-02 giá 209.000 VNĐ / tháng; STA-AMD-EPYC-01 giá 249.000 VNĐ / tháng; STA-AMD-EPYC-02 giá 333.000 VNĐ / tháng và đều cần đặt trước 3 ngày.',
   'Theo dõi tài nguyên còn lại tại kênh 🗺️｜server-status-and-slot trên Discord.',
 ] as const;
 
@@ -267,27 +297,29 @@ export const policyGroups = [
     ],
   },
   {
-    title: 'Proxy Hong Kong',
+    title: 'Proxy Hong Kong / Thailand',
     points: [
       'PROXY HK hiện tạm ngưng do hết slot.',
       'Cấu hình công bố là 0.5 vCore, 512 MB RAM và 1 GB SSD.',
       'Shield AntiDDoS được tính 20.000 VNĐ / 1 GB.',
+      'Proxy Thailand hỗ trợ gói Free / Paid với băng thông 30 Gbps.',
     ],
   },
   {
     title: 'Intel Xeon OVH Singapore',
     points: [
-      'STA-XEON-01 dùng 2 vCore Intel Xeon E5-26xx v3 khoảng 3.1 GHz và 7 GB RAM.',
-      'Giá STA-XEON-01 là 66.000 VNĐ / tháng, full port theo yêu cầu.',
-      'Phù hợp treo tool, bot Discord, web nhỏ hoặc test lab với chi phí tiết kiệm.',
+      'STA-XEON-01 dùng 2 vCore Intel Xeon E5-26xx v3 khoảng 3.1 GHz, 6 GB RAM và 40 GB Disk.',
+      'Giá STA-XEON-01 là 146.000 VNĐ / tháng, full port theo yêu cầu.',
+      'STA-XEON-02 dùng 4 vCore Intel Xeon E5-26xx v3 khoảng 3.1 GHz, 14 GB RAM và 90 GB Disk.',
+      'Giá STA-XEON-02 là 209.000 VNĐ / tháng, full port theo yêu cầu.',
       'Yêu cầu đặt trước 3 ngày để khởi tạo và tối ưu tài nguyên.',
     ],
   },
   {
     title: 'AMD EPYC OVH Singapore',
     points: [
-      'STA-AMD-EPYC-01 có 2 vCore AMD Milan, 8 GB RAM, full port theo yêu cầu và giá 129.000 VNĐ / tháng.',
-      'STA-AMD-EPYC-02 có 4 vCore AMD Milan, 16 GB RAM, full port theo yêu cầu và giá 249.000 VNĐ / tháng.',
+      'STA-AMD-EPYC-01 có 2 vCore AMD Milan, 7 GB RAM, 40 GB Disk, full port theo yêu cầu và giá 249.000 VNĐ / tháng.',
+      'STA-AMD-EPYC-02 có 4 vCore AMD Milan, 15 GB RAM, 90 GB Disk, full port theo yêu cầu và giá 333.000 VNĐ / tháng.',
       'Có thể hỗ trợ chia nhỏ thành nhiều server hoặc port khác nhau.',
       'Yêu cầu đặt trước 3 ngày để phân bổ máy chủ.',
     ],

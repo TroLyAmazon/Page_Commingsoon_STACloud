@@ -25,27 +25,27 @@ const accentClasses: Record<
 > = {
   blue: {
     border: 'border-blue-300/20',
-    band: 'from-blue-300/16 via-cyan-300/10',
+    band: 'from-blue-300/20 via-cyan-300/10',
     dot: 'bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.75)]',
     pill: 'border-blue-300/20 bg-blue-300/10 text-blue-100',
   },
   cyan: {
     border: 'border-cyan-300/20',
-    band: 'from-cyan-300/16 via-sky-300/10',
+    band: 'from-cyan-300/20 via-sky-300/10',
     dot: 'bg-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.75)]',
     pill: 'border-cyan-300/20 bg-cyan-300/10 text-cyan-100',
   },
   slate: {
     border: 'border-slate-300/15',
-    band: 'from-slate-300/12 via-cyan-300/8',
+    band: 'from-white/10 via-cyan-300/10',
     dot: 'bg-slate-300 shadow-[0_0_14px_rgba(203,213,225,0.55)]',
     pill: 'border-slate-300/15 bg-slate-300/10 text-slate-100',
   },
   teal: {
-    border: 'border-teal-300/20',
-    band: 'from-teal-300/16 via-cyan-300/10',
-    dot: 'bg-teal-300 shadow-[0_0_14px_rgba(94,234,212,0.7)]',
-    pill: 'border-teal-300/20 bg-teal-300/10 text-teal-100',
+    border: 'border-sky-300/20',
+    band: 'from-sky-300/20 via-blue-300/10',
+    dot: 'bg-sky-300 shadow-[0_0_14px_rgba(125,211,252,0.7)]',
+    pill: 'border-sky-300/20 bg-sky-300/10 text-sky-100',
   },
 };
 
@@ -112,7 +112,7 @@ function Header() {
             href={homeConfig.panelUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center rounded-lg bg-cyan-300 px-4 font-semibold text-slate-950 transition hover:bg-cyan-200"
+            className="inline-flex min-h-10 items-center rounded-lg bg-white px-4 font-semibold text-slate-950 transition hover:bg-cyan-100"
           >
             Portal
           </a>
@@ -120,7 +120,7 @@ function Header() {
             href={homeConfig.discordUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center rounded-lg border border-white/10 bg-white/[0.04] px-4 font-semibold text-white transition hover:border-cyan-300/30 hover:bg-cyan-300/10"
+            className="inline-flex min-h-10 items-center rounded-lg border border-blue-300/25 bg-blue-300/10 px-4 font-semibold text-blue-50 transition hover:border-blue-300/45 hover:bg-blue-300/15"
           >
             Discord
           </a>
@@ -128,7 +128,7 @@ function Header() {
             href={homeConfig.zaloUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 px-4 font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15"
+            className="inline-flex min-h-10 items-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12]"
           >
             Zalo
           </a>
@@ -136,7 +136,7 @@ function Header() {
             href={homeConfig.messengerUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 px-4 font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15"
+            className="inline-flex min-h-10 items-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12]"
           >
             Messenger
           </a>
@@ -173,7 +173,7 @@ function Summary({
           </div>
           <div>
             <h1 className="max-w-4xl text-3xl font-semibold leading-tight text-white sm:text-5xl">
-              Danh sách egg đang hỗ trợ cho AI, Code Languages, Linux, Minecraft và Voice Servers.
+              Danh sách egg đang hỗ trợ cho AI, Code Languages, Linux, Minecraft, Proxy và Voice Servers.
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base sm:leading-8">
               Trang này gom egg theo đúng nhóm chính trong STACloudMultiEgg/Egg. Riêng Linux hiển thị

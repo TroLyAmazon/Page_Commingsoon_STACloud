@@ -15,12 +15,12 @@ export function FreeServerPage() {
   return (
     <main className="min-h-screen pb-10">
       <section className="px-4 pt-6 sm:px-6 sm:pt-8">
-        <Reveal className="mx-auto flex max-w-6xl flex-col gap-4 rounded-[1.75rem] border border-white/10 bg-slate-950/70 px-4 py-4 backdrop-blur sm:px-5 md:flex-row md:items-center md:justify-between">
+        <Reveal className="mx-auto flex max-w-6xl flex-col gap-4 rounded-lg border border-cyan-300/15 bg-black/70 px-4 py-4 shadow-[0_22px_70px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:px-5 lg:flex-row lg:items-center lg:justify-between">
           <Link
             href="/"
-            className="interactive-card group flex items-center gap-3 rounded-[1.3rem] border border-white/10 bg-white/[0.04] px-3 py-3 transition hover:border-cyan-300/20 hover:bg-white/[0.07] sm:gap-4 sm:px-4"
+            className="interactive-card group flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] px-3 py-3 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.06] sm:gap-4 sm:px-4"
           >
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/15 bg-white/5 p-2 shadow-[0_0_24px_rgba(34,211,238,0.15)] sm:h-16 sm:w-16">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-cyan-300/20 bg-black/60 p-2 shadow-[0_0_24px_rgba(34,211,238,0.12)] sm:h-16 sm:w-16">
               <img
                 src="/picture/logoSTACloud.png"
                 alt="STACloud"
@@ -35,10 +35,10 @@ export function FreeServerPage() {
             </div>
           </Link>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
             <Link
               href="/egg"
-              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15 sm:w-auto"
+              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm font-semibold text-white transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.08] sm:w-auto"
             >
               Eggs
             </Link>
@@ -46,7 +46,7 @@ export function FreeServerPage() {
               href="https://portal.stacloud.dev/"
               target="_blank"
               rel="noopener noreferrer"
-              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
+              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-100 sm:w-auto"
             >
               Mở Portal
             </a>
@@ -54,7 +54,7 @@ export function FreeServerPage() {
               href={siteConfig.discordUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-cyan-300/30 hover:bg-cyan-300/10 sm:w-auto"
+              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-blue-300/25 bg-blue-300/10 px-4 py-2.5 text-sm font-semibold text-blue-50 transition hover:border-blue-300/45 hover:bg-blue-300/15 sm:w-auto"
             >
               Discord
             </a>
@@ -62,7 +62,7 @@ export function FreeServerPage() {
               href={siteConfig.zaloUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15 sm:w-auto"
+              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12] sm:w-auto"
             >
               Zalo
             </a>
@@ -70,7 +70,7 @@ export function FreeServerPage() {
               href={siteConfig.messengerUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="interactive-card inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15 sm:w-auto"
+              className="interactive-card col-span-2 inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12] sm:col-span-1 sm:w-auto"
             >
               Messenger
             </a>

@@ -99,6 +99,12 @@ export const eggGroups: EggGroup[] = [
     ],
   },
   {
+    title: 'Proxy',
+    subtitle: 'Proxy và lớp bảo vệ cho hệ thống Minecraft',
+    accent: 'blue',
+    items: [{ name: 'Velocity' }, { name: 'STAShield' }],
+  },
+  {
     title: 'Voice Servers',
     subtitle: 'Runtime cho voice và music server',
     accent: 'slate',

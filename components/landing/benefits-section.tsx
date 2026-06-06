@@ -19,7 +19,7 @@ export function BenefitsSection() {
           {benefits.map((item) => (
             <article
               key={item.title}
-              className="rounded-[1.75rem] border border-white/10 bg-slate-950/70 p-6"
+              className="tech-card interactive-card rounded-lg border border-cyan-300/15 bg-slate-950/70 p-6"
             >
               <h3 className="text-xl font-semibold text-white">{item.title}</h3>
               <p className="mt-4 text-sm leading-7 text-slate-400">{item.description}</p>

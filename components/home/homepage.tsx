@@ -21,8 +21,8 @@ function getToneClasses(tone: Tone) {
   switch (tone) {
     case 'amber':
       return {
-        dot: 'bg-amber-400 shadow-[0_0_14px_rgba(251,191,36,0.9)]',
-        pill: 'border border-amber-300/20 bg-amber-300/10 text-amber-100',
+        dot: 'bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.75)]',
+        pill: 'border border-blue-300/20 bg-blue-300/10 text-blue-100',
       };
     case 'blue':
       return {
@@ -31,13 +31,13 @@ function getToneClasses(tone: Tone) {
       };
     case 'emerald':
       return {
-        dot: 'bg-emerald-400 shadow-[0_0_14px_rgba(74,222,128,0.9)]',
-        pill: 'border border-emerald-400/20 bg-emerald-400/10 text-emerald-100',
+        dot: 'bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.75)]',
+        pill: 'border border-cyan-300/20 bg-cyan-300/10 text-cyan-100',
       };
     case 'rose':
       return {
-        dot: 'bg-rose-300 shadow-[0_0_14px_rgba(253,164,175,0.9)]',
-        pill: 'border border-rose-300/20 bg-rose-300/10 text-rose-100',
+        dot: 'bg-slate-100 shadow-[0_0_14px_rgba(248,250,252,0.5)]',
+        pill: 'border border-white/15 bg-white/[0.07] text-white',
       };
     default:
       return {
@@ -50,12 +50,12 @@ function getToneClasses(tone: Tone) {
 function Header() {
   return (
     <header className="px-4 pt-6 sm:px-6 sm:pt-8">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 rounded-[1.75rem] border border-white/10 bg-slate-950/70 px-4 py-4 backdrop-blur sm:px-5 xl:grid xl:grid-cols-[auto_1fr_auto] xl:items-center">
+      <div className="mx-auto flex max-w-6xl flex-col gap-4 rounded-lg border border-cyan-300/15 bg-black/70 px-4 py-4 shadow-[0_22px_70px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:px-5 xl:grid xl:grid-cols-[auto_1fr_auto] xl:items-center">
         <Link
           href="/"
-          className="group flex items-center gap-3 rounded-[1.3rem] border border-white/10 bg-white/[0.04] px-3 py-3 transition hover:border-cyan-300/20 hover:bg-white/[0.07] sm:gap-4 sm:px-4"
+          className="group flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] px-3 py-3 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.06] sm:gap-4 sm:px-4"
         >
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/15 bg-white/5 p-2 shadow-[0_0_24px_rgba(34,211,238,0.15)] sm:h-16 sm:w-16">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-cyan-300/20 bg-black/60 p-2 shadow-[0_0_24px_rgba(34,211,238,0.12)] sm:h-16 sm:w-16">
             <img
               src="/picture/logoSTACloud.png"
               alt={homeConfig.logoAlt}
@@ -70,30 +70,30 @@ function Header() {
           </div>
         </Link>
 
-        <nav className="hidden items-center justify-center gap-6 text-sm text-slate-300 lg:flex xl:justify-self-center">
-          <a href="#products" className="transition hover:text-white">
+        <nav className="hidden items-center justify-center gap-1 rounded-lg border border-white/10 bg-white/[0.025] p-1 text-sm text-slate-300 lg:flex xl:justify-self-center">
+          <a href="#products" className="rounded-md px-3 py-2 transition hover:bg-white/[0.06] hover:text-white">
             Dịch vụ
           </a>
-          <Link href="/egg" className="transition hover:text-white">
+          <Link href="/egg" className="rounded-md px-3 py-2 transition hover:bg-white/[0.06] hover:text-white">
             Eggs
           </Link>
-          <a href="#infrastructure" className="transition hover:text-white">
+          <a href="#infrastructure" className="rounded-md px-3 py-2 transition hover:bg-white/[0.06] hover:text-white">
             Hạ tầng
           </a>
-          <a href="#locations" className="transition hover:text-white">
+          <a href="#locations" className="rounded-md px-3 py-2 transition hover:bg-white/[0.06] hover:text-white">
             Vị trí
           </a>
-          <a href="#faq" className="transition hover:text-white">
+          <a href="#faq" className="rounded-md px-3 py-2 transition hover:bg-white/[0.06] hover:text-white">
             Câu hỏi
           </a>
         </nav>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:justify-center xl:justify-self-end">
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap lg:justify-center xl:justify-self-end">
           <a
             href={homeConfig.panelUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-100 sm:w-auto"
           >
             Mở Portal
           </a>
@@ -101,7 +101,7 @@ function Header() {
             href={homeConfig.discordUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-cyan-300/30 hover:bg-cyan-300/10 sm:w-auto"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-blue-300/25 bg-blue-300/10 px-4 py-2.5 text-sm font-semibold text-blue-50 transition hover:border-blue-300/45 hover:bg-blue-300/15 sm:w-auto"
           >
             Discord
           </a>
@@ -109,7 +109,7 @@ function Header() {
             href={homeConfig.zaloUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-cyan-300/15 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15 sm:w-auto"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12] sm:w-auto"
           >
             Zalo
           </a>
@@ -117,7 +117,7 @@ function Header() {
             href={homeConfig.messengerUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-cyan-300/15 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15 sm:w-auto"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12] sm:w-auto"
           >
             Messenger
           </a>
@@ -155,7 +155,7 @@ function Hero() {
               href={homeConfig.panelUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-cyan-400 px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-100 sm:w-auto"
             >
               Mở Portal
             </a>
@@ -163,7 +163,7 @@ function Hero() {
               href={homeConfig.discordUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-indigo-300/20 bg-indigo-300/10 px-6 py-3.5 text-sm font-semibold text-indigo-100 transition hover:border-indigo-300/35 hover:bg-indigo-300/15 sm:w-auto"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-blue-300/25 bg-blue-300/10 px-6 py-3.5 text-sm font-semibold text-blue-50 transition hover:border-blue-300/45 hover:bg-blue-300/15 sm:w-auto"
             >
               Tạo ticket Discord
             </a>
@@ -197,9 +197,9 @@ function Hero() {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
-        {heroSignals.map((item, index) => (
+            {heroSignals.map((item, index) => (
               <Reveal key={item} delayMs={120 + index * 80}>
-                <div className="status-tile interactive-card rounded-[1.25rem] border border-white/10 bg-white/[0.03] px-4 py-4 text-sm leading-7 text-slate-300 backdrop-blur">
+                <div className="status-tile interactive-card rounded-lg border border-cyan-300/15 bg-white/[0.03] px-4 py-4 text-sm leading-7 text-slate-300 backdrop-blur">
                   {item}
                 </div>
               </Reveal>
@@ -209,7 +209,7 @@ function Hero() {
 
         <Reveal className="relative hero-orbit" delayMs={120}>
           <div className="absolute inset-0 rounded-lg border border-cyan-300/10 bg-gradient-to-br from-cyan-300/10 via-sky-950/20 to-transparent" />
-          <div className="status-panel panel-float relative rounded-[1.75rem] border border-white/10 bg-slate-950/80 p-4 shadow-2xl shadow-slate-950/50 backdrop-blur sm:rounded-[2rem] sm:p-6">
+          <div className="status-panel panel-float relative rounded-lg border border-cyan-300/15 bg-slate-950/80 p-4 shadow-2xl shadow-slate-950/50 backdrop-blur sm:p-6">
             <div className="flex flex-col gap-3 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100/80">
@@ -230,7 +230,7 @@ function Hero() {
 
                 return (
                   <Reveal key={item.label} delayMs={160 + index * 60}>
-                    <div className="status-tile rounded-[1.3rem] border border-white/10 bg-white/[0.03] p-4">
+                    <div className="status-tile rounded-lg border border-cyan-300/10 bg-white/[0.03] p-4">
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
@@ -251,7 +251,7 @@ function Hero() {
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
               {heroStats.map((item, index) => (
                 <Reveal key={item.label} delayMs={220 + index * 60}>
-                  <div className="status-tile tech-card interactive-card rounded-[1.25rem] border border-white/10 bg-white/[0.03] p-4 sm:rounded-[1.5rem] sm:p-5">
+                  <div className="status-tile tech-card interactive-card rounded-lg border border-cyan-300/10 bg-white/[0.03] p-4 sm:p-5">
                     <p className="text-2xl font-semibold text-white sm:text-3xl">{item.value}</p>
                     <p className="mt-2 text-xs leading-5 text-slate-400 sm:text-sm sm:leading-6">
                       {item.label}
@@ -267,7 +267,7 @@ function Hero() {
 
                 return (
                   <Reveal key={item.label} delayMs={320 + index * 50}>
-                    <div className="status-tile interactive-card flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="status-tile interactive-card flex flex-col gap-3 rounded-lg border border-cyan-300/10 bg-white/[0.03] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
                       <div className="flex min-w-0 items-center gap-3">
                         <span className={`h-2.5 w-2.5 rounded-full ${tone.dot}`} />
                         <div className="min-w-0">
@@ -294,7 +294,7 @@ function Hero() {
 function TesterAlert() {
   return (
     <section className="px-4 py-6 sm:px-6">
-      <div className="mx-auto max-w-6xl rounded-[1.5rem] border border-rose-300/20 bg-rose-300/[0.07] px-5 py-4 text-sm leading-7 text-rose-50 sm:px-6">
+      <div className="mx-auto max-w-6xl rounded-lg border border-blue-300/20 bg-blue-300/[0.06] px-5 py-4 text-sm leading-7 text-slate-100 sm:px-6">
         {homeConfig.testerAlertMessage}
       </div>
     </section>
@@ -320,14 +320,10 @@ function Products() {
           {products.map((product, index) => (
             <Reveal key={product.title} delayMs={index * 90}>
               <article
-                className={`interactive-card group relative overflow-hidden rounded-[1.5rem] border p-5 backdrop-blur sm:rounded-[1.9rem] sm:p-6 ${
-                  index === 0
-                    ? 'border-cyan-300/20 bg-cyan-300/[0.06]'
-                    : index === 1
-                      ? 'border-amber-300/20 bg-amber-300/[0.06]'
-                      : index === 2
-                        ? 'border-emerald-300/20 bg-emerald-300/[0.06]'
-                        : 'border-blue-300/20 bg-blue-300/[0.06]'
+                className={`interactive-card group relative overflow-hidden rounded-lg border p-5 backdrop-blur sm:p-6 ${
+                  index % 2 === 0
+                    ? 'border-cyan-300/20 bg-cyan-300/[0.045]'
+                    : 'border-blue-300/20 bg-blue-300/[0.045]'
                 }`}
               >
                 <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/10 to-transparent opacity-60" />
@@ -360,7 +356,7 @@ function Products() {
 function Infrastructure() {
   return (
     <section id="infrastructure" className="px-4 py-14 sm:px-6 sm:py-24">
-      <div className="mx-auto max-w-6xl rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-4 backdrop-blur sm:rounded-[2rem] sm:p-8">
+      <div className="status-panel mx-auto max-w-6xl rounded-lg border border-cyan-300/15 bg-slate-950/70 p-4 backdrop-blur sm:p-8">
         <Reveal className="max-w-3xl">
           <p className="section-eyebrow">Hạ Tầng</p>
           <h2 className="section-title">
@@ -375,8 +371,8 @@ function Infrastructure() {
         <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
           {features.map((feature, index) => (
             <Reveal key={feature.title} delayMs={index * 80}>
-              <article className="tech-card interactive-card rounded-[1.4rem] border border-white/10 bg-slate-950/70 p-5 sm:rounded-[1.75rem] sm:p-6">
-                <div className="mb-4 h-1.5 w-14 rounded-full bg-gradient-to-r from-cyan-300 via-sky-400 to-amber-300" />
+              <article className="tech-card interactive-card rounded-lg border border-cyan-300/15 bg-black/35 p-5 sm:p-6">
+                <div className="mb-4 h-1.5 w-14 rounded-full bg-gradient-to-r from-white via-cyan-300 to-blue-500" />
                 <h3 className="text-lg font-semibold text-white sm:text-xl">{feature.title}</h3>
                 <p className="mt-4 text-sm leading-7 text-slate-400">{feature.description}</p>
               </article>
@@ -404,14 +400,14 @@ function Locations() {
         <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-2 md:gap-6">
           {locations.map((location, index) => (
             <Reveal key={location.name} delayMs={index * 100}>
-              <article className="interactive-card rounded-[1.4rem] border border-white/10 bg-slate-950/75 p-5 shadow-[0_20px_80px_rgba(3,7,18,0.45)] sm:rounded-[1.75rem] sm:p-6">
+              <article className="interactive-card rounded-lg border border-cyan-300/15 bg-slate-950/75 p-5 shadow-[0_20px_80px_rgba(3,7,18,0.45)] sm:p-6">
                 <div className="flex flex-col gap-4">
                   <div className="flex min-w-0 items-start gap-4">
-                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg border border-cyan-300/15 bg-black/40 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
                       <img
                         src={location.flagSrc}
                         alt={`${location.name} flag`}
-                        className="h-full w-full rounded-xl object-cover"
+                        className="h-full w-full rounded-md object-cover"
                       />
                     </div>
                     <div className="min-w-0">
@@ -425,11 +421,11 @@ function Locations() {
                 </div>
 
                 <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-4">
-                  <div className="rounded-[1.35rem] border border-white/10 bg-white/[0.03] p-4">
+                  <div className="rounded-lg border border-cyan-300/10 bg-white/[0.03] p-4">
                     <p className="text-xs text-slate-500 sm:text-sm">Bandwidth</p>
-                    <p className="mt-2 text-2xl font-semibold text-amber-300">{location.speed}</p>
+                    <p className="mt-2 text-2xl font-semibold text-cyan-200">{location.speed}</p>
                   </div>
-                  <div className="rounded-[1.35rem] border border-white/10 bg-white/[0.03] p-4">
+                  <div className="rounded-lg border border-cyan-300/10 bg-white/[0.03] p-4">
                     <p className="text-xs text-slate-500 sm:text-sm">Uptime</p>
                     <p className="mt-2 text-2xl font-semibold text-white">{location.uptime}</p>
                   </div>
@@ -461,7 +457,7 @@ function Testimonials() {
         <div className="mt-8 grid gap-4 lg:mt-10 lg:grid-cols-3 lg:gap-6">
           {testimonials.map((item, index) => (
             <Reveal key={item.author} delayMs={index * 90}>
-              <article className="interactive-card rounded-[1.4rem] border border-white/10 bg-slate-950/70 p-5 sm:rounded-[1.75rem] sm:p-6">
+              <article className="interactive-card rounded-lg border border-cyan-300/15 bg-slate-950/70 p-5 sm:p-6">
                 <div className="mb-4 h-1.5 w-12 rounded-full bg-gradient-to-r from-cyan-300 to-transparent" />
                 <p className="text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
                   "{item.quote}"
@@ -482,7 +478,7 @@ function Testimonials() {
 function Faq() {
   return (
     <section id="faq" className="px-4 py-14 sm:px-6 sm:py-24">
-      <div className="mx-auto max-w-6xl rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-4 backdrop-blur sm:rounded-[2rem] sm:p-8">
+      <div className="status-panel mx-auto max-w-6xl rounded-lg border border-cyan-300/15 bg-slate-950/70 p-4 backdrop-blur sm:p-8">
         <Reveal className="max-w-3xl">
           <p className="section-eyebrow">Câu Hỏi</p>
           <h2 className="section-title">
@@ -497,7 +493,7 @@ function Faq() {
         <div className="mt-8 grid gap-3 sm:mt-10 sm:gap-4">
           {faqs.map((question, index) => (
             <Reveal key={question} delayMs={index * 50}>
-              <div className="interactive-card rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-4 text-sm leading-7 text-slate-200 sm:px-5 sm:text-base">
+              <div className="interactive-card rounded-lg border border-cyan-300/10 bg-black/30 px-4 py-4 text-sm leading-7 text-slate-200 sm:px-5 sm:text-base">
                 {question}
               </div>
             </Reveal>
@@ -515,9 +511,9 @@ function Footer() {
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <Link
             href="/"
-            className="group inline-flex items-center gap-3 rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-3 py-3 transition hover:border-cyan-300/20 hover:bg-white/[0.07]"
+            className="interactive-card group inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] px-3 py-3 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.06]"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/15 bg-white/5 p-2">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-cyan-300/20 bg-black/60 p-2">
               <img
                 src="/picture/logoSTACloud.png"
                 alt={homeConfig.logoAlt}
@@ -563,7 +559,7 @@ function Footer() {
             </Link>
           </div>
         </div>
-        <p className="mt-6 text-sm text-slate-500">© 2025-2026 STACloud</p>
+        <p className="mt-6 text-sm text-slate-500">© 2018 - 2026 STACloud. All rights reserved.</p>
       </div>
     </footer>
   );

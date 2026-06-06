@@ -22,13 +22,13 @@ export function LegalPage({
   return (
     <main className="min-h-screen px-4 pb-14 pt-6 sm:px-6 sm:pb-20 sm:pt-8">
       <div className="mx-auto max-w-5xl">
-        <Reveal className="rounded-[1.75rem] border border-white/10 bg-slate-950/75 p-5 backdrop-blur sm:p-6">
+        <Reveal className="rounded-lg border border-cyan-300/15 bg-black/70 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <Link
               href="/"
-              className="inline-flex items-center gap-3 rounded-[1.2rem] border border-white/10 bg-white/[0.04] px-3 py-3 transition hover:border-cyan-300/20 hover:bg-white/[0.07]"
+              className="interactive-card inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] px-3 py-3 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.06]"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-300/15 bg-white/5 p-2">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-cyan-300/20 bg-black/60 p-2">
                 <img
                   src="/picture/logoSTACloud.png"
                   alt="STACloud"
@@ -41,12 +41,12 @@ export function LegalPage({
               </div>
             </Link>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
               <a
                 href={homeConfig.panelUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
+                className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-100 sm:w-auto"
               >
                 Mở Portal
               </a>
@@ -54,7 +54,7 @@ export function LegalPage({
                 href={homeConfig.discordUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-white transition hover:border-white/25 hover:bg-white/10"
+                className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-blue-300/25 bg-blue-300/10 px-4 py-2.5 text-sm font-semibold text-blue-50 transition hover:border-blue-300/45 hover:bg-blue-300/15 sm:w-auto"
               >
                 Discord
               </a>
@@ -62,7 +62,7 @@ export function LegalPage({
                 href={homeConfig.zaloUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15"
+                className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12] sm:w-auto"
               >
                 Zalo
               </a>
@@ -70,7 +70,7 @@ export function LegalPage({
                 href={homeConfig.messengerUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/15"
+                className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12] sm:w-auto"
               >
                 Messenger
               </a>
@@ -97,7 +97,7 @@ export function LegalPage({
         <section className="mt-10 grid gap-5">
           {sections.map((section, index) => (
             <Reveal key={section.title} delayMs={index * 50}>
-              <article className="status-panel rounded-[1.6rem] border border-white/10 bg-slate-950/70 p-6 backdrop-blur">
+              <article className="status-panel rounded-lg border border-cyan-300/15 bg-slate-950/70 p-6 backdrop-blur">
                 <h2 className="text-xl font-semibold text-white">{section.title}</h2>
 
                 {section.paragraphs?.map((paragraph) => (
@@ -120,7 +120,7 @@ export function LegalPage({
                 {section.subsections?.map((subsection) => (
                   <div
                     key={subsection.title}
-                    className="mt-6 rounded-[1.25rem] border border-white/10 bg-white/[0.03] p-5"
+                    className="mt-6 rounded-lg border border-cyan-300/10 bg-white/[0.025] p-5"
                   >
                     <h3 className="text-base font-semibold text-white sm:text-lg">{subsection.title}</h3>
 

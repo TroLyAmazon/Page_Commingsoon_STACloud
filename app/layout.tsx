@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'STACloud | Bảng Giá Và Dịch Vụ',
     description:
-      'Xem giá, cấu hình, slot, OpenClaw Beta, upsize và lưu ý sử dụng của các gói TESTER, DEV SG, MC SG, PROXY HK, STA-XEON-01, STA-AMD-EPYC-01 và STA-AMD-EPYC-02 tại STACloud.',
+      'Xem giá, cấu hình, slot, OpenClaw Beta, upsize và lưu ý sử dụng của các gói TESTER, DEV SG, MC SG, PROXY HK, STA-XEON-01, STA-XEON-02, STA-AMD-EPYC-01 và STA-AMD-EPYC-02 tại STACloud.',
     url: SITE_URL,
     siteName: 'STACloud',
     type: 'website',

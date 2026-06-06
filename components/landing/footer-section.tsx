@@ -4,7 +4,7 @@ import { siteConfig } from './content';
 export function FooterSection() {
   return (
     <footer className="px-4 pb-10 pt-4 sm:px-6">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 rounded-[2rem] border border-white/10 bg-slate-950/70 px-6 py-6 text-sm text-slate-400 backdrop-blur md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-5 rounded-lg border border-cyan-300/15 bg-black/65 px-6 py-6 text-sm text-slate-400 shadow-[0_22px_70px_rgba(0,0,0,0.28)] backdrop-blur-xl md:flex-row md:items-center md:justify-between">
         <div>
           <p className="font-semibold text-white">{siteConfig.name}</p>
           <p className="mt-1">{siteConfig.copyrightText}</p>

@@ -36,10 +36,10 @@ export function OpenClawSpotlight({ discordUrl, zaloUrl, messengerUrl }: OpenCla
             </div>
           </div>
 
-          <div className="relative rounded-[1.8rem] border border-white/10 bg-slate-950/70 p-5 sm:p-6">
+          <div className="status-panel relative rounded-lg border border-cyan-300/15 bg-slate-950/70 p-5 sm:p-6">
             <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/60 to-transparent" />
             <div className="space-y-4">
-              <div className="rounded-2xl border border-cyan-300/15 bg-cyan-300/[0.06] p-4">
+              <div className="rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100/80">
                   Truy cập
                 </p>
@@ -48,8 +48,8 @@ export function OpenClawSpotlight({ discordUrl, zaloUrl, messengerUrl }: OpenCla
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-amber-300/20 bg-amber-300/[0.07] p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-100/80">
+              <div className="rounded-lg border border-blue-300/20 bg-blue-300/[0.06] p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-100/80">
                   Lưu ý location
                 </p>
                 <p className="mt-2 text-sm leading-6 text-slate-200">
@@ -63,7 +63,7 @@ export function OpenClawSpotlight({ discordUrl, zaloUrl, messengerUrl }: OpenCla
                   href={discordUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-12 items-center justify-center rounded-2xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+                  className="inline-flex min-h-12 items-center justify-center rounded-lg bg-blue-400 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-300 hover:text-slate-950"
                 >
                   Mở ticket Discord
                 </a>

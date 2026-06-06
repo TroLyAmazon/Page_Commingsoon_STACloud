@@ -3,11 +3,11 @@ import { Reveal } from '@/components/ui/reveal';
 
 function getPlanBadgeClasses(status: string) {
   if (status === 'paused') {
-    return 'border border-amber-300/20 bg-amber-300/10 text-amber-200';
+    return 'border border-blue-300/20 bg-blue-300/10 text-blue-100';
   }
 
   if (status === 'warning') {
-    return 'border border-rose-300/20 bg-rose-300/10 text-rose-100';
+    return 'border border-white/15 bg-white/[0.07] text-white';
   }
 
   if (status === 'beta') {
@@ -15,19 +15,19 @@ function getPlanBadgeClasses(status: string) {
   }
 
   if (status === 'preorder') {
-    return 'border border-violet-300/20 bg-violet-300/10 text-violet-100';
+    return 'border border-sky-300/20 bg-sky-300/10 text-sky-100';
   }
 
-  return 'border border-emerald-400/20 bg-emerald-400/10 text-emerald-300';
+  return 'border border-cyan-300/20 bg-cyan-300/10 text-cyan-100';
 }
 
 function getPlanDotClasses(status: string) {
   if (status === 'paused') {
-    return 'bg-amber-400 shadow-[0_0_14px_rgba(251,191,36,0.9)]';
+    return 'bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.75)]';
   }
 
   if (status === 'warning') {
-    return 'bg-rose-300 shadow-[0_0_14px_rgba(253,164,175,0.9)]';
+    return 'bg-white shadow-[0_0_14px_rgba(248,250,252,0.5)]';
   }
 
   if (status === 'beta') {
@@ -35,10 +35,10 @@ function getPlanDotClasses(status: string) {
   }
 
   if (status === 'preorder') {
-    return 'bg-violet-300 shadow-[0_0_14px_rgba(196,181,253,0.9)]';
+    return 'bg-sky-300 shadow-[0_0_14px_rgba(125,211,252,0.75)]';
   }
 
-  return 'bg-emerald-400 shadow-[0_0_14px_rgba(74,222,128,0.9)]';
+  return 'bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.75)]';
 }
 
 export function HeroSection() {
@@ -67,7 +67,7 @@ export function HeroSection() {
                 href={siteConfig.panelUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-cyan-400 px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-100 sm:w-auto"
               >
                 Mở Portal
               </a>
@@ -75,7 +75,7 @@ export function HeroSection() {
                 href={siteConfig.discordUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10 sm:w-auto"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-blue-300/25 bg-blue-300/10 px-6 py-3.5 text-sm font-semibold text-blue-50 transition hover:border-blue-300/45 hover:bg-blue-300/15 sm:w-auto"
               >
                 Tạo ticket Discord
               </a>
@@ -104,7 +104,7 @@ export function HeroSection() {
             <div className="grid gap-3 sm:grid-cols-2">
               {servicePlans.map((plan, index) => (
                 <Reveal key={plan.name} delayMs={120 + index * 60}>
-                  <div className="status-tile interactive-card rounded-[1.35rem] border border-white/10 bg-white/[0.04] p-4">
+                  <div className="status-tile interactive-card rounded-lg border border-cyan-300/10 bg-white/[0.04] p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
@@ -127,7 +127,7 @@ export function HeroSection() {
 
           <Reveal className="relative hero-orbit" delayMs={120}>
             <div className="absolute inset-0 rounded-lg border border-cyan-300/10 bg-gradient-to-br from-cyan-300/10 via-sky-950/20 to-transparent" />
-            <div className="status-panel panel-float relative rounded-[1.75rem] border border-white/10 bg-slate-950/75 p-4 shadow-2xl shadow-slate-950/40 backdrop-blur sm:rounded-[2rem] sm:p-6">
+            <div className="status-panel panel-float relative rounded-lg border border-cyan-300/15 bg-slate-950/75 p-4 shadow-2xl shadow-slate-950/40 backdrop-blur sm:p-6">
               <div className="flex flex-col gap-3 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-100/80">
@@ -145,7 +145,7 @@ export function HeroSection() {
               <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 {heroStats.map((item, index) => (
                   <Reveal key={item.label} delayMs={180 + index * 60}>
-                    <div className="status-tile rounded-[1.25rem] border border-white/10 bg-white/[0.03] p-4">
+                    <div className="status-tile rounded-lg border border-cyan-300/10 bg-white/[0.03] p-4">
                       <p className="text-2xl font-semibold text-white sm:text-3xl">{item.value}</p>
                       <p className="mt-2 text-xs leading-5 text-slate-400 sm:text-sm">
                         {item.label}
@@ -158,7 +158,7 @@ export function HeroSection() {
               <div className="mt-5 space-y-3">
                 {servicePlans.map((plan, index) => (
                   <Reveal key={plan.name} delayMs={320 + index * 50}>
-                    <div className="status-tile interactive-card flex flex-col gap-3 rounded-[1.35rem] border border-white/10 bg-white/[0.03] px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="status-tile interactive-card flex flex-col gap-3 rounded-lg border border-cyan-300/10 bg-white/[0.03] px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-3">
                           <span className={`h-2.5 w-2.5 rounded-full ${getPlanDotClasses(plan.status)}`} />
@@ -185,7 +185,7 @@ export function HeroSection() {
                 ))}
               </div>
 
-              <div className="mt-5 rounded-[1.35rem] border border-rose-300/15 bg-rose-300/5 p-4 text-sm leading-7 text-rose-50">
+              <div className="mt-5 rounded-lg border border-blue-300/15 bg-blue-300/5 p-4 text-sm leading-7 text-slate-100">
                 Theo dõi tài nguyên còn lại tại kênh {siteConfig.statusChannel}. {siteConfig.testerAlertMessage}
               </div>
             </div>

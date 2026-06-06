@@ -4,7 +4,7 @@ export function GuideSection() {
   return (
     <section className="px-4 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur sm:p-8">
+        <div className="status-panel rounded-lg border border-cyan-300/15 bg-slate-950/70 p-6 backdrop-blur sm:p-8">
           <p className="section-eyebrow">Quick Start</p>
           <h2 className="section-title">3 bước để chọn gói và đăng ký nhanh</h2>
           <p className="section-copy">
@@ -15,9 +15,9 @@ export function GuideSection() {
             {quickSteps.map((item) => (
               <div
                 key={item.step}
-                className="flex gap-4 rounded-2xl border border-white/10 bg-slate-950/50 p-4"
+                className="status-tile flex gap-4 rounded-lg border border-cyan-300/10 bg-black/30 p-4"
               >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-cyan-400 font-semibold text-slate-950">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white font-semibold text-slate-950">
                   {item.step}
                 </div>
                 <div>
@@ -29,19 +29,19 @@ export function GuideSection() {
           </div>
         </div>
 
-        <div className="space-y-6 rounded-[2rem] border border-white/10 bg-slate-950/75 p-6 backdrop-blur sm:p-8">
+        <div className="status-panel space-y-6 rounded-lg border border-cyan-300/15 bg-slate-950/75 p-6 backdrop-blur sm:p-8">
           <div className="grid gap-4">
             {notes.map((note) => (
               <div
                 key={note}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-7 text-slate-300"
+                className="rounded-lg border border-cyan-300/10 bg-white/[0.025] p-4 text-sm leading-7 text-slate-300"
               >
                 {note}
               </div>
             ))}
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+          <div className="rounded-lg border border-cyan-300/10 bg-white/[0.025] p-5">
             <p className="text-sm text-slate-400">
               Kênh hỗ trợ chính:
               <span className="ml-2 font-semibold text-white">Discord ticket</span>
@@ -55,7 +55,7 @@ export function GuideSection() {
                 href={siteConfig.panelUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+                className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-100"
               >
                 Mở Portal
               </a>
@@ -63,7 +63,7 @@ export function GuideSection() {
                 href={siteConfig.discordUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                className="inline-flex items-center justify-center rounded-lg border border-blue-300/25 bg-blue-300/10 px-5 py-3 text-sm font-semibold text-blue-50 transition hover:border-blue-300/45 hover:bg-blue-300/15"
               >
                 Tạo ticket Discord
               </a>

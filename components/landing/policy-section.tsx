@@ -3,7 +3,7 @@ import { policyGroups } from './content';
 export function PolicySection() {
   return (
     <section className="px-4 py-16 sm:px-6 sm:py-24">
-      <div className="mx-auto max-w-6xl rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur sm:p-8">
+      <div className="status-panel mx-auto max-w-6xl rounded-lg border border-cyan-300/15 bg-slate-950/70 p-6 backdrop-blur sm:p-8">
         <div className="max-w-3xl">
           <p className="section-eyebrow">Important Rules</p>
           <h2 className="section-title">Chính sách mới bạn cần biết trước khi đăng ký</h2>
@@ -17,7 +17,7 @@ export function PolicySection() {
           {policyGroups.map((group) => (
             <article
               key={group.title}
-              className="rounded-[1.75rem] border border-white/10 bg-slate-950/70 p-6"
+              className="interactive-card rounded-lg border border-cyan-300/15 bg-black/35 p-6"
             >
               <h3 className="text-xl font-semibold text-white">{group.title}</h3>
               <ul className="mt-5 space-y-4">

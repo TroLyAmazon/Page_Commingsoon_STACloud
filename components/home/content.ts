@@ -14,9 +14,9 @@ export const homeConfig = {
 };
 
 export const heroStats = [
-  { value: '8', label: 'Gói / dịch vụ đang công bố' },
+  { value: '9', label: 'Gói / dịch vụ đang công bố' },
   { value: '24 + 10', label: 'Slots DEV / MC SG' },
-  { value: '66k+', label: 'VPS OVH SG / tháng' },
+  { value: '146k+', label: 'VPS OVH SG / tháng' },
   { value: '0$', label: 'OpenClaw / TESTER' },
 ] as const;
 
@@ -31,8 +31,8 @@ export const heroStatusStrip = [
   { label: 'DEV / MC SG', detail: 'AMD Milan', value: '5.000đ / 8.000đ', tone: 'emerald' },
   { label: 'OPENCLAW', detail: 'Beta miễn phí', value: 'Không cần domain riêng', tone: 'blue' },
   { label: 'PROXY HK', detail: 'Hết slot', value: 'Shield 20k / 1GB', tone: 'amber' },
-  { label: 'STA-XEON-01', detail: 'OVH Singapore', value: '66.000đ / tháng', tone: 'cyan' },
-  { label: 'STA-AMD-EPYC-01 / STA-AMD-EPYC-02', detail: 'AMD EPYC', value: '129k / 249k', tone: 'blue' },
+  { label: 'STA-XEON-01 / STA-XEON-02', detail: 'OVH Singapore', value: '146k / 209k', tone: 'cyan' },
+  { label: 'STA-AMD-EPYC-01 / STA-AMD-EPYC-02', detail: 'AMD EPYC', value: '249k / 333k', tone: 'blue' },
 ] as const;
 
 export const dashboardEntries = [
@@ -56,7 +56,7 @@ export const dashboardEntries = [
   },
   {
     label: 'Routing',
-    value: 'VN + SG + HK',
+    value: 'VN + SG + HK + TH',
     meta: 'Khu vực triển khai',
     tone: 'blue',
   },
@@ -75,7 +75,7 @@ export const products = [
     eyebrow: 'Hạ Tầng',
     description:
       'Có thêm Intel Xeon tiết kiệm chi phí và AMD EPYC hiệu năng cao cho bot, web app, game server, test lab hoặc workload cần nhiều RAM.',
-    chips: ['STA-XEON-01', 'STA-AMD-EPYC-01', 'STA-AMD-EPYC-02'],
+    chips: ['STA-XEON-01', 'STA-XEON-02', 'STA-AMD-EPYC-01', 'STA-AMD-EPYC-02'],
   },
   {
     title: 'Gói Cộng Đồng',
@@ -138,18 +138,26 @@ export const locations = [
   {
     name: 'Hong Kong',
     flagSrc: '/flags/hong-kong.svg',
-    badge: 'Proxy HK',
-    speed: '5 Gbps',
+    badge: 'Proxy HK • Only Paid',
+    speed: '30 Gbps',
     uptime: 'Paused Slot',
     availability: 'Proxy Paused',
   },
   {
+    name: 'Thailand',
+    flagSrc: '/flags/thailand.svg',
+    badge: 'Proxy Thailand',
+    speed: '30 Gbps',
+    uptime: '99.99% Uptime',
+    availability: 'Free / Paid',
+  },
+  {
     name: 'Việt Nam',
     flagSrc: '/flags/vietnam.svg',
-    badge: 'OpenClaw Recommended',
-    speed: '10 Gbps',
+    badge: 'Only Paid',
+    speed: '1 Gbps',
     uptime: '99.99% Uptime',
-    availability: 'OpenClaw / Paid',
+    availability: 'Only Paid',
   },
 ] as const;
 
@@ -180,7 +188,7 @@ export const faqs = [
   'Phụ phí upsize của DEV SG và MC SG hiện là bao nhiêu?',
   'Gói TESTER có những rủi ro gì cần lưu ý?',
   'PROXY HK hiện còn mở hay đã tạm ngưng?',
-  'STA-XEON-01, STA-AMD-EPYC-01 và STA-AMD-EPYC-02 cần đặt trước bao lâu?',
+  'STA-XEON-01, STA-XEON-02, STA-AMD-EPYC-01 và STA-AMD-EPYC-02 cần đặt trước bao lâu?',
   'Tôi kiểm tra tài nguyên còn lại ở đâu?',
   'Với OpenClaw nên chọn Singapore, Việt Nam hay Hong Kong?',
   'Kênh Discord nào là nơi hỗ trợ nhanh nhất hiện tại?',
