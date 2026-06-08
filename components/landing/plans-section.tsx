@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { servicePlans } from './content';
+import { Section3DAccent } from '@/components/visual/section-3d-accent';
 
 type ServicePlan = (typeof servicePlans)[number];
 type PlanFilter = 'all' | 'free' | 'minecraft' | 'vps' | 'proxy' | 'openclaw' | 'available' | 'paused';
@@ -178,15 +179,18 @@ export function PlansSection() {
   return (
     <section id="plans" className="px-4 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="max-w-3xl">
-          <p className="section-eyebrow">Plans</p>
-          <h2 className="section-title">
-            So sánh gói nhanh hơn bằng bộ lọc, bảng scan và card chi tiết
-          </h2>
-          <p className="section-copy">
-            Người dùng có thể lọc theo Free, Minecraft, VPS, Proxy, OpenClaw hoặc trạng thái slot
-            trước khi tạo ticket đăng ký.
-          </p>
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
+          <div className="max-w-3xl">
+            <p className="section-eyebrow">Plans</p>
+            <h2 className="section-title">
+              So sánh gói nhanh hơn bằng bộ lọc, bảng scan và card chi tiết
+            </h2>
+            <p className="section-copy">
+              Người dùng có thể lọc theo Free, Minecraft, VPS, Proxy, OpenClaw hoặc trạng thái slot
+              trước khi tạo ticket đăng ký.
+            </p>
+          </div>
+          <Section3DAccent variant="pricing" size="compact" />
         </div>
 
         <PlanFilters activeFilter={activeFilter} onFilterChange={setActiveFilter} />
@@ -248,6 +252,9 @@ export function PlansSection() {
               className={`status-panel group relative overflow-hidden rounded-lg border p-6 shadow-[0_24px_80px_rgba(2,6,23,0.28)] transition hover:-translate-y-1 hover:border-cyan-300/25 ${getPlanCardClasses(plan.status)}`}
             >
               <div className={`absolute inset-x-0 top-0 h-24 bg-gradient-to-br ${plan.accent} opacity-45 transition group-hover:opacity-70`} />
+              <span className="card-3d-badge card-3d-badge--plan" aria-hidden="true">
+                <span />
+              </span>
               <div className="relative space-y-6">
                 <div className="flex items-start justify-between gap-4">
                   <div>

@@ -13,7 +13,7 @@ const VISIBILITY_FALLBACK_MS = 1400;
 
 export function Reveal({ children, className = '', delayMs = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const node = ref.current;

@@ -1,5 +1,6 @@
 ﻿import { heroStats, servicePlans, siteConfig } from './content';
 import { Reveal } from '@/components/ui/reveal';
+import { ServerCloudScene } from '@/components/visual/server-cloud-scene';
 
 function getPlanBadgeClasses(status: string) {
   if (status === 'paused') {
@@ -21,41 +22,21 @@ function getPlanBadgeClasses(status: string) {
   return 'border border-cyan-300/20 bg-cyan-300/10 text-cyan-100';
 }
 
-function getPlanDotClasses(status: string) {
-  if (status === 'paused') {
-    return 'bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.75)]';
-  }
-
-  if (status === 'warning') {
-    return 'bg-white shadow-[0_0_14px_rgba(248,250,252,0.5)]';
-  }
-
-  if (status === 'beta') {
-    return 'bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.9)]';
-  }
-
-  if (status === 'preorder') {
-    return 'bg-sky-300 shadow-[0_0_14px_rgba(125,211,252,0.75)]';
-  }
-
-  return 'bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.75)]';
-}
-
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden px-4 pb-12 pt-6 sm:px-6 sm:pb-20 sm:pt-8">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-          <Reveal className="space-y-8" delayMs={40}>
-            <div className="inline-flex items-center gap-3 rounded-full border border-cyan-300/15 bg-cyan-300/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-100 sm:text-xs sm:tracking-[0.28em]">
+          <Reveal className="hero-copy-block space-y-8 sm:w-auto" delayMs={40}>
+            <div className="inline-flex items-center gap-3 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur sm:text-xs sm:tracking-[0.28em]">
               Bảng Giá Dịch Vụ
             </div>
 
-            <div className="space-y-5">
-              <h1 className="max-w-3xl text-3xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+            <div className="max-w-[20rem] space-y-5 sm:max-w-none">
+              <h1 className="max-w-[calc(100vw-2rem)] break-words text-2xl font-semibold leading-tight text-slate-950 sm:max-w-3xl sm:text-5xl lg:text-6xl">
                 Xem giá, slot, upsize và cảnh báo của từng gói trong một màn hình.
               </h1>
-              <p className="max-w-2xl text-sm leading-7 text-slate-300 sm:text-lg sm:leading-8">
+              <p className="max-w-2xl text-sm leading-7 text-sky-100/80 sm:text-lg sm:leading-8">
                 Trang này tổng hợp đầy đủ thông tin bạn cần trước khi đăng ký: gói nào đang mở,
                 gói nào tạm ngưng, mức giá hiện tại, tùy chọn nâng cấp và lưu ý quan trọng về dữ
                 liệu.
@@ -67,7 +48,7 @@ export function HeroSection() {
                 href={siteConfig.panelUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-100 sm:w-auto"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-sky-600 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_16px_38px_rgba(2,132,199,0.26)] transition hover:bg-sky-500 sm:w-auto"
               >
                 Mở Portal
               </a>
@@ -75,30 +56,44 @@ export function HeroSection() {
                 href={siteConfig.discordUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-blue-300/25 bg-blue-300/10 px-6 py-3.5 text-sm font-semibold text-blue-50 transition hover:border-blue-300/45 hover:bg-blue-300/15 sm:w-auto"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-sky-300/25 bg-sky-300/10 px-6 py-3.5 text-sm font-semibold text-sky-100 transition hover:border-sky-300/45 hover:bg-sky-300/15 sm:w-auto"
               >
                 Tạo ticket Discord
               </a>
             </div>
 
-            <div className="flex flex-col gap-3 rounded-lg border border-cyan-300/15 bg-slate-950/60 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100/80">
-                  Group Chat
-                </p>
-                <p className="mt-1 text-sm text-slate-400">Messenger/Zalo cho trao đổi cộng đồng.</p>
+            <div className="support-spotlight rounded-lg px-4 py-4">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100/80">
+                    Group Chat Cộng Đồng
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-slate-200">
+                    Hỏi nhanh qua Messenger/Zalo trước khi tạo ticket hoặc đăng ký gói.
+                  </p>
+                </div>
+                <div className="grid gap-2 sm:grid-cols-2">
+                  <a
+                    href={siteConfig.messengerUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center justify-center rounded-lg bg-white px-4 text-sm font-semibold text-sky-950 transition hover:bg-sky-100"
+                  >
+                    Messenger
+                  </a>
+                  <a
+                    href={siteConfig.zaloUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center justify-center rounded-lg border border-white/20 bg-white/[0.08] px-4 text-sm font-semibold text-white transition hover:bg-white/[0.14]"
+                  >
+                    Zalo
+                  </a>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-3 text-sm font-semibold">
-                <a href={siteConfig.messengerUrl} target="_blank" rel="noopener noreferrer" className="text-cyan-100 transition hover:text-white">
-                  Messenger
-                </a>
-                <a href={siteConfig.zaloUrl} target="_blank" rel="noopener noreferrer" className="text-cyan-100 transition hover:text-white">
-                  Zalo
-                </a>
-                <a href="#plans" className="text-slate-300 transition hover:text-white">
-                  Xem bảng giá
-                </a>
-              </div>
+              <a href="#plans" className="mt-3 inline-flex text-sm font-semibold text-cyan-100 transition hover:text-white">
+                Xem bảng giá
+              </a>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
@@ -125,69 +120,15 @@ export function HeroSection() {
             </div>
           </Reveal>
 
-          <Reveal className="relative hero-orbit" delayMs={120}>
-            <div className="absolute inset-0 rounded-lg border border-cyan-300/10 bg-gradient-to-br from-cyan-300/10 via-sky-950/20 to-transparent" />
-            <div className="status-panel panel-float relative rounded-lg border border-cyan-300/15 bg-slate-950/75 p-4 shadow-2xl shadow-slate-950/40 backdrop-blur sm:p-6">
-              <div className="flex flex-col gap-3 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-100/80">
-                    Tổng quan gói dịch vụ
-                  </p>
-                  <p className="mt-1 text-sm text-slate-400">
-                    Theo dõi nhanh portal, slot còn lại, giá hiện tại và các cảnh báo quan trọng.
-                  </p>
+          <Reveal className="relative min-h-[380px] sm:min-h-[430px] lg:min-h-[540px]" delayMs={120}>
+            <ServerCloudScene compact />
+            <div className="pointer-events-none static mt-3 grid gap-3 sm:absolute sm:inset-x-0 sm:bottom-2 sm:mt-0 sm:grid-cols-2">
+              {heroStats.map((item) => (
+                <div key={item.label} className="cloud-stat rounded-lg px-4 py-3">
+                  <p className="text-2xl font-semibold text-slate-950">{item.value}</p>
+                  <p className="mt-1 text-xs leading-5 text-slate-300">{item.label}</p>
                 </div>
-                <span className="w-fit rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100">
-                  Live
-                </span>
-              </div>
-
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-                {heroStats.map((item, index) => (
-                  <Reveal key={item.label} delayMs={180 + index * 60}>
-                    <div className="status-tile rounded-lg border border-cyan-300/10 bg-white/[0.03] p-4">
-                      <p className="text-2xl font-semibold text-white sm:text-3xl">{item.value}</p>
-                      <p className="mt-2 text-xs leading-5 text-slate-400 sm:text-sm">
-                        {item.label}
-                      </p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-
-              <div className="mt-5 space-y-3">
-                {servicePlans.map((plan, index) => (
-                  <Reveal key={plan.name} delayMs={320 + index * 50}>
-                    <div className="status-tile interactive-card flex flex-col gap-3 rounded-lg border border-cyan-300/10 bg-white/[0.03] px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-                      <div className="min-w-0">
-                        <div className="flex flex-wrap items-center gap-3">
-                          <span className={`h-2.5 w-2.5 rounded-full ${getPlanDotClasses(plan.status)}`} />
-                          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white">
-                            {plan.name}
-                          </p>
-                          <span className="rounded-full border border-white/10 bg-slate-900/80 px-3 py-1 text-[11px] font-semibold text-slate-200">
-                            {plan.highlight}
-                          </span>
-                        </div>
-                        <p className="mt-2 text-sm leading-6 text-slate-400">{plan.description}</p>
-                      </div>
-
-                      <div className="flex shrink-0 flex-col gap-2 sm:items-end">
-                        <p className="text-sm font-semibold text-cyan-100">{plan.price}</p>
-                        <span
-                          className={`w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] ${getPlanBadgeClasses(plan.status)}`}
-                        >
-                          {plan.statusLabel}
-                        </span>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-
-              <div className="mt-5 rounded-lg border border-blue-300/15 bg-blue-300/5 p-4 text-sm leading-7 text-slate-100">
-                Theo dõi tài nguyên còn lại tại kênh {siteConfig.statusChannel}. {siteConfig.testerAlertMessage}
-              </div>
+              ))}
             </div>
           </Reveal>
         </div>

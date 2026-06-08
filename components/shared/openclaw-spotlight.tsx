@@ -4,6 +4,8 @@
   messengerUrl: string;
 };
 
+import { Section3DAccent } from '@/components/visual/section-3d-accent';
+
 const openClawHighlights = ['Free Beta', 'Không cần domain riêng', 'Khuyến nghị Singapore / Việt Nam'] as const;
 
 export function OpenClawSpotlight({ discordUrl, zaloUrl, messengerUrl }: OpenClawSpotlightProps) {
@@ -38,6 +40,7 @@ export function OpenClawSpotlight({ discordUrl, zaloUrl, messengerUrl }: OpenCla
 
           <div className="status-panel relative rounded-lg border border-cyan-300/15 bg-slate-950/70 p-5 sm:p-6">
             <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/60 to-transparent" />
+            <Section3DAccent variant="community" size="compact" className="mb-5" />
             <div className="space-y-4">
               <div className="rounded-lg border border-cyan-300/15 bg-cyan-300/[0.06] p-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100/80">

@@ -4,8 +4,11 @@ import { homeConfig } from '@/components/home/content';
 export function SiteFooter() {
   return (
     <footer className="px-4 pb-10 pt-6 sm:px-6">
-      <div className="mx-auto grid max-w-6xl gap-6 rounded-lg border border-cyan-300/15 bg-black/65 px-5 py-6 shadow-[0_22px_70px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-6 sm:py-8 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] lg:gap-8">
-        <div>
+      <div className="relative mx-auto grid max-w-6xl gap-6 overflow-hidden rounded-lg border border-cyan-300/15 bg-black/65 px-5 py-6 shadow-[0_22px_70px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-6 sm:py-8 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] lg:gap-8">
+        <span className="card-3d-badge card-3d-badge--footer" aria-hidden="true">
+          <span />
+        </span>
+        <div className="relative">
           <Link
             href="/"
             className="interactive-card group inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] px-3 py-3 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.06] sm:gap-4 sm:px-4"

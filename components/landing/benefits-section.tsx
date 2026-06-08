@@ -1,18 +1,22 @@
 import { benefits } from './content';
+import { Section3DAccent } from '@/components/visual/section-3d-accent';
 
 export function BenefitsSection() {
   return (
     <section className="px-4 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="max-w-2xl">
-          <p className="section-eyebrow">Why STACloud</p>
-          <h2 className="section-title">
-            Không chỉ có slot, mà còn có giá, cấu hình và chính sách rõ ràng
-          </h2>
-          <p className="section-copy">
-            Mọi thông tin quan trọng đều được hiển thị ngay trên trang để bạn biết mình nên chọn gói
-            nào và cần lưu ý điều gì trước khi đăng ký.
-          </p>
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
+          <div className="max-w-2xl">
+            <p className="section-eyebrow">Why STACloud</p>
+            <h2 className="section-title">
+              Không chỉ có slot, mà còn có giá, cấu hình và chính sách rõ ràng
+            </h2>
+            <p className="section-copy">
+              Mọi thông tin quan trọng đều được hiển thị ngay trên trang để bạn biết mình nên chọn gói
+              nào và cần lưu ý điều gì trước khi đăng ký.
+            </p>
+          </div>
+          <Section3DAccent variant="service" size="compact" />
         </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -21,6 +25,9 @@ export function BenefitsSection() {
               key={item.title}
               className="tech-card interactive-card rounded-lg border border-cyan-300/15 bg-slate-950/70 p-6"
             >
+              <span className="card-3d-badge card-3d-badge--network" aria-hidden="true">
+                <span />
+              </span>
               <h3 className="text-xl font-semibold text-white">{item.title}</h3>
               <p className="mt-4 text-sm leading-7 text-slate-400">{item.description}</p>
             </article>

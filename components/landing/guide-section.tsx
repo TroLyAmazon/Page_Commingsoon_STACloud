@@ -1,5 +1,7 @@
 ﻿import { notes, quickSteps, siteConfig } from './content';
 
+import { Section3DAccent } from '@/components/visual/section-3d-accent';
+
 export function GuideSection() {
   return (
     <section className="px-4 py-16 sm:px-6 sm:py-24">
@@ -15,8 +17,11 @@ export function GuideSection() {
             {quickSteps.map((item) => (
               <div
                 key={item.step}
-                className="status-tile flex gap-4 rounded-lg border border-cyan-300/10 bg-black/30 p-4"
+                className="status-tile relative flex gap-4 rounded-lg border border-cyan-300/10 bg-black/30 p-4"
               >
+                <span className="card-3d-badge card-3d-badge--step" aria-hidden="true">
+                  <span />
+                </span>
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white font-semibold text-slate-950">
                   {item.step}
                 </div>
@@ -30,6 +35,7 @@ export function GuideSection() {
         </div>
 
         <div className="status-panel space-y-6 rounded-lg border border-cyan-300/15 bg-slate-950/75 p-6 backdrop-blur sm:p-8">
+          <Section3DAccent variant="workflow" size="compact" />
           <div className="grid gap-4">
             {notes.map((note) => (
               <div

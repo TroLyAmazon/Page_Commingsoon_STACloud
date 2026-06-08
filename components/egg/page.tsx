@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { SiteFooter } from '@/components/shared/site-footer';
 import { Reveal } from '@/components/ui/reveal';
 import { homeConfig } from '@/components/home/content';
+import { Section3DAccent } from '@/components/visual/section-3d-accent';
 import { eggGroups, eggTotals, type EggGroup, type EggItem } from './content';
 
 type EggFilter = 'all' | EggGroup['title'];
@@ -95,16 +96,16 @@ function Header() {
           </div>
         </Link>
 
-        <nav className="flex flex-wrap gap-3 text-sm text-slate-300">
+        <nav className="grid grid-cols-2 gap-2 text-sm text-slate-300 sm:flex sm:flex-wrap sm:gap-3">
           <Link
             href="/"
-            className="inline-flex min-h-10 items-center rounded-lg border border-white/10 bg-white/[0.04] px-4 transition hover:border-cyan-300/30 hover:text-white"
+            className="inline-flex min-h-10 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-4 transition hover:border-cyan-300/30 hover:text-white"
           >
             Trang chủ
           </Link>
           <Link
             href="/free-server"
-            className="inline-flex min-h-10 items-center rounded-lg border border-white/10 bg-white/[0.04] px-4 transition hover:border-cyan-300/30 hover:text-white"
+            className="inline-flex min-h-10 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-4 transition hover:border-cyan-300/30 hover:text-white"
           >
             Gói dịch vụ
           </Link>
@@ -112,7 +113,7 @@ function Header() {
             href={homeConfig.panelUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center rounded-lg bg-white px-4 font-semibold text-slate-950 transition hover:bg-cyan-100"
+            className="inline-flex min-h-10 items-center justify-center rounded-lg bg-white px-4 font-semibold text-slate-950 transition hover:bg-cyan-100"
           >
             Portal
           </a>
@@ -120,7 +121,7 @@ function Header() {
             href={homeConfig.discordUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center rounded-lg border border-blue-300/25 bg-blue-300/10 px-4 font-semibold text-blue-50 transition hover:border-blue-300/45 hover:bg-blue-300/15"
+            className="inline-flex min-h-10 items-center justify-center rounded-lg border border-blue-300/25 bg-blue-300/10 px-4 font-semibold text-blue-50 transition hover:border-blue-300/45 hover:bg-blue-300/15"
           >
             Discord
           </a>
@@ -128,7 +129,7 @@ function Header() {
             href={homeConfig.zaloUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12]"
+            className="inline-flex min-h-10 items-center justify-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12]"
           >
             Zalo
           </a>
@@ -136,7 +137,7 @@ function Header() {
             href={homeConfig.messengerUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12]"
+            className="inline-flex min-h-10 items-center justify-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12]"
           >
             Messenger
           </a>
@@ -183,8 +184,11 @@ function Summary({
         </Reveal>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+          <Reveal delayMs={100}>
+            <Section3DAccent variant="catalog" size="compact" />
+          </Reveal>
           {stats.map((stat, index) => (
-            <Reveal key={stat.label} delayMs={120 + index * 70}>
+            <Reveal key={stat.label} delayMs={160 + index * 70}>
               <div className="status-tile rounded-lg border border-cyan-300/15 bg-slate-950/70 px-4 py-4 backdrop-blur">
                 <p className="text-3xl font-semibold text-white">{stat.value}</p>
                 <p className="mt-1 text-sm leading-6 text-slate-400">{stat.label}</p>
@@ -279,6 +283,9 @@ function EggCard({ group, index }: { group: EggGroup; index: number }) {
         className={`interactive-card status-panel h-full rounded-lg border ${accent.border} bg-slate-950/80 p-5 shadow-[0_20px_80px_rgba(3,7,18,0.34)] backdrop-blur sm:p-6`}
       >
         <div className={`absolute inset-x-0 top-0 h-20 bg-gradient-to-b ${accent.band} to-transparent opacity-80`} />
+        <span className="card-3d-badge card-3d-badge--egg" aria-hidden="true">
+          <span />
+        </span>
         <div className="relative">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
@@ -308,13 +315,18 @@ function Catalog({ groups }: { groups: EggGroup[] }) {
   return (
     <section className="px-4 pb-14 sm:px-6 sm:pb-24">
       <div className="mx-auto max-w-6xl">
-        <Reveal className="mb-6 max-w-3xl">
-          <p className="section-eyebrow">Catalog</p>
-          <h2 className="section-title">Nhóm egg hiện có</h2>
-          <p className="section-copy">
-            Chỉ hiển thị nhóm cấp cao và tên egg sạch. Tên file gốc được ẩn khỏi giao diện.
-          </p>
-        </Reveal>
+        <div className="mb-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
+          <Reveal className="max-w-3xl">
+            <p className="section-eyebrow">Catalog</p>
+            <h2 className="section-title">Nhóm egg hiện có</h2>
+            <p className="section-copy">
+              Chỉ hiển thị nhóm cấp cao và tên egg sạch. Tên file gốc được ẩn khỏi giao diện.
+            </p>
+          </Reveal>
+          <Reveal delayMs={120}>
+            <Section3DAccent variant="workflow" size="compact" />
+          </Reveal>
+        </div>
 
         {groups.length ? (
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 xl:gap-6">

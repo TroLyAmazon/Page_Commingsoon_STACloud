@@ -48,11 +48,21 @@ export default function RootLayout({
   return (
     <html lang="vi" data-scroll-behavior="smooth">
       <body
-        className="relative overflow-x-hidden bg-[var(--surface-950)] text-slate-100 antialiased"
+        className="relative overflow-x-hidden bg-[var(--surface-50)] text-slate-100 antialiased"
         suppressHydrationWarning
       >
         <div className="background-mesh" aria-hidden />
         <div className="background-grid" aria-hidden />
+        <div className="background-3d-field" aria-hidden>
+          <span className="background-3d-cloud background-3d-cloud-one" />
+          <span className="background-3d-cloud background-3d-cloud-two" />
+          <span className="background-3d-cube background-3d-cube-one" />
+          <span className="background-3d-cube background-3d-cube-two" />
+          <span className="background-3d-node background-3d-node-one" />
+          <span className="background-3d-node background-3d-node-two" />
+          <span className="background-3d-beam background-3d-beam-one" />
+          <span className="background-3d-beam background-3d-beam-two" />
+        </div>
         <div className="relative z-10">{children}</div>
       </body>
     </html>

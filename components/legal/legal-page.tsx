@@ -2,6 +2,7 @@
 import { Reveal } from '@/components/ui/reveal';
 import { SiteFooter } from '@/components/shared/site-footer';
 import { homeConfig } from '@/components/home/content';
+import { Section3DAccent } from '@/components/visual/section-3d-accent';
 import type { LegalSection } from './legal-content';
 
 type LegalPageProps = {
@@ -78,19 +79,22 @@ export function LegalPage({
           </div>
         </Reveal>
 
-        <section className="mt-8">
-          <Reveal className="space-y-6">
+        <section className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-end">
+          <Reveal className="min-w-0 space-y-6">
             <div className="inline-flex items-center gap-3 rounded-full border border-cyan-300/15 bg-cyan-300/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-100 sm:text-xs sm:tracking-[0.28em]">
               {eyebrow}
             </div>
 
             <div className="space-y-4">
-              <h1 className="max-w-4xl text-3xl font-semibold leading-tight text-white sm:text-5xl">
+              <h1 className="max-w-full break-words text-3xl font-semibold leading-tight text-white sm:max-w-4xl sm:text-5xl">
                 {title}
               </h1>
               <p className="text-sm leading-7 text-slate-300 sm:text-lg sm:leading-8">{intro}</p>
               <p className="text-sm font-medium text-cyan-100">Cập nhật lần cuối: {lastUpdated}</p>
             </div>
+          </Reveal>
+          <Reveal delayMs={120}>
+            <Section3DAccent variant="legal" size="compact" />
           </Reveal>
         </section>
 
@@ -98,6 +102,9 @@ export function LegalPage({
           {sections.map((section, index) => (
             <Reveal key={section.title} delayMs={index * 50}>
               <article className="status-panel rounded-lg border border-cyan-300/15 bg-slate-950/70 p-6 backdrop-blur">
+                <span className="card-3d-badge card-3d-badge--legal" aria-hidden="true">
+                  <span />
+                </span>
                 <h2 className="text-xl font-semibold text-white">{section.title}</h2>
 
                 {section.paragraphs?.map((paragraph) => (

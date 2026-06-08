@@ -1,23 +1,30 @@
 import { locations } from './content';
+import { Section3DAccent } from '@/components/visual/section-3d-accent';
 
 export function LocationsSection() {
   return (
     <section className="px-4 py-16 sm:px-6 sm:py-24">
       <div className="status-panel mx-auto max-w-6xl rounded-lg border border-cyan-300/15 bg-slate-950/70 p-6 backdrop-blur sm:p-8">
-        <div className="max-w-2xl">
-          <p className="section-eyebrow">Locations</p>
-          <h2 className="section-title">Các location hiện có cho gói cộng đồng và dịch vụ trả phí</h2>
-          <p className="section-copy">
-            Xem nhanh location nào hỗ trợ free hoặc paid để chọn khu vực phù hợp với nhu cầu sử dụng.
-          </p>
+        <div className="relative z-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
+          <div className="max-w-2xl">
+            <p className="section-eyebrow">Locations</p>
+            <h2 className="section-title">Các location hiện có cho gói cộng đồng và dịch vụ trả phí</h2>
+            <p className="section-copy">
+              Xem nhanh location nào hỗ trợ free hoặc paid để chọn khu vực phù hợp với nhu cầu sử dụng.
+            </p>
+          </div>
+          <Section3DAccent variant="location" size="compact" />
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="relative z-10 mt-10 grid gap-6 md:grid-cols-2">
           {locations.map((location) => (
             <article
               key={location.name}
-              className="interactive-card rounded-lg border border-cyan-300/15 bg-black/35 p-6"
+              className="interactive-card relative overflow-hidden rounded-lg border border-cyan-300/15 bg-black/35 p-6"
             >
+              <span className="card-3d-badge card-3d-badge--location" aria-hidden="true">
+                <span />
+              </span>
               <div className="flex flex-col gap-4">
                 <div className="flex min-w-0 items-start gap-4">
                   <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg border border-cyan-300/15 bg-black/45 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
