@@ -589,14 +589,15 @@ export function HomePage() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl space-y-2">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-400/15 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-cyan-200">
-                🥚 Pterodactyl & Jexactyl Eggs
+                🥚 Kho Game & App Eggs Tự Phát Triển
               </div>
               <h3 className="text-2xl font-bold text-white sm:text-3xl">
                 Hỗ Trợ Đầy Đủ Mọi Trò Chơi & Môi Trường Code
               </h3>
               <p className="text-xs text-sky-100 sm:text-sm leading-relaxed">
-                Tích hợp sẵn bộ Eggs cài đặt 1-click cho Minecraft (Paper, Forge, Fabric, Bedrock),
-                Node.js, Python Bot, Rust, CS2, Palworld, và nhiều phần mềm khác.
+                Hệ thống Egg tùy biến được STACloud tự phát triển và tối ưu dựa trên nền tảng Pterodactyl,
+                hỗ trợ cài đặt 1-click cho Minecraft (Paper, Purpur, Forge, Fabric, Bedrock),
+                Node.js, Python Bot, Rust, CS2, Palworld, và nhiều ứng dụng chuyên dụng khác.
               </p>
             </div>
 

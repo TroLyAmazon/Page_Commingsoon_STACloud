@@ -49,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="vi" className="dark scroll-smooth">
       <body
-        className="relative min-h-screen overflow-x-hidden bg-[#020b14] text-slate-100 antialiased"
+        className="relative min-h-screen overflow-x-hidden bg-[#031c34] text-slate-100 antialiased"
         suppressHydrationWarning
       >
         <div className="cyber-grid-bg" aria-hidden />
