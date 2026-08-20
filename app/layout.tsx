@@ -5,9 +5,9 @@ const SITE_URL = 'https://stacloud.dev';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'STACloud | Community Hosting, VPS and Service Plans',
+  title: 'STACloud | Cyber Cloud, VPS & Game Hosting Platform',
   description:
-    'STACloud cung cấp portal, OpenClaw Beta, TESTER, DEV SG, MC SG, PROXY HK và VPS OVH Singapore với giá, slot, cấu hình và tùy chọn upsize rõ ràng.',
+    'Hệ sinh thái hạ tầng đám mây STACloud: Cung cấp Portal quản trị game server, VPS OVH Singapore chống DDoS, OpenClaw Beta miễn phí và các gói dịch vụ cộng đồng minh bạch.',
   keywords: [
     'STACloud',
     'community hosting',
@@ -15,21 +15,22 @@ export const metadata: Metadata = {
     'minecraft hosting',
     'free server hosting',
     'pterodactyl panel',
-    'jexactyl fork',
+    'openclaw beta',
+    'ovh singapore vps',
   ],
   openGraph: {
-    title: 'STACloud | Bảng Giá Và Dịch Vụ',
+    title: 'STACloud | Cyber Cloud & VPS Hosting Platform',
     description:
-      'Xem giá, cấu hình, slot, OpenClaw Beta, upsize và lưu ý sử dụng của các gói TESTER, DEV SG, MC SG, PROXY HK, STA-XEON-01, STA-XEON-02, STA-AMD-EPYC-01 và STA-AMD-EPYC-02 tại STACloud.',
+      'Xem giá, cấu hình, slot, OpenClaw Beta, upsize và lưu ý sử dụng của các gói TESTER, DEV SG, MC SG, PROXY HK, STA-XEON và STA-AMD-EPYC tại STACloud.',
     url: SITE_URL,
     siteName: 'STACloud',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'STACloud | Bảng Giá Và Dịch Vụ',
+    title: 'STACloud | Cyber Cloud & VPS Hosting Platform',
     description:
-      'Xem nhanh OpenClaw Beta, gói dịch vụ, slot còn lại, giá hiện tại và chính sách mới nhất của STACloud cho dev, Minecraft, proxy và VPS OVH Singapore.',
+      'Khám phá OpenClaw Beta, VPS OVH Singapore, game server và các gói dịch vụ cộng đồng giá tốt nhất.',
   },
   icons: {
     icon: [
@@ -46,23 +47,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" data-scroll-behavior="smooth">
+    <html lang="vi" className="dark scroll-smooth">
       <body
-        className="relative overflow-x-hidden bg-[var(--surface-50)] text-slate-100 antialiased"
+        className="relative min-h-screen overflow-x-hidden bg-[#020b14] text-slate-100 antialiased"
         suppressHydrationWarning
       >
-        <div className="background-mesh" aria-hidden />
-        <div className="background-grid" aria-hidden />
-        <div className="background-3d-field" aria-hidden>
-          <span className="background-3d-cloud background-3d-cloud-one" />
-          <span className="background-3d-cloud background-3d-cloud-two" />
-          <span className="background-3d-cube background-3d-cube-one" />
-          <span className="background-3d-cube background-3d-cube-two" />
-          <span className="background-3d-node background-3d-node-one" />
-          <span className="background-3d-node background-3d-node-two" />
-          <span className="background-3d-beam background-3d-beam-one" />
-          <span className="background-3d-beam background-3d-beam-two" />
-        </div>
+        <div className="cyber-grid-bg" aria-hidden />
+        <div className="cyber-lines-bg" aria-hidden />
         <div className="relative z-10">{children}</div>
       </body>
     </html>

@@ -1,622 +1,686 @@
-﻿import Link from 'next/link';
-import { OpenClawSpotlight } from '@/components/shared/openclaw-spotlight';
-import { Reveal } from '@/components/ui/reveal';
-import { Section3DAccent } from '@/components/visual/section-3d-accent';
-import { ServerCloudScene } from '@/components/visual/server-cloud-scene';
+'use client';
 
+import React, { useState } from 'react';
+import Link from 'next/link';
 import {
-  dashboardEntries,
-  faqs,
-  features,
+  allServicePlans,
+  comprehensiveFaqs,
   heroSignals,
   heroStats,
   heroStatusStrip,
   homeConfig,
-  locations,
-  products,
-  testimonials,
 } from './content';
+import { HeroCyberScene } from '@/components/visual/hero-cyber-scene';
+import { SpecCalculator3D } from '@/components/visual/spec-calculator-3d';
+import { NetworkRadar3D } from '@/components/visual/network-radar-3d';
+import { TiltCard } from '@/components/ui/tilt-card';
+import { CyberTerminal } from '@/components/ui/cyber-terminal';
+import { MobileDrawer } from '@/components/ui/mobile-drawer';
+import { MobileDock } from '@/components/ui/mobile-dock';
+import { SiteFooter } from '@/components/shared/site-footer';
+import { Reveal } from '@/components/ui/reveal';
 
-type Tone = 'amber' | 'blue' | 'cyan' | 'emerald' | 'rose';
-
-function getToneClasses(tone: Tone) {
-  switch (tone) {
-    case 'amber':
+function getStatusBadge(status: string) {
+  switch (status) {
+    case 'active':
       return {
-        dot: 'bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.75)]',
-        pill: 'border border-blue-300/20 bg-blue-300/10 text-blue-100',
+        dot: 'bg-emerald-400',
+        pill: 'border-emerald-400/30 bg-emerald-500/15 text-emerald-300',
+        label: 'Đang Mở Slot',
       };
-    case 'blue':
+    case 'beta':
       return {
-        dot: 'bg-sky-400 shadow-[0_0_14px_rgba(56,189,248,0.9)]',
-        pill: 'border border-sky-300/20 bg-sky-300/10 text-sky-100',
+        dot: 'bg-sky-400',
+        pill: 'border-sky-400/30 bg-sky-500/15 text-sky-200',
+        label: 'Beta Miễn Phí',
       };
-    case 'emerald':
+    case 'warning':
       return {
-        dot: 'bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.75)]',
-        pill: 'border border-cyan-300/20 bg-cyan-300/10 text-cyan-100',
+        dot: 'bg-rose-400',
+        pill: 'border-rose-400/30 bg-rose-500/15 text-rose-200',
+        label: 'Node Tài Trợ',
       };
-    case 'rose':
+    case 'paused':
       return {
-        dot: 'bg-slate-100 shadow-[0_0_14px_rgba(248,250,252,0.5)]',
-        pill: 'border border-white/15 bg-white/[0.07] text-white',
+        dot: 'bg-amber-400',
+        pill: 'border-amber-400/30 bg-amber-500/15 text-amber-200',
+        label: 'Tạm Hết Slot',
+      };
+    case 'preorder':
+      return {
+        dot: 'bg-cyan-300',
+        pill: 'border-cyan-300/30 bg-cyan-400/15 text-cyan-100',
+        label: 'Đặt Trước 3 Ngày',
       };
     default:
       return {
-        dot: 'bg-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.9)]',
-        pill: 'border border-cyan-300/20 bg-cyan-300/10 text-cyan-100',
+        dot: 'bg-cyan-300',
+        pill: 'border-cyan-300/30 bg-cyan-400/15 text-cyan-100',
+        label: 'Sẵn Sàng',
       };
   }
 }
 
-function Header() {
+export function HomePage() {
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+  const [activePlanTab, setActivePlanTab] = useState<'all' | 'community' | 'vps' | 'game' | 'beta'>('all');
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
+  const filteredPlans = allServicePlans.filter((plan) => {
+    if (activePlanTab === 'all') return true;
+    if (activePlanTab === 'community') return plan.category === 'community' || plan.category === 'proxy';
+    if (activePlanTab === 'vps') return plan.category === 'vps';
+    if (activePlanTab === 'game') return plan.category === 'game';
+    if (activePlanTab === 'beta') return plan.category === 'beta';
+    return true;
+  });
+
   return (
-    <header className="px-4 pt-6 sm:px-6 sm:pt-8">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 rounded-lg border border-cyan-300/15 bg-black/70 px-4 py-4 shadow-[0_22px_70px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:px-5 xl:grid xl:grid-cols-[auto_1fr_auto] xl:items-center">
-        <Link
-          href="/"
-          className="group flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] px-3 py-3 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.06] sm:gap-4 sm:px-4"
-        >
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-cyan-300/20 bg-black/60 p-2 shadow-[0_0_24px_rgba(34,211,238,0.12)] sm:h-16 sm:w-16">
-            <img
-              src="/picture/logoSTACloud.png"
-              alt={homeConfig.logoAlt}
-              className="h-full w-full object-contain"
-            />
-          </div>
-          <div className="min-w-0">
-            <p className="text-xl font-semibold text-white sm:text-2xl">{homeConfig.name}</p>
-            <p className="max-w-[16rem] text-xs leading-5 text-slate-400 sm:max-w-none sm:text-sm">
-              Portal, VPS và gói dịch vụ cộng đồng
-            </p>
-          </div>
-        </Link>
+    <div className="relative min-h-screen bg-[#031c34] text-slate-100 selection:bg-cyan-400 selection:text-black">
+      {/* Ocean Cyber Background Decorators */}
+      <div className="cyber-grid-bg" aria-hidden />
+      <div className="cyber-lines-bg" aria-hidden />
 
-        <nav className="hidden items-center justify-center gap-1 rounded-lg border border-white/10 bg-white/[0.025] p-1 text-sm text-slate-300 lg:flex xl:justify-self-center">
-          <a href="#products" className="rounded-md px-3 py-2 transition hover:bg-white/[0.06] hover:text-white">
-            Dịch vụ
-          </a>
-          <Link href="/egg" className="rounded-md px-3 py-2 transition hover:bg-white/[0.06] hover:text-white">
-            Eggs
-          </Link>
-          <a href="#infrastructure" className="rounded-md px-3 py-2 transition hover:bg-white/[0.06] hover:text-white">
-            Hạ tầng
-          </a>
-          <a href="#locations" className="rounded-md px-3 py-2 transition hover:bg-white/[0.06] hover:text-white">
-            Vị trí
-          </a>
-          <a href="#faq" className="rounded-md px-3 py-2 transition hover:bg-white/[0.06] hover:text-white">
-            Câu hỏi
-          </a>
-        </nav>
-
-        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap lg:justify-center xl:justify-self-end">
-          <a
-            href={homeConfig.panelUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-sky-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 sm:w-auto"
-          >
-            Mở Portal
-          </a>
-          <a
-            href={homeConfig.discordUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-blue-300/25 bg-blue-300/10 px-4 py-2.5 text-sm font-semibold text-blue-50 transition hover:border-blue-300/45 hover:bg-blue-300/15 sm:w-auto"
-          >
-            Discord
-          </a>
-          <a
-            href={homeConfig.zaloUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12] sm:w-auto"
-          >
-            Zalo
-          </a>
-          <a
-            href={homeConfig.messengerUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-cyan-300/15 bg-cyan-300/[0.07] px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/35 hover:bg-cyan-300/[0.12] sm:w-auto"
-          >
-            Messenger
-          </a>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function Hero() {
-  return (
-    <section className="px-4 pb-14 pt-8 sm:px-6 sm:pb-24 sm:pt-16">
-      <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-        <Reveal className="hero-copy-block space-y-8 sm:w-auto" delayMs={40}>
-          <div className="flex flex-wrap gap-3">
-            <div className="inline-flex items-center gap-3 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur">
-              {homeConfig.tagline}
-            </div>
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-sky-300/25 bg-sky-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-sky-500 shadow-[0_0_14px_rgba(14,165,233,0.45)]" />
-              OpenClaw Beta miễn phí
-            </div>
-          </div>
-
-          <div className="max-w-[20rem] space-y-5 sm:max-w-none">
-            <h1 className="max-w-[calc(100vw-2rem)] break-words text-2xl font-semibold leading-tight text-slate-950 sm:max-w-3xl sm:text-5xl lg:text-6xl">
-              <span className="block sm:inline">Hạ tầng VPS, game server</span>{' '}
-              <span className="block sm:inline">và OpenClaw cho cộng đồng</span>{' '}
-              <span className="block sm:inline">STACloud.</span>
-            </h1>
-            <p className="max-w-2xl text-sm leading-7 text-sky-100/80 sm:text-lg sm:leading-8">
-              Xem giá, cấu hình, trạng thái slot và hướng dẫn đăng ký trong một nơi. STACloud tập
-              trung vào VPS OVH Singapore, game server, OpenClaw Beta và các gói cộng đồng có chi
-              phí rõ ràng.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a
-              href={homeConfig.panelUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-sky-600 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_16px_38px_rgba(2,132,199,0.26)] transition hover:bg-sky-500 sm:w-auto"
-            >
-              Mở Portal
-            </a>
-            <a
-              href={homeConfig.discordUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-sky-300/25 bg-sky-300/10 px-6 py-3.5 text-sm font-semibold text-sky-100 transition hover:border-sky-300/45 hover:bg-sky-300/15 sm:w-auto"
-            >
-              Tạo ticket Discord
-            </a>
-          </div>
-        </Reveal>
-
-        <Reveal className="relative min-h-[420px] sm:min-h-[520px] lg:min-h-[620px]" delayMs={120}>
-          <ServerCloudScene />
-          <div className="pointer-events-none static mt-3 grid gap-3 sm:absolute sm:inset-x-0 sm:bottom-2 sm:mt-0 sm:grid-cols-2">
-            {heroStats.map((item) => (
-              <div key={item.label} className="cloud-stat rounded-lg px-4 py-3">
-                <p className="text-2xl font-semibold text-slate-950">{item.value}</p>
-                <p className="mt-1 text-xs leading-5 text-slate-300">{item.label}</p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-
-      <div className="mx-auto mt-5 max-w-6xl">
-        <div className="support-spotlight rounded-lg px-5 py-5 sm:px-6 sm:py-6">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.26em] text-sky-100/80">
-                Group Chat Cộng Đồng
-              </p>
-              <h2 className="mt-2 text-2xl font-semibold text-white sm:text-3xl">
-                Cần hỏi nhanh? Vào nhóm chat STACloud.
-              </h2>
-              <p className="mt-2 text-sm leading-7 text-sky-100/80">
-                Messenger và Zalo dùng cho trao đổi cộng đồng, cập nhật nhanh và hỏi trước khi tạo
-                ticket Discord.
-              </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2 lg:min-w-[22rem]">
-              <a
-                href={homeConfig.messengerUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-sky-950 transition hover:bg-sky-100"
-              >
-                Messenger Group
-              </a>
-              <a
-                href={homeConfig.zaloUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/20 bg-white/[0.08] px-5 py-3 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/[0.14]"
-              >
-                Zalo Group
-              </a>
-            </div>
-          </div>
-          <div className="mt-4 grid gap-3 text-sm text-sky-100/80 sm:grid-cols-3">
-            <p className="rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3">
-              Hỏi nhanh trước khi chọn gói
-            </p>
-            <p className="rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3">
-              Theo dõi cập nhật cộng đồng
-            </p>
-            <p className="rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3">
-              Chuyển sang ticket khi cần xử lý riêng
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mx-auto mt-8 grid max-w-6xl gap-3 sm:grid-cols-3 sm:gap-4">
-        {heroSignals.map((item, index) => (
-          <Reveal key={item} delayMs={120 + index * 80}>
-            <div className="cloud-stat interactive-card rounded-lg px-4 py-4 text-sm leading-7 text-slate-200">
-              {item}
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      <div className="mx-auto mt-3 grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {heroStatusStrip.map((item, index) => {
-          const tone = getToneClasses(item.tone);
-
-          return (
-            <Reveal key={item.label} delayMs={180 + index * 50}>
-              <div className="cloud-stat interactive-card flex h-full items-start justify-between gap-3 rounded-lg px-4 py-4">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-slate-950">
-                    {item.label}
-                  </p>
-                  <p className="mt-1 text-xs text-slate-500">{item.detail}</p>
-                </div>
-                <span className={`rounded-full px-3 py-1 text-[11px] font-semibold ${tone.pill}`}>
-                  {item.value}
-                </span>
-              </div>
-            </Reveal>
-          );
-        })}
-      </div>
-
-      <div className="mx-auto mt-3 grid max-w-6xl gap-3 lg:grid-cols-4">
-        {dashboardEntries.map((item, index) => {
-          const tone = getToneClasses(item.tone);
-
-          return (
-            <Reveal key={item.label} delayMs={260 + index * 50}>
-              <div className="cloud-stat interactive-card flex h-full flex-col gap-3 rounded-lg px-4 py-4">
-                <div className="flex items-center gap-3">
-                  <span className={`h-2.5 w-2.5 rounded-full ${tone.dot}`} />
-                  <p className="text-sm font-semibold text-slate-950">{item.label}</p>
-                </div>
-                <p className="text-sm font-semibold leading-6 text-cyan-100">{item.value}</p>
-                <p className="text-xs leading-5 text-slate-500">{item.meta}</p>
-              </div>
-            </Reveal>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-function TesterAlert() {
-  return (
-    <section className="px-4 py-6 sm:px-6">
-      <div className="mx-auto max-w-6xl rounded-lg border border-blue-300/20 bg-blue-300/[0.06] px-5 py-4 text-sm leading-7 text-slate-100 sm:px-6">
-        {homeConfig.testerAlertMessage}
-      </div>
-    </section>
-  );
-}
-
-function Products() {
-  return (
-    <section id="products" className="px-4 py-14 sm:px-6 sm:py-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
-          <Reveal className="max-w-3xl">
-            <p className="section-eyebrow">Dịch Vụ</p>
-            <h2 className="section-title">
-              Các dịch vụ chính của STACloud cho game server, app và môi trường thử nghiệm
-            </h2>
-            <p className="section-copy">
-              Từ portal quản lý đến hạ tầng compute và các gói cộng đồng, bạn có thể xem nhanh từng
-              nhóm dịch vụ để chọn đúng nhu cầu sử dụng.
-            </p>
-          </Reveal>
-          <Reveal delayMs={120}>
-            <Section3DAccent variant="pricing" size="compact" />
-          </Reveal>
-        </div>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:mt-10 xl:grid-cols-4 xl:gap-6">
-          {products.map((product, index) => (
-            <Reveal key={product.title} delayMs={index * 90}>
-              <article
-                className={`interactive-card group relative overflow-hidden rounded-lg border p-5 backdrop-blur sm:p-6 ${
-                  index % 2 === 0
-                    ? 'border-cyan-300/20 bg-cyan-300/[0.045]'
-                    : 'border-blue-300/20 bg-blue-300/[0.045]'
-                }`}
-              >
-                <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/10 to-transparent opacity-60" />
-                <span className="card-3d-badge" aria-hidden="true">
-                  <span />
-                </span>
-                <div className="relative">
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-300/80">
-                    {product.eyebrow}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-semibold text-white">{product.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-slate-300">{product.description}</p>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {product.chips.map((chip) => (
-                      <span
-                        key={chip}
-                        className="rounded-full border border-white/10 bg-slate-950/60 px-3 py-1.5 text-xs font-medium text-slate-200"
-                      >
-                        {chip}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Infrastructure() {
-  return (
-    <section id="infrastructure" className="px-4 py-14 sm:px-6 sm:py-24">
-      <div className="status-panel mx-auto max-w-6xl rounded-lg border border-cyan-300/15 bg-slate-950/70 p-4 backdrop-blur sm:p-8">
-        <div className="relative z-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
-          <Reveal className="max-w-3xl">
-            <p className="section-eyebrow">Hạ Tầng</p>
-            <h2 className="section-title">
-              Thông tin hạ tầng được trình bày rõ ràng để bạn chọn đúng dịch vụ
-            </h2>
-            <p className="section-copy">
-              Bạn có thể xem nhanh trạng thái gói, khu vực triển khai và mức tài nguyên trước khi
-              đăng ký hoặc liên hệ hỗ trợ.
-            </p>
-          </Reveal>
-          <Reveal delayMs={120}>
-            <Section3DAccent variant="network" size="compact" />
-          </Reveal>
-        </div>
-
-        <div className="relative z-10 mt-8 grid gap-4 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
-          {features.map((feature, index) => (
-            <Reveal key={feature.title} delayMs={index * 80}>
-              <article className="tech-card interactive-card rounded-lg border border-cyan-300/15 bg-black/35 p-5 sm:p-6">
-                <span className="card-3d-badge card-3d-badge--network" aria-hidden="true">
-                  <span />
-                </span>
-                <div className="mb-4 h-1.5 w-14 rounded-full bg-gradient-to-r from-white via-cyan-300 to-blue-500" />
-                <h3 className="text-lg font-semibold text-white sm:text-xl">{feature.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-slate-400">{feature.description}</p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Locations() {
-  return (
-    <section id="locations" className="px-4 py-14 sm:px-6 sm:py-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
-          <Reveal className="max-w-3xl">
-            <p className="section-eyebrow">Vị Trí</p>
-            <h2 className="section-title">
-              Các khu vực triển khai hiện có cho gói cộng đồng và dịch vụ trả phí
-            </h2>
-            <p className="section-copy">
-              Xem nhanh từng location, băng thông và phạm vi hỗ trợ để chọn khu vực phù hợp với nhu
-              cầu sử dụng của bạn.
-            </p>
-          </Reveal>
-          <Reveal delayMs={120}>
-            <Section3DAccent variant="location" size="compact" />
-          </Reveal>
-        </div>
-
-        <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-2 md:gap-6">
-          {locations.map((location, index) => (
-            <Reveal key={location.name} delayMs={index * 100}>
-              <article className="interactive-card relative overflow-hidden rounded-lg border border-cyan-300/15 bg-slate-950/75 p-5 shadow-[0_20px_80px_rgba(3,7,18,0.45)] sm:p-6">
-                <span className="card-3d-badge card-3d-badge--location" aria-hidden="true">
-                  <span />
-                </span>
-                <div className="flex flex-col gap-4">
-                  <div className="flex min-w-0 items-start gap-4">
-                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg border border-cyan-300/15 bg-black/40 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
-                      <img
-                        src={location.flagSrc}
-                        alt={`${location.name} flag`}
-                        className="h-full w-full rounded-md object-cover"
-                      />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-2xl font-semibold text-white">{location.name}</p>
-                      <p className="mt-2 text-base leading-7 text-slate-400">{location.badge}</p>
-                    </div>
-                  </div>
-                  <span className="w-fit rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100 sm:tracking-[0.28em]">
-                    {location.availability}
-                  </span>
-                </div>
-
-                <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-4">
-                  <div className="rounded-lg border border-cyan-300/10 bg-white/[0.03] p-4">
-                    <p className="text-xs text-slate-500 sm:text-sm">Bandwidth</p>
-                    <p className="mt-2 text-2xl font-semibold text-cyan-200">{location.speed}</p>
-                  </div>
-                  <div className="rounded-lg border border-cyan-300/10 bg-white/[0.03] p-4">
-                    <p className="text-xs text-slate-500 sm:text-sm">Uptime</p>
-                    <p className="mt-2 text-2xl font-semibold text-white">{location.uptime}</p>
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Testimonials() {
-  return (
-    <section className="px-4 py-14 sm:px-6 sm:py-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
-          <Reveal className="max-w-3xl">
-            <p className="section-eyebrow">Phản Hồi</p>
-            <h2 className="section-title">Khách hàng nói gì về trải nghiệm sử dụng STACloud</h2>
-            <p className="section-copy">
-              Một vài phản hồi từ người dùng sau khi trải nghiệm portal, theo dõi trạng thái dịch vụ
-              và đăng ký các gói cộng đồng của STACloud.
-            </p>
-          </Reveal>
-          <Reveal delayMs={120}>
-            <Section3DAccent variant="service" size="compact" />
-          </Reveal>
-        </div>
-
-        <div className="mt-8 grid gap-4 lg:mt-10 lg:grid-cols-3 lg:gap-6">
-          {testimonials.map((item, index) => (
-            <Reveal key={item.author} delayMs={index * 90}>
-              <article className="interactive-card rounded-lg border border-cyan-300/15 bg-slate-950/70 p-5 sm:p-6">
-                <div className="mb-4 h-1.5 w-12 rounded-full bg-gradient-to-r from-cyan-300 to-transparent" />
-                <p className="text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
-                  "{item.quote}"
-                </p>
-                <div className="mt-6 border-t border-white/10 pt-4">
-                  <p className="font-semibold text-white">{item.author}</p>
-                  <p className="mt-1 text-sm text-slate-400">{item.role}</p>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Faq() {
-  return (
-    <section id="faq" className="px-4 py-14 sm:px-6 sm:py-24">
-      <div className="status-panel mx-auto max-w-6xl rounded-lg border border-cyan-300/15 bg-slate-950/70 p-4 backdrop-blur sm:p-8">
-        <div className="relative z-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
-          <Reveal className="max-w-3xl">
-            <p className="section-eyebrow">Câu Hỏi</p>
-            <h2 className="section-title">
-              Những câu hỏi thường gặp trước khi vào portal hoặc đăng ký gói dịch vụ
-            </h2>
-            <p className="section-copy">
-              FAQ được viết lại theo ngạch quyết định thực tế: chọn gói nào, xem trạng thái ở đâu và
-              cần chú ý gì trước khi tạo ticket.
-            </p>
-          </Reveal>
-          <Reveal delayMs={120}>
-            <Section3DAccent variant="workflow" size="compact" />
-          </Reveal>
-        </div>
-
-        <div className="relative z-10 mt-8 grid gap-3 sm:mt-10 sm:gap-4">
-          {faqs.map((question, index) => (
-            <Reveal key={question} delayMs={index * 50}>
-              <div className="interactive-card rounded-lg border border-cyan-300/10 bg-black/30 px-4 py-4 text-sm leading-7 text-slate-200 sm:px-5 sm:text-base">
-                {question}
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="px-4 pb-10 pt-10 sm:px-6">
-      <div className="mx-auto max-w-6xl border-t border-white/10 pt-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <Link
-            href="/"
-            className="interactive-card group inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] px-3 py-3 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.06]"
-          >
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-cyan-300/20 bg-black/60 p-2">
+      {/* --- 1. TOP STICKY OCEAN NAVBAR --- */}
+      <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between rounded-2xl border border-cyan-300/30 bg-[#063056]/85 px-4 py-3 shadow-[0_10px_40px_rgba(0,119,182,0.35)] backdrop-blur-xl sm:px-6">
+          {/* Brand Logo */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-300/40 bg-black/60 p-1.5 shadow-[0_0_25px_rgba(0,240,255,0.3)] transition group-hover:border-cyan-200 group-hover:shadow-[0_0_30px_rgba(0,240,255,0.55)] sm:h-12 sm:w-12">
               <img
                 src="/picture/logoSTACloud.png"
                 alt={homeConfig.logoAlt}
                 className="h-full w-full object-contain"
               />
             </div>
-            <div className="min-w-0">
-              <p className="text-xl font-semibold text-white">{homeConfig.name}</p>
-              <p className="text-sm text-slate-400">stacloud.dev</p>
+            <div>
+              <span className="text-lg font-black tracking-wider text-white sm:text-xl group-hover:text-cyan-300 transition">
+                STACloud
+              </span>
+              <span className="hidden text-[11px] font-semibold text-cyan-300/90 sm:block">
+                Ocean Cloud & Community Hosting
+              </span>
             </div>
           </Link>
-          <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-slate-300">
-            <a href={homeConfig.freeServerUrl} className="transition hover:text-white">
-              Gói dịch vụ
+
+          {/* Desktop Navigation Links */}
+          <nav className="hidden items-center gap-1 rounded-xl border border-cyan-300/20 bg-white/[0.05] p-1 text-xs font-bold text-sky-100 md:flex lg:gap-2 lg:text-sm">
+            <a
+              href="#plans"
+              className="rounded-lg px-3.5 py-1.5 transition hover:bg-cyan-400/20 hover:text-white"
+            >
+              Bảng Giá
             </a>
-            <Link href="/egg" className="transition hover:text-white">
+            <a
+              href="#calculator"
+              className="rounded-lg px-3.5 py-1.5 transition hover:bg-cyan-400/20 hover:text-white"
+            >
+              Tùy Biến (Max 64C / 128G)
+            </a>
+            <Link
+              href="/egg"
+              className="rounded-lg px-3.5 py-1.5 transition hover:bg-cyan-400/20 hover:text-white"
+            >
               Eggs
             </Link>
-            <a href={homeConfig.panelUrl} className="transition hover:text-white">
-              Portal
+            <a
+              href="#openclaw"
+              className="rounded-lg px-3.5 py-1.5 transition hover:bg-cyan-400/20 hover:text-white"
+            >
+              OpenClaw AI
             </a>
-            <a href={homeConfig.discordUrl} className="transition hover:text-white">
-              Discord Ticket
+            <a
+              href="#network"
+              className="rounded-lg px-3.5 py-1.5 transition hover:bg-cyan-400/20 hover:text-white"
+            >
+              Hạ Tầng Radar
             </a>
-            <span className="text-cyan-100/70">Group Chat:</span>
-            <a href={homeConfig.zaloUrl} className="transition hover:text-white">
-              Zalo
+            <a
+              href="#faq"
+              className="rounded-lg px-3.5 py-1.5 transition hover:bg-cyan-400/20 hover:text-white"
+            >
+              Hỏi Đáp
             </a>
-            <a href={homeConfig.messengerUrl} className="transition hover:text-white">
-              Messenger
+          </nav>
+
+          {/* Header Action CTAs */}
+          <div className="flex items-center gap-2">
+            <a
+              href={homeConfig.panelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-cyber-primary hidden rounded-xl px-4 py-2 text-xs font-bold sm:inline-flex sm:text-sm"
+            >
+              <span>Mở Control Portal</span>
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
             </a>
-            <Link href="/terms" className="block transition hover:text-white">
-              Điều khoản dịch vụ
-            </Link>
-            <Link href="/privacy" className="block transition hover:text-white">
-              Chính sách quyền riêng tư
-            </Link>
-            <Link href="/sla" className="block transition hover:text-white">
-              SLA
-            </Link>
-            <Link href="/partner" className="block transition hover:text-white">
-              Partner
+
+            <a
+              href={homeConfig.discordUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden items-center justify-center rounded-xl border border-sky-300/40 bg-sky-500/15 px-3.5 py-2 text-xs font-bold text-sky-100 transition hover:bg-sky-500/30 lg:inline-flex"
+            >
+              Discord
+            </a>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              type="button"
+              onClick={() => setMobileDrawerOpen(true)}
+              aria-label="Mở menu"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-300/40 bg-cyan-400/15 text-cyan-200 transition hover:bg-cyan-400/25 md:hidden"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* --- 2. HERO SECTION WITH OCEAN BLUE 3D WEBGL SCENE --- */}
+      <section className="relative px-4 pb-14 pt-8 sm:px-6 sm:pb-24 sm:pt-14 lg:pt-16">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            {/* Left Copy & Actions */}
+            <Reveal className="space-y-6">
+              {/* Badges */}
+              <div className="flex flex-wrap items-center gap-2.5">
+                <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-400/15 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-cyan-200 shadow-[0_0_20px_rgba(0,180,216,0.35)] sm:text-xs">
+                  <span className="h-2 w-2 rounded-full bg-cyan-300 animate-pulse" />
+                  {homeConfig.tagline}
+                </div>
+
+                <div className="inline-flex items-center gap-2 rounded-full border border-sky-300/40 bg-sky-400/15 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-sky-100 sm:text-xs">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                  OpenClaw Beta Free 100%
+                </div>
+              </div>
+
+              {/* Title & Slogan */}
+              <div className="space-y-4">
+                <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl lg:text-6xl tracking-tight">
+                  Nền Tảng <span className="text-gradient-cyan">Hạ Tầng Cloud, VPS</span> & Game Server Đỉnh Cao.
+                </h1>
+                <p className="max-w-2xl text-sm leading-relaxed text-sky-100 sm:text-lg">
+                  Hạ tầng điện toán đám mây thế hệ mới tại OVH Singapore với khả năng chống DDoS đa tầng.
+                  Tùy chỉnh cấu hình linh hoạt lên tới 64 vCore & 128 GB RAM, bảng giá minh bạch và hỗ trợ 24/7.
+                </p>
+              </div>
+
+              {/* CTA Action Buttons */}
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  href={homeConfig.panelUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-cyber-primary rounded-xl px-6 py-3.5 text-sm font-bold shadow-[0_0_30px_rgba(0,180,216,0.45)]"
+                >
+                  <span>Truy Cập Game & Cloud Portal</span>
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+
+                <a
+                  href={homeConfig.discordUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-cyber-outline rounded-xl px-6 py-3.5 text-sm font-bold"
+                >
+                  <span>🎫 Tạo Ticket Discord</span>
+                </a>
+              </div>
+
+              {/* Quick Group Chat Banner */}
+              <div className="rounded-2xl border border-cyan-300/30 bg-gradient-to-r from-[#073b68] to-[#04284d] p-4 sm:p-5 shadow-xl">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-cyan-200">
+                      Cộng Đồng Hỗ Trợ 24/7
+                    </p>
+                    <p className="mt-0.5 text-xs text-sky-100 sm:text-sm">
+                      Hỏi nhanh, tư vấn cấu hình trước khi tạo ticket trên Discord.
+                    </p>
+                  </div>
+                  <div className="flex gap-2">
+                    <a
+                      href={homeConfig.zaloUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-xl border border-cyan-300/40 bg-cyan-400/20 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-cyan-400/30"
+                    >
+                      Nhóm Zalo
+                    </a>
+                    <a
+                      href={homeConfig.messengerUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-xl border border-sky-300/40 bg-sky-400/20 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-sky-400/30"
+                    >
+                      Nhóm Messenger
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Key Signal Highlights */}
+              <div className="grid gap-2.5 sm:grid-cols-3">
+                {heroSignals.map((signal, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-xl border border-cyan-300/20 bg-[#05294a]/85 p-3 text-xs text-sky-100 backdrop-blur shadow"
+                  >
+                    {signal}
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+
+            {/* Right 3D Visual Centerpiece */}
+            <Reveal className="relative flex flex-col items-center justify-center">
+              <div className="relative h-[380px] w-full rounded-3xl border border-cyan-300/35 bg-gradient-to-b from-[#063866]/90 to-[#03203c]/95 p-2 shadow-[0_25px_75px_rgba(0,119,182,0.45)] backdrop-blur-2xl sm:h-[480px] lg:h-[540px]">
+                <HeroCyberScene />
+
+                {/* Floating 3D Stat Counters */}
+                <div className="pointer-events-none absolute inset-x-3 bottom-3 grid grid-cols-2 gap-2 sm:inset-x-6 sm:bottom-6 sm:grid-cols-4">
+                  {heroStats.map((st) => (
+                    <div
+                      key={st.label}
+                      className="rounded-xl border border-cyan-300/30 bg-[#063056]/90 p-2.5 text-center backdrop-blur-lg shadow-lg"
+                    >
+                      <p className="font-mono text-lg font-black text-white sm:text-xl text-gradient-cyan">
+                        {st.value}
+                      </p>
+                      <p className="mt-0.5 text-[10px] font-semibold text-sky-200 leading-tight">
+                        {st.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* --- 3. LIVE STATUS STRIP (3D TILT CARDS) --- */}
+      <section className="px-4 py-6 sm:px-6">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-4 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="status-indicator-ping">
+                <span className="bg-emerald-400" />
+                <span className="bg-emerald-500" />
+              </span>
+              <h2 className="text-xs font-bold uppercase tracking-wider text-cyan-200">
+                Trạng Thái Tài Nguyên & Node Real-Time
+              </h2>
+            </div>
+            <span className="text-xs text-sky-200">Tự động đồng bộ</span>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+            {heroStatusStrip.map((item) => {
+              const badge = getStatusBadge(item.status);
+              return (
+                <TiltCard
+                  key={item.label}
+                  className="rounded-2xl border border-cyan-300/25 bg-[#06335a]/85 p-4 shadow-lg backdrop-blur"
+                >
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <p className="text-xs font-extrabold text-white">{item.label}</p>
+                      <p className="mt-0.5 text-[11px] text-sky-200">{item.detail}</p>
+                    </div>
+                    <span className={`h-2 w-2 rounded-full ${badge.dot}`} />
+                  </div>
+
+                  <div className="mt-4 flex items-center justify-between border-t border-cyan-300/15 pt-2">
+                    <span className="text-xs font-bold text-cyan-200">{item.value}</span>
+                  </div>
+                </TiltCard>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* --- 4. TESTER ALERT MESSAGE --- */}
+      <section className="px-4 py-3 sm:px-6">
+        <div className="mx-auto max-w-7xl rounded-2xl border border-amber-300/40 bg-amber-500/15 p-4 text-xs leading-relaxed text-amber-100 shadow-md backdrop-blur">
+          {homeConfig.testerAlertMessage}
+        </div>
+      </section>
+
+      {/* --- 5. 3D CLOUD HARDWARE CONFIGURATOR (MAX 64 CORE / 128GB RAM - GIÁ LIÊN HỆ) --- */}
+      <section id="calculator" className="scroll-mt-24 px-4 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-7xl">
+          <SpecCalculator3D
+            discordUrl={homeConfig.discordUrl}
+            zaloUrl={homeConfig.zaloUrl}
+            messengerUrl={homeConfig.messengerUrl}
+          />
+        </div>
+      </section>
+
+      {/* --- 6. SERVICE PLANS SHOWCASE WITH TABS --- */}
+      <section id="plans" className="scroll-mt-24 px-4 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-7xl">
+          {/* Section Header */}
+          <div className="text-center space-y-3">
+            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-400/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-cyan-200">
+              ⚡ Toàn Bộ Bảng Giá & Gói Dịch Vụ
+            </div>
+            <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+              Chọn Gói Dịch Vụ Phù Hợp Nhu Cầu
+            </h2>
+            <p className="mx-auto max-w-2xl text-sm text-sky-100 sm:text-base">
+              Từ các gói test cộng đồng giá siêu rẻ đến cụm máy chủ VPS OVH Singapore chuyên dụng cho tải nặng.
+            </p>
+
+            {/* Filter Tabs */}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+              <button
+                onClick={() => setActivePlanTab('all')}
+                className={`rounded-xl px-4 py-2 text-xs font-bold transition-all sm:text-sm ${
+                  activePlanTab === 'all'
+                    ? 'bg-gradient-to-r from-sky-400 to-cyan-300 text-black shadow-[0_0_20px_rgba(0,240,255,0.5)]'
+                    : 'border border-cyan-300/25 bg-[#063056]/70 text-slate-200 hover:border-cyan-300/45'
+                }`}
+              >
+                Tất Cả Gói ({allServicePlans.length})
+              </button>
+              <button
+                onClick={() => setActivePlanTab('community')}
+                className={`rounded-xl px-4 py-2 text-xs font-bold transition-all sm:text-sm ${
+                  activePlanTab === 'community'
+                    ? 'bg-gradient-to-r from-sky-400 to-cyan-300 text-black shadow-[0_0_20px_rgba(0,240,255,0.5)]'
+                    : 'border border-cyan-300/25 bg-[#063056]/70 text-slate-200 hover:border-cyan-300/45'
+                }`}
+              >
+                Gói Cộng Đồng
+              </button>
+              <button
+                onClick={() => setActivePlanTab('vps')}
+                className={`rounded-xl px-4 py-2 text-xs font-bold transition-all sm:text-sm ${
+                  activePlanTab === 'vps'
+                    ? 'bg-gradient-to-r from-sky-400 to-cyan-300 text-black shadow-[0_0_20px_rgba(0,240,255,0.5)]'
+                    : 'border border-cyan-300/25 bg-[#063056]/70 text-slate-200 hover:border-cyan-300/45'
+                }`}
+              >
+                VPS OVH Singapore
+              </button>
+              <button
+                onClick={() => setActivePlanTab('game')}
+                className={`rounded-xl px-4 py-2 text-xs font-bold transition-all sm:text-sm ${
+                  activePlanTab === 'game'
+                    ? 'bg-gradient-to-r from-sky-400 to-cyan-300 text-black shadow-[0_0_20px_rgba(0,240,255,0.5)]'
+                    : 'border border-cyan-300/25 bg-[#063056]/70 text-slate-200 hover:border-cyan-300/45'
+                }`}
+              >
+                Game Server (Minecraft)
+              </button>
+              <button
+                onClick={() => setActivePlanTab('beta')}
+                className={`rounded-xl px-4 py-2 text-xs font-bold transition-all sm:text-sm ${
+                  activePlanTab === 'beta'
+                    ? 'bg-gradient-to-r from-sky-400 to-cyan-300 text-black shadow-[0_0_20px_rgba(0,240,255,0.5)]'
+                    : 'border border-cyan-300/25 bg-[#063056]/70 text-slate-200 hover:border-cyan-300/45'
+                }`}
+              >
+                OpenClaw Beta AI
+              </button>
+            </div>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredPlans.map((plan) => {
+              const badge = getStatusBadge(plan.status);
+
+              return (
+                <TiltCard
+                  key={plan.id}
+                  className="flex flex-col justify-between rounded-3xl border border-cyan-300/30 bg-[#06335a]/90 p-6 shadow-xl backdrop-blur-xl"
+                >
+                  <div>
+                    {/* Header: Title & Status */}
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <span className={`inline-block rounded-lg px-2.5 py-0.5 text-[11px] font-bold ${badge.pill}`}>
+                          {plan.badge}
+                        </span>
+                        <h3 className="mt-2 text-xl font-extrabold text-white">{plan.name}</h3>
+                      </div>
+                      <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold ${badge.pill}`}>
+                        {badge.label}
+                      </span>
+                    </div>
+
+                    {/* Price Display */}
+                    <div className="mt-4 border-b border-cyan-300/15 pb-4">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-2xl font-black text-white text-gradient-cyan sm:text-3xl">
+                          {plan.price}
+                        </span>
+                        <span className="text-xs text-sky-200">/ {plan.period}</span>
+                      </div>
+                      <p className="mt-2 text-xs leading-relaxed text-sky-100">{plan.description}</p>
+                    </div>
+
+                    {/* Hardware Specs Checklist */}
+                    <div className="mt-4 space-y-2">
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-cyan-200">
+                        Cấu Hình Chi Tiết:
+                      </p>
+                      {plan.specs.map((spec, sIdx) => (
+                        <div key={sIdx} className="flex items-center gap-2 text-xs text-sky-100">
+                          <span className="text-cyan-300">✔</span>
+                          <span>{spec}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Warning / Upsize Info */}
+                    {plan.warning ? (
+                      <div className="mt-4 rounded-xl border border-rose-400/40 bg-rose-500/15 p-2.5 text-[11px] leading-relaxed text-rose-100">
+                        ⚠️ {plan.warning}
+                      </div>
+                    ) : plan.upsizeNotes ? (
+                      <div className="mt-4 rounded-xl border border-cyan-300/20 bg-cyan-400/10 p-2.5 text-[11px] leading-relaxed text-cyan-100">
+                        ℹ️ {plan.upsizeNotes}
+                      </div>
+                    ) : null}
+                  </div>
+
+                  {/* Card CTA */}
+                  <div className="mt-6 border-t border-cyan-300/15 pt-4">
+                    <a
+                      href={homeConfig.discordUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-cyber-primary w-full rounded-xl py-2.5 text-xs font-bold"
+                    >
+                      <span>{plan.ctaText}</span>
+                    </a>
+                  </div>
+                </TiltCard>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* --- 7. OPENCLAW BETA SPOTLIGHT & LIVE CYBER TERMINAL --- */}
+      <section id="openclaw" className="scroll-mt-24 px-4 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+            {/* Left Description */}
+            <div className="space-y-5">
+              <div className="inline-flex items-center gap-2 rounded-full border border-sky-300/40 bg-sky-400/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-sky-100">
+                🦞 OpenClaw Free Beta Ecosystem
+              </div>
+              <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+                Trải Nghiệm OpenClaw AI & Web Miễn Phí.
+              </h2>
+              <p className="text-sm leading-relaxed text-sky-100 sm:text-base">
+                OpenClaw đã mở rộng cửa cho mọi thành viên cộng đồng STACloud! Bạn có thể triển khai
+                bot AI, web app hay test workload với độ trễ thấp mà không cần phải tốn chi phí mua
+                domain riêng.
+              </p>
+
+              <div className="space-y-3 text-xs sm:text-sm text-sky-100">
+                <div className="flex items-start gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-cyan-400/25 text-cyan-200 font-bold">1</span>
+                  <p><strong>Không cần Domain riêng:</strong> Tự động cấp phát URL proxy an toàn qua SSL Cloudflare.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-cyan-400/25 text-cyan-200 font-bold">2</span>
+                  <p><strong>Tối ưu hóa AI:</strong> Khuyến nghị chọn cụm Singapore hoặc Việt Nam để kết nối AI ổn định nhất.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-cyan-400/25 text-cyan-200 font-bold">3</span>
+                  <p><strong>Cộng đồng hỗ trợ:</strong> Hướng dẫn cài đặt nhanh qua nhóm Zalo, Messenger và Discord Ticket.</p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-3 pt-2">
+                <a
+                  href={homeConfig.discordUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-cyber-primary rounded-xl px-5 py-2.5 text-xs font-bold sm:text-sm"
+                >
+                  <span>Nhận Key & Slot OpenClaw</span>
+                </a>
+                <a
+                  href={homeConfig.zaloUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-cyber-outline rounded-xl px-5 py-2.5 text-xs font-bold sm:text-sm"
+                >
+                  <span>Hỏi Đáp Tại Zalo</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Interactive Cyber Terminal */}
+            <div>
+              <CyberTerminal />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- 8. GLOBAL DATACENTER & LATENCY RADAR --- */}
+      <section id="network" className="scroll-mt-24 px-4 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-7xl">
+          <NetworkRadar3D />
+        </div>
+      </section>
+
+      {/* --- 9. PTERODACTYL EGGS SHOWCASE PROMO --- */}
+      <section className="px-4 py-8 sm:px-6">
+        <div className="mx-auto max-w-7xl rounded-3xl border border-cyan-300/30 bg-gradient-to-r from-[#06345d] via-[#084577] to-[#06345d] p-6 sm:p-10 shadow-2xl backdrop-blur-2xl">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-2xl space-y-2">
+              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-400/15 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-cyan-200">
+                🥚 Pterodactyl & Jexactyl Eggs
+              </div>
+              <h3 className="text-2xl font-bold text-white sm:text-3xl">
+                Hỗ Trợ Đầy Đủ Mọi Trò Chơi & Môi Trường Code
+              </h3>
+              <p className="text-xs text-sky-100 sm:text-sm leading-relaxed">
+                Tích hợp sẵn bộ Eggs cài đặt 1-click cho Minecraft (Paper, Forge, Fabric, Bedrock),
+                Node.js, Python Bot, Rust, CS2, Palworld, và nhiều phần mềm khác.
+              </p>
+            </div>
+
+            <Link
+              href="/egg"
+              className="btn-cyber-primary inline-flex shrink-0 rounded-2xl px-6 py-3.5 text-sm font-bold shadow-[0_0_25px_rgba(0,180,216,0.45)]"
+            >
+              <span>Khám Phá Danh Mục Eggs</span>
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
             </Link>
           </div>
         </div>
-        <p className="mt-6 text-sm text-slate-500">© 2018 - 2026 STACloud. All rights reserved.</p>
-      </div>
-    </footer>
-  );
-}
+      </section>
 
-export function HomePage() {
-  return (
-    <main className="min-h-screen pb-10">
-      <Header />
-      <Hero />
-      <OpenClawSpotlight
+      {/* --- 10. FAQ ACCORDION --- */}
+      <section id="faq" className="scroll-mt-24 px-4 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-4xl space-y-8">
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-400/15 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-cyan-200">
+              ❓ Câu Hỏi Thường Gặp
+            </div>
+            <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+              Giải Đáp Thắc Mắc Về Dịch Vụ
+            </h2>
+            <p className="text-xs text-sky-200 sm:text-sm">
+              Những thông tin quan trọng bạn cần nắm rõ trước khi bắt đầu sử dụng.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {comprehensiveFaqs.map((item, idx) => {
+              const isOpen = openFaqIndex === idx;
+
+              return (
+                <div
+                  key={idx}
+                  className="overflow-hidden rounded-2xl border border-cyan-300/25 bg-[#06335a]/85 backdrop-blur transition-all"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                    className="flex w-full items-center justify-between p-4 text-left font-semibold text-white sm:p-5 hover:text-cyan-200 transition"
+                  >
+                    <span className="text-sm sm:text-base">{item.q}</span>
+                    <span className={`ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-cyan-300/30 bg-cyan-400/15 text-cyan-200 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="border-t border-cyan-300/15 px-4 pb-5 pt-3 text-xs leading-relaxed text-sky-100 sm:px-5 sm:text-sm">
+                      {item.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* --- 11. FOOTER --- */}
+      <SiteFooter />
+
+      {/* --- 12. MOBILE DRAWER & MOBILE BOTTOM DOCK --- */}
+      <MobileDrawer
+        isOpen={mobileDrawerOpen}
+        onClose={() => setMobileDrawerOpen(false)}
+        panelUrl={homeConfig.panelUrl}
         discordUrl={homeConfig.discordUrl}
         zaloUrl={homeConfig.zaloUrl}
         messengerUrl={homeConfig.messengerUrl}
       />
-      <TesterAlert />
-      <Products />
-      <Infrastructure />
-      <Locations />
-      <Testimonials />
-      <Faq />
-      <Footer />
-    </main>
+
+      <MobileDock
+        panelUrl={homeConfig.panelUrl}
+        discordUrl={homeConfig.discordUrl}
+        zaloUrl={homeConfig.zaloUrl}
+        messengerUrl={homeConfig.messengerUrl}
+      />
+    </div>
   );
 }
